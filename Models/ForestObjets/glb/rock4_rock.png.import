@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwoacv68r03vt"
-path="res://.godot/imported/rock4_rock.png-c4c3e32d06d289f57b98a827353c7177.ctex"
+path.s3tc="res://.godot/imported/rock4_rock.png-c4c3e32d06d289f57b98a827353c7177.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://Models/ForestObjets/glb/rock4_rock.png"
-dest_files=["res://.godot/imported/rock4_rock.png-c4c3e32d06d289f57b98a827353c7177.ctex"]
+dest_files=["res://.godot/imported/rock4_rock.png-c4c3e32d06d289f57b98a827353c7177.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -32,4 +33,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
