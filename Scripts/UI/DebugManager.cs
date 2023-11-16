@@ -1,4 +1,5 @@
 using System;
+using Game.Player;
 using Godot;
 
 namespace Game.UI; 
@@ -11,12 +12,12 @@ internal partial class DebugManager : Control {
 		set {
 			m_Mode = value;
 			
-			SetActive(m_PerformanceDebugLabel, value switch {
+			SetActive(m_PerformanceDebug, value switch {
 				DebugMode.None => false,
 				_ => true,
 			});
 			
-			SetActive(m_PlayerDebugLabel, value switch {
+			SetActive(m_PlayerDebug, value switch {
 				DebugMode.All => true,
 				_ => false,
 			});
@@ -26,11 +27,14 @@ internal partial class DebugManager : Control {
 	private static readonly StringName ToggleDebugInputName = "ToggleDebug";
 
 	private DebugMode m_Mode;
-	[Export] private Label m_PerformanceDebugLabel;
-	[Export] private Label m_PlayerDebugLabel;
+	[Export] private PerformanceDebug m_PerformanceDebug;
+	[Export] private PlayerDebug m_PlayerDebug;
 
 	public override void _Ready() {
 		Mode = DebugMode.None;
+
+		PlayerManager player = GetParent().GetParent<PlayerManager>();
+		m_PlayerDebug.Player = player;
 	}
 
 	public override void _Process(double dt) {

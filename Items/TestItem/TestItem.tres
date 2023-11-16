@@ -1,21 +1,14 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dwfb3ap65kdpt"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dwfb3ap65kdpt"]
 
-[ext_resource type="Script" path="res://Scripts/ItemSystem/ItemData.cs" id="1_oyap8"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/SimpleItemData.cs" id="1_elxh4"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_by7em"]
-radius = 0.05
-
-[sub_resource type="SphereMesh" id="SphereMesh_134kc"]
-radius = 0.05
-height = 0.1
-radial_segments = 16
-rings = 8
+[sub_resource type="TextMesh" id="TextMesh_gv1v8"]
+text = "test"
 
 [resource]
-script = ExtResource("1_oyap8")
-Name = &"Test"
+script = ExtResource("1_elxh4")
 Mass = 1.0
+Mesh = SubResource("TextMesh_gv1v8")
+Name = &"Test item"
 HandSlotOffset = Vector3(0, 0, 0)
 HandSlotRotation = Vector3(0, 0, 0)
-Mesh = SubResource("SphereMesh_134kc")
-CollisionShape = SubResource("SphereShape3D_by7em")

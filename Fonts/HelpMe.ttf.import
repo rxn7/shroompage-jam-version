@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://jpxbl71tu5gi"
-path="res://.godot/imported/Abel-Regular.ttf-6c334537c79bac5058a5e122bb0f19c2.fontdata"
+uid="uid://ca7acto1aa1wt"
+path="res://.godot/imported/HelpMe.ttf-1b6c61cdd4bc69d19784469077d637ba.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Abel-Regular.ttf"
-dest_files=["res://.godot/imported/Abel-Regular.ttf-6c334537c79bac5058a5e122bb0f19c2.fontdata"]
+source_file="res://Fonts/HelpMe.ttf"
+dest_files=["res://.godot/imported/HelpMe.ttf-1b6c61cdd4bc69d19784469077d637ba.fontdata"]
 
 [params]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bai11qwjiwqpd"]
+[gd_scene load_steps=5 format=3 uid="uid://bai11qwjiwqpd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/DebugManager.cs" id="1_k7oed"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerDebug.cs" id="1_ldio6"]
+[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/HUD.tres" id="2_h745j"]
 [ext_resource type="Script" path="res://Scripts/UI/PerformanceDebug.cs" id="2_n5ret"]
 
-[node name="DebugManager" type="Control" node_paths=PackedStringArray("m_PerformanceDebugLabel", "m_PlayerDebugLabel")]
+[node name="DebugManager" type="Control" node_paths=PackedStringArray("m_PerformanceDebug", "m_PlayerDebug")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,8 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k7oed")
-m_PerformanceDebugLabel = NodePath("PerformanceDebug")
-m_PlayerDebugLabel = NodePath("PlayerDebug")
+m_PerformanceDebug = NodePath("PerformanceDebug")
+m_PlayerDebug = NodePath("PlayerDebug")
 
 [node name="PlayerDebug" type="Label" parent="."]
 layout_mode = 1
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_h745j")
 script = ExtResource("1_ldio6")
 
 [node name="PerformanceDebug" type="Label" parent="."]
@@ -31,5 +33,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_h745j")
 horizontal_alignment = 2
 script = ExtResource("2_n5ret")

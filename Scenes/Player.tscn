@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=9 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
-[ext_resource type="PackedScene" uid="uid://bai11qwjiwqpd" path="res://Scenes/UI/DebugUI.tscn" id="2_msqvf"]
-[ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environment.tres" id="2_noj2d"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
-[ext_resource type="Theme" path="res://HUD.tres" id="3_4ndw2"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHead.cs" id="3_034oa"]
+[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/HUD.tres" id="4_pyl5v"]
 [ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
+[ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
@@ -24,23 +23,7 @@ m_CollisionMask = 1073741826
 m_PickupLabel = NodePath("../HUD/PickupLabel")
 
 [node name="HUD" parent="." instance=ExtResource("2_prwv8")]
-theme = ExtResource("3_4ndw2")
-
-[node name="PickupLabel" parent="HUD" index="1"]
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 26
-
-[node name="DebugManager" parent="HUD" instance=ExtResource("2_msqvf")]
-layout_mode = 1
-
-[node name="PlayerDebug" parent="HUD/DebugManager" index="0" node_paths=PackedStringArray("m_Player")]
-auto_translate = false
-localize_numeral_system = false
-m_Player = NodePath("../../..")
+theme = ExtResource("4_pyl5v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -52,12 +35,9 @@ script = ExtResource("3_034oa")
 m_Player = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-environment = ExtResource("2_noj2d")
+environment = ExtResource("6_yatk4")
 current = true
 fov = 90.0
 
 [node name="Viewmodel" parent="Head/Camera3D" node_paths=PackedStringArray("m_Player") instance=ExtResource("6_018si")]
 m_Player = NodePath("../../..")
-
-[editable path="HUD"]
-[editable path="HUD/DebugManager"]

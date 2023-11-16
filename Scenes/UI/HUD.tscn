@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqghedx0pa5c8"]
+[gd_scene load_steps=5 format=3 uid="uid://cqghedx0pa5c8"]
 
 [ext_resource type="Texture2D" uid="uid://bcpm1boumx14q" path="res://Textures/UI/crosshair001.png" id="1_ul7ro"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="2_shb8l"]
+[ext_resource type="PackedScene" uid="uid://bai11qwjiwqpd" path="res://Scenes/UI/DebugUI.tscn" id="3_fy7ad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3ark"]
 shader = ExtResource("2_shb8l")
@@ -59,3 +60,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press [F] to pickup ''Name\""
 horizontal_alignment = 1
+
+[node name="DebugManager" parent="." instance=ExtResource("3_fy7ad")]
+layout_mode = 1
