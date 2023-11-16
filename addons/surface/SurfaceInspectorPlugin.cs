@@ -6,7 +6,7 @@ namespace Game.Surface.Plugin;
 
 internal partial class SurfaceInspectorPlugin : EditorInspectorPlugin {
 	public override bool _CanHandle(GodotObject obj) =>  obj is StaticBody3D;
-    private UndoRedo m_ChangeSurfaceUndoRedo = new();
+	private UndoRedo m_ChangeSurfaceUndoRedo = new();
 
 	public override void _ParseBegin(GodotObject obj) {
 		OptionButton surfaceOption = new OptionButton();
@@ -23,20 +23,20 @@ internal partial class SurfaceInspectorPlugin : EditorInspectorPlugin {
 		}
 
 		surfaceOption.ItemSelected += (long idx) => {
-            m_ChangeSurfaceUndoRedo.CreateAction("Change the surface");
-            m_ChangeSurfaceUndoRedo.CommitAction();
+			m_ChangeSurfaceUndoRedo.CreateAction("Change the surface");
+			m_ChangeSurfaceUndoRedo.CommitAction();
 
 			string surfaceName = Enum.GetName<ESurfaceMaterial>((ESurfaceMaterial)idx);
 			obj.SetMeta("Surface", surfaceName);
 
 			StaticBody3D body = (StaticBody3D)obj;
-            body.Name = $"{surfaceName}Tile";
-            body.GetParent().SetEditableInstance(body, true);
+			body.Name = $"{surfaceName}Tile";
+			body.GetParent().SetEditableInstance(body, true);
 			foreach(Node child in body.GetChildren()) {
 				if (child is MeshInstance3D meshInstance) {
 					meshInstance.MaterialOverride = GD.Load<Material>($"res://Materials/Surfaces/{surfaceName}.tres");
 					break;
-                }
+				}
 			}
 		};
 

@@ -54,7 +54,12 @@ internal partial class PlayerManager : CharacterBody3D {
 		if (!Viewmodel.AnimPlayer.CurrentAnimation.EndsWith("Idle"))
 			return;
 
-		Viewmodel.PlayAnimation(DefaultAttackAnimation);
+        if(ItemManager.HeldItem is not null) {
+            Viewmodel.PlayAnimation(ItemManager.HeldItem.Data.AttackAnimationName);
+        } else {
+            Viewmodel.PlayAnimation(DefaultAttackAnimation);
+        }
+
 		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
 	}
 }

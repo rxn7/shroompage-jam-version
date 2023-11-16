@@ -52,7 +52,7 @@ public partial class SplashScreen : Node {
 	}
 
 	private async Task Fade(bool fadeOut) {
-		if(!Control.IsInstanceValid(CurrentStage))
+		if(!SplashScreenStage.IsInstanceValid(CurrentStage))
 			return;
 		
 		CurrentStage.SelfModulate = new Color(1.0f, 1.0f, 1.0f, fadeOut ? 1.0f : 0.0f);
@@ -70,7 +70,7 @@ public partial class SplashScreen : Node {
 	}
 
 	private async Task FadeIn() {
-		if(!Control.IsInstanceValid(CurrentStage))
+		if(!SplashScreenStage.IsInstanceValid(CurrentStage))
 			return;
 
 		CurrentStage.Visible = true;
@@ -80,7 +80,7 @@ public partial class SplashScreen : Node {
 	private async Task FadeOut() {
 		await Fade(true);
 
-		if(!Control.IsInstanceValid(CurrentStage))
+		if(!SplashScreenStage.IsInstanceValid(CurrentStage))
 			return;
 
 		CurrentStage.Visible = false;
