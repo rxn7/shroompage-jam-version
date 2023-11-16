@@ -1,5 +1,4 @@
 using Godot;
-using Game.Player;
 using Game.Utils;
 
 namespace Game.Player;
@@ -12,6 +11,7 @@ internal partial class PlayerViewmodel : Node3D {
 	private const float SwayLerpSpeed = 10.0f;
 	private const float SwayResetMouseLastMovedTimerThreshold = 0.05f;
 	private const float HeadRollMultiplier = 3.0f;
+    private const float JumpFeedbackOffset = 0.002f;
 
 	public Vector3 Sway { get; private set; }
 	[Export] public PlayerViewmodelAnimationPlayer AnimPlayer { get; private set; }
@@ -53,6 +53,9 @@ internal partial class PlayerViewmodel : Node3D {
 
 		Sway = Sway.SafeLerp(new Vector3(m_TargetSway.X, m_TargetSway.Y, 0.0f), SwayLerpSpeed * (float)dt);
 		m_Bob = m_Bob.SafeLerp(new Vector3(m_Player.Bobbing.Bob.X, m_Player.Bobbing.Bob.Y, 0.0f) * BobAmplitude, BobLerpSpeed * (float)dt);
+
+		if(!m_Player.IsOnFloor())
+			m_Bob += Vector3.Up * JumpFeedbackOffset;
 
 		Position = m_InitPosition + m_Bob;
 		RotationDegrees = new Vector3(Sway.Y, -Sway.X, m_Player.Head.StrafeRoll * HeadRollMultiplier);
