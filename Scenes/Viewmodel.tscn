@@ -17,10 +17,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 bones/1/rotation = Quaternion(7.29665e-08, -0.521937, -0.852984, 8.11275e-08)
 bones/2/rotation = Quaternion(0.771341, 0.21067, -0.100087, 0.592143)
 bones/5/rotation = Quaternion(7.11656e-08, -0.436301, -0.899801, 8.47241e-08)
-bones/6/rotation = Quaternion(0.776155, -0.258073, -0.000429906, 0.575309)
+bones/6/rotation = Quaternion(0.776155, -0.258073, -0.000429907, 0.575309)
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.891201, 0.443529, 0.0950913, -0.453608, 0.871399, 0.186826, 3.70362e-07, -0.209634, 0.97778, -0.0437446, 0.0868245, -0.154773)
+transform = Transform3D(0.891202, 0.443528, 0.0950918, -0.453607, 0.871399, 0.186826, -2.70388e-07, -0.209634, 0.97778, -0.0437448, 0.0868246, -0.154773)
 bone_name = "Hand.L_end"
 bone_idx = 4
 
@@ -28,7 +28,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.866796, -0.400115, -0.297611, 0.481024, 0.828226, 0.287502, 0.131455, -0.392364, 0.910368, 0.0515975, 0.053487, -0.171456)
+transform = Transform3D(0.866796, -0.400115, -0.297611, 0.481024, 0.828226, 0.287503, 0.131455, -0.392365, 0.910368, 0.0515976, 0.0534869, -0.171456)
 bone_name = "Hand.R_end"
 bone_idx = 8
 

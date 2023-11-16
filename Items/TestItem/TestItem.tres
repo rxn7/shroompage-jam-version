@@ -12,3 +12,6 @@ Mesh = SubResource("TextMesh_gv1v8")
 Name = &"Test item"
 HandSlotOffset = Vector3(0, 0, 0)
 HandSlotRotation = Vector3(0, 0, 0)
+EquipAnimationName = &"FistsEquip"
+IdleAnimationName = &"FistsIdle"
+AttackAnimationName = &"FistsAttack"
