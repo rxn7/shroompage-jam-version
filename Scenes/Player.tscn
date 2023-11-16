@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHead.cs" id="3_034oa"]
 [ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/Debug.tres" id="4_4vmce"]
-[ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
+[ext_resource type="PackedScene" uid="uid://bgsloid6ipq3k" path="res://Models/Viewmodel.glb" id="7_p2nlw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
 radius = 0.2
@@ -39,5 +39,5 @@ environment = ExtResource("6_yatk4")
 current = true
 fov = 90.0
 
-[node name="Viewmodel" parent="Head/Camera3D" node_paths=PackedStringArray("m_Player") instance=ExtResource("6_018si")]
-m_Player = NodePath("../../..")
+[node name="Viewmodel" parent="Head/Camera3D" instance=ExtResource("7_p2nlw")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -1.515, 0)

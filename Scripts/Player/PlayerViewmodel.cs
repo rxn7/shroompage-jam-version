@@ -14,7 +14,7 @@ internal partial class PlayerViewmodel : Node3D {
 	private const float HeadRollMultiplier = 3.0f;
 
 	public Vector3 Sway { get; private set; }
-	[Export] public PlayerViewmodelAnimationPlayer AnimPlayer { get; private set; }
+	[Export] public AnimationPlayer AnimPlayer { get; private set; }
 
 	[Export] private PlayerManager m_Player;
 	[Export] private Node3D m_LeftHandSlot, m_RightHandSlot;
@@ -27,7 +27,9 @@ internal partial class PlayerViewmodel : Node3D {
 
 	public override void _Ready() {
 		m_InitPosition = Position;
-		AnimPlayer.Viewmodel = this;
+		AnimPlayer = GetNode<AnimationPlayer>("Viewmodel2/AnimationPlayer");
+		AnimPlayer.AnimationFinished += AnimationFinished;
+		PlayAnimation("Equip");
 	}
 
 	public override void _Input(InputEvent e) {
@@ -68,5 +70,9 @@ internal partial class PlayerViewmodel : Node3D {
 		slot.AddChild(node);
 		node.Position = offset;
 		node.RotationDegrees = rotation;
+	}
+
+	private void AnimationFinished(StringName name) {
+		AnimPlayer.Play("Idle");
 	}
 }
