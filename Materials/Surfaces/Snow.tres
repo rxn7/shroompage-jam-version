@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0hjpq13s8mu0"]
+
+[ext_resource type="Texture2D" uid="uid://ymkl44ilu7jg" path="res://Textures/Surfaces/Snow.png" id="1_x4gfd"]
+
+[resource]
+albedo_texture = ExtResource("1_x4gfd")
+uv1_triplanar = true
+uv1_world_triplanar = true

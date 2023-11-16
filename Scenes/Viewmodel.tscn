@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://5xkb76cxaain"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerViewmodel.cs" id="1_sok61"]
+[ext_resource type="PackedScene" uid="uid://bgsloid6ipq3k" path="res://Models/Viewmodel.glb" id="2_rytd8"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerViewmodelAnimationPlayer.cs" id="3_gb8qt"]
+
+[node name="Viewmodel" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "m_LeftHandSlot", "m_RightHandSlot")]
+script = ExtResource("1_sok61")
+AnimPlayer = NodePath("Viewmodel/AnimationPlayer")
+m_LeftHandSlot = NodePath("Viewmodel/ViewmodelArmature/Skeleton3D/LeftHand/LeftHandSlot")
+m_RightHandSlot = NodePath("Viewmodel/ViewmodelArmature/Skeleton3D/RightHand/RightHandSlot")
+
+[node name="Viewmodel" parent="." instance=ExtResource("2_rytd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+
+[node name="Skeleton3D" parent="Viewmodel/ViewmodelArmature" index="0"]
+bones/1/rotation = Quaternion(7.29665e-08, -0.521937, -0.852984, 8.11275e-08)
+bones/2/rotation = Quaternion(0.771341, 0.21067, -0.100087, 0.592143)
+bones/5/rotation = Quaternion(7.11656e-08, -0.436301, -0.899801, 8.47241e-08)
+bones/6/rotation = Quaternion(0.776155, -0.258073, -0.000429906, 0.575309)
+
+[node name="LeftHand" type="BoneAttachment3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D" index="1"]
+transform = Transform3D(0.891201, 0.443529, 0.0950913, -0.453608, 0.871399, 0.186826, 3.70362e-07, -0.209634, 0.97778, -0.0437446, 0.0868245, -0.154773)
+bone_name = "Hand.L_end"
+bone_idx = 4
+
+[node name="LeftHandSlot" type="Node3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D/LeftHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="RightHand" type="BoneAttachment3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.866796, -0.400115, -0.297611, 0.481024, 0.828226, 0.287502, 0.131455, -0.392364, 0.910368, 0.0515975, 0.053487, -0.171456)
+bone_name = "Hand.R_end"
+bone_idx = 8
+
+[node name="RightHandSlot" type="Node3D" parent="Viewmodel/ViewmodelArmature/Skeleton3D/RightHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="Viewmodel" index="1"]
+autoplay = "FistsIdle"
+script = ExtResource("3_gb8qt")
+
+[editable path="Viewmodel"]

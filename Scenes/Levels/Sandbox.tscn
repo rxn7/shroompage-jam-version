@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5n5y20qad6qf"]
+
+[ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_c3ciq"]
+[ext_resource type="PackedScene" uid="uid://bd6t4eddphhiw" path="res://Scenes/FloorTIle.tscn" id="2_kr25n"]
+[ext_resource type="Material" uid="uid://0hjpq13s8mu0" path="res://Materials/Surfaces/Snow.tres" id="3_ffxs6"]
+[ext_resource type="Material" uid="uid://bff7bp7ljsxme" path="res://Materials/Surfaces/Grass.tres" id="3_oxv1c"]
+[ext_resource type="Material" uid="uid://dt4o6xn1mevor" path="res://Materials/Surfaces/Wood.tres" id="4_2jtll"]
+[ext_resource type="Material" uid="uid://bcl0j8felx7gi" path="res://Materials/Surfaces/Metal.tres" id="5_gymp5"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/ItemSpawner.cs" id="7_5fu4m"]
+[ext_resource type="Resource" uid="uid://dwfb3ap65kdpt" path="res://Items/TestItem/TestItem.tres" id="8_5ekts"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a5op1"]
+
+[node name="Sandbox" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_c3ciq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_a5op1")
+
+[node name="GrassTile" parent="." instance=ExtResource("2_kr25n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+metadata/Surface = "Grass"
+
+[node name="MeshInstance3D" parent="GrassTile" index="0"]
+material_override = ExtResource("3_oxv1c")
+
+[node name="WoodTile" parent="." instance=ExtResource("2_kr25n")]
+metadata/Surface = "Wood"
+
+[node name="MeshInstance3D" parent="WoodTile" index="0"]
+material_override = ExtResource("4_2jtll")
+
+[node name="GravelTile" parent="." instance=ExtResource("2_kr25n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.5)
+
+[node name="SnowTile" parent="." instance=ExtResource("2_kr25n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -2.5)
+metadata/Surface = "Snow"
+
+[node name="MeshInstance3D" parent="SnowTile" index="0"]
+material_override = ExtResource("3_ffxs6")
+
+[node name="MetalTile" parent="." instance=ExtResource("2_kr25n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 2.5)
+metadata/Surface = "Metal"
+
+[node name="MeshInstance3D" parent="MetalTile" index="0"]
+material_override = ExtResource("5_gymp5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.513811, 0.857904, 0, -0.857904, -0.513811, 0.105363, -0.341431, 0.131457)
+light_energy = 0.192
+shadow_enabled = true
+
+[node name="Node" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+script = ExtResource("7_5fu4m")
+m_ItemData = ExtResource("8_5ekts")
+
+[editable path="GrassTile"]
+[editable path="WoodTile"]
+[editable path="GravelTile"]
+[editable path="SnowTile"]
+[editable path="MetalTile"]
