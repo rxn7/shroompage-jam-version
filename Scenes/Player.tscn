@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHead.cs" id="3_034oa"]
-[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/HUD.tres" id="4_pyl5v"]
+[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/Debug.tres" id="4_4vmce"]
 [ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
@@ -23,7 +23,7 @@ m_CollisionMask = 1073741826
 m_PickupLabel = NodePath("../HUD/PickupLabel")
 
 [node name="HUD" parent="." instance=ExtResource("2_prwv8")]
-theme = ExtResource("4_pyl5v")
+theme = ExtResource("4_4vmce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

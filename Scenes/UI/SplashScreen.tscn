@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://blglh6ta6k2t"]
+[gd_scene load_steps=7 format=3 uid="uid://blglh6ta6k2t"]
 
-[ext_resource type="Texture2D" uid="uid://bq8ppu4f1gvfo" path="res://Textures/pjp-logo-halloween.png" id="1_2nuhk"]
-[ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreen.cs" id="1_ipan3"]
-[ext_resource type="Texture2D" uid="uid://dx3384dxgau65" path="res://Textures/godot-splashscreen.svg" id="2_d07lv"]
-[ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreenStage.cs" id="2_rg6y3"]
-[ext_resource type="FontFile" uid="uid://ca7acto1aa1wt" path="res://Fonts/HelpMe.ttf" id="3_68fgg"]
+[ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreen.cs" id="1_gihig"]
+[ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreenStage.cs" id="2_6jnpk"]
+[ext_resource type="Texture2D" uid="uid://dx3384dxgau65" path="res://Textures/godot-splashscreen.svg" id="3_juew4"]
+[ext_resource type="Texture2D" uid="uid://bq8ppu4f1gvfo" path="res://Textures/pjp-logo-halloween.png" id="4_6hwww"]
+[ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="5_iiamc"]
+[ext_resource type="FontFile" uid="uid://ca7acto1aa1wt" path="res://Fonts/HelpMe.ttf" id="6_7ssro"]
 
 [node name="SplashScreen" type="Node"]
-script = ExtResource("1_ipan3")
+script = ExtResource("1_gihig")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -38,7 +39,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_rg6y3")
+script = ExtResource("2_6jnpk")
 DisplayTime = 0.5
 
 [node name="GodotLogo" type="TextureRect" parent="Stages/GodotStage"]
@@ -57,7 +58,7 @@ offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.00425429
-texture = ExtResource("2_d07lv")
+texture = ExtResource("3_juew4")
 
 [node name="PjpStage" type="Control" parent="Stages"]
 visible = false
@@ -69,7 +70,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_rg6y3")
+script = ExtResource("2_6jnpk")
 DisplayTime = 0.5
 
 [node name="PjpLogo" type="TextureRect" parent="Stages/PjpStage"]
@@ -88,7 +89,7 @@ offset_bottom = 768.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_2nuhk")
+texture = ExtResource("4_6hwww")
 
 [node name="AuthorsStage" type="Control" parent="Stages"]
 visible = false
@@ -100,7 +101,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_rg6y3")
+script = ExtResource("2_6jnpk")
 DisplayTime = 2.0
 
 [node name="Label" type="Label" parent="Stages/AuthorsStage"]
@@ -110,7 +111,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_68fgg")
+theme_override_fonts/font = ExtResource("5_iiamc")
 theme_override_font_sizes/font_size = 30
 text = "Authors
 
@@ -127,7 +128,7 @@ anchor_bottom = 1.0
 offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_68fgg")
+theme_override_fonts/font = ExtResource("6_7ssro")
 theme_override_font_sizes/font_size = 30
 text = "Press any key to skip"
 horizontal_alignment = 1

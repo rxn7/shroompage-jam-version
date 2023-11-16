@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/DebugManager.cs" id="1_k7oed"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerDebug.cs" id="1_ldio6"]
-[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/HUD.tres" id="2_h745j"]
 [ext_resource type="Script" path="res://Scripts/UI/PerformanceDebug.cs" id="2_n5ret"]
+[ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/Debug.tres" id="2_qwlbl"]
 
 [node name="DebugManager" type="Control" node_paths=PackedStringArray("m_PerformanceDebug", "m_PlayerDebug")]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_h745j")
+theme = ExtResource("2_qwlbl")
 script = ExtResource("1_ldio6")
 
 [node name="PerformanceDebug" type="Label" parent="."]
@@ -33,6 +33,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_h745j")
+theme = ExtResource("2_qwlbl")
 horizontal_alignment = 2
 script = ExtResource("2_n5ret")
