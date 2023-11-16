@@ -32,7 +32,7 @@ project/assembly_name="pjp-2023-2"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/surface/plugin.cfg")
 
 [input]
 
