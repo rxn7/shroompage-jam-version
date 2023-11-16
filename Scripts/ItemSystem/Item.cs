@@ -21,26 +21,26 @@ internal partial class Item : RigidBody3D {
 		DisableMode = DisableModeEnum.Remove;
 	}
 
-	public void Highlight() {
+	public virtual void Highlight() {
 		m_Mesh.MaterialOverlay = HighlightShaderMaterial;
 	}
 
-	public void Unhighlight() {
+	public virtual void Unhighlight() {
 		m_Mesh.MaterialOverlay = null;
 	}
 
-	public void Pickup(PlayerManager player) {
+	public virtual void Pickup(PlayerManager player) {
 		ProcessMode = ProcessModeEnum.Disabled;
 		SoundManager.Play3D(player.GlobalPosition, PickupSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 	}
 	
-	public void Equip(PlayerManager player) {
+	public virtual void Equip(PlayerManager player) {
 		Pickup(player);
 		ProcessMode = ProcessModeEnum.Disabled;
 		player.Viewmodel.AttachToHandSlot(this, Data.HandSlotOffset, Data.HandSlotRotation);
 	}
 
-	public void Drop(Vector3 playerVelocity, Vector3 forward) {
+	public virtual void Drop(Vector3 playerVelocity, Vector3 forward) {
 		SoundManager.Play3D(GlobalPosition, DropSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 		ProcessMode = ProcessModeEnum.Inherit;
 		Reparent(GetTree().CurrentScene);
