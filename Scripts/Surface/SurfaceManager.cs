@@ -16,14 +16,11 @@ internal static class SurfaceManager {
 		GD.Print("FootstepManager initialized");
 	}
 	
+	// TODO: This allocates a lot of memory every physics frame, possible memory leak?
 	public static ESurfaceMaterial GetSurfaceMaterial(this CharacterBody3D body) {
 		for (int i = 0; i < body.GetSlideCollisionCount(); ++i) {
 			KinematicCollision3D collision = body.GetSlideCollision(i);
-
-			if (collision.GetNormal() != body.GetFloorNormal())
-				continue;
-
-			GodotObject collider = collision.GetCollider();
+			using GodotObject collider = collision.GetCollider();
 			if (!collider.HasMeta(SurfaceMetaName))
 				continue;
 			

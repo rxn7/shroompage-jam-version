@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqghedx0pa5c8"]
+[gd_scene load_steps=4 format=3 uid="uid://cqghedx0pa5c8"]
 
 [ext_resource type="Texture2D" uid="uid://bcpm1boumx14q" path="res://Textures/UI/crosshair001.png" id="1_ul7ro"]
+[ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="2_shb8l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3ark"]
+shader = ExtResource("2_shb8l")
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.05
+shader_parameter/colorOffsetIntensity = 0.5
+shader_parameter/resX = 640
+shader_parameter/resY = 360
+shader_parameter/rgb255 = Vector3(0.01, 0.01, 0.01)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_x3ark")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,8 +1,9 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3yy74tlc214f"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dmbjbkj8ngu04"]
+
+[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="1_0mgck"]
 
 [resource]
-transparency = 1
-shading_mode = 0
-specular_mode = 2
-disable_ambient_light = true
-albedo_color = Color(0.384314, 1, 0.12549, 0.466667)
+render_priority = 0
+shader = ExtResource("1_0mgck")
+shader_parameter/outline_width = 1.0
+shader_parameter/base_color = Color(0, 1, 0, 0.403922)
