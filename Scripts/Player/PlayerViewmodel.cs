@@ -11,7 +11,7 @@ internal partial class PlayerViewmodel : Node3D {
 	private const float SwayLerpSpeed = 10.0f;
 	private const float SwayResetMouseLastMovedTimerThreshold = 0.05f;
 	private const float HeadRollMultiplier = 3.0f;
-	private const float JumpFeedbackOffset = 0.002f;
+	private const float JumpFeedbackOffset = 0.001f;
 
 	public Vector3 Sway { get; private set; }
 	public AnimationPlayer AnimPlayer { get; private set; }
