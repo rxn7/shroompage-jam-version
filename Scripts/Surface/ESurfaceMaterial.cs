@@ -5,6 +5,5 @@ internal enum ESurfaceMaterial {
 	Grass,
 	Gravel,
 	Metal,
-	Snow,
 	Wood,
 }
