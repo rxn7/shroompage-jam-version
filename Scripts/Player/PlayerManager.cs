@@ -7,6 +7,7 @@ namespace Game.Player;
 internal partial class PlayerManager : CharacterBody3D {
 	private const float HighLevelReduceRate = 0.05f;
 	private static readonly StringName AttackInputAction = "Attack";
+	private static readonly StringName KickInputAction = "Kick";
 	private static readonly AudioStream PunchSound = GD.Load<AudioStream>("res://Audio/Punch.wav");
 	
 	public PlayerHead Head { get; private set; }
@@ -55,6 +56,9 @@ internal partial class PlayerManager : CharacterBody3D {
 		
 		if(Input.IsActionPressed(AttackInputAction))
 			Attack();
+
+		if(Input.IsActionJustPressed(KickInputAction))
+			Kick();
 	}
 
 	public override void _PhysicsProcess(double dt) {
@@ -74,7 +78,14 @@ internal partial class PlayerManager : CharacterBody3D {
 			return;
 
 		Viewmodel.PlayAttackAnimation();
+		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
+	}
 
+	private void Kick() {
+		// if (Viewmodel.LegAnimPlayer.CurrentAnimation != "Idle")
+		// 	return;
+
+		Viewmodel.PlayLegKickAnimation();
 		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
 	}
 }

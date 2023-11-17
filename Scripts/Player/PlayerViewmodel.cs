@@ -15,6 +15,7 @@ internal partial class PlayerViewmodel : Node3D {
 
 	public Vector3 Sway { get; private set; }
 	public AnimationPlayer AnimPlayer { get; private set; }
+	public AnimationPlayer LegAnimPlayer { get; private set; }
 	public PlayerManager Player { get; set; }
 
 	[Export] private Node3D m_LeftHandSlot, m_RightHandSlot;
@@ -28,8 +29,12 @@ internal partial class PlayerViewmodel : Node3D {
 
 	public override void _Ready() {
 		m_InitPosition = Position;
+
 		AnimPlayer = GetNode<AnimationPlayer>("Viewmodel/AnimationPlayer");
 		AnimPlayer.AnimationFinished += AnimationFinished;
+
+		LegAnimPlayer = GetNode<AnimationPlayer>("Leg/AnimationPlayer");
+
 		PlayEquipAnimation();
 	}
 
@@ -80,6 +85,11 @@ internal partial class PlayerViewmodel : Node3D {
 	public void PlayIdleAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.IdleAnimationName ?? "Idle");
 	public void PlayEquipAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.EquipAnimationName ?? "Equip");
 	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.AttackAnimationName ?? "Attack");
+
+	public void PlayLegKickAnimation() {
+		LegAnimPlayer.Stop();
+		LegAnimPlayer.Play("Kick");
+	}
 
 	private void AnimationFinished(StringName name) {
 		PlayIdleAnimation();

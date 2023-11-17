@@ -13,14 +13,7 @@
 [node name="Player" parent="." instance=ExtResource("1_2f4cr")]
 
 [node name="GravelTile" parent="." instance=ExtResource("2_lxhpv")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.513811, 0.857904, 0, -0.857904, -0.513811, 0.105363, -0.341431, 0.131457)
-light_color = Color(0.239216, 0.239216, 0.239216, 1)
-light_energy = 0.0
-light_indirect_energy = 0.0
-shadow_enabled = true
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="BatteryItemSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426456, 1, -3)
