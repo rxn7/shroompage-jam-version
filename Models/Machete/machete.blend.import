@@ -28,7 +28,20 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"machete-5c1f7f38e1f2f87e66af7bc17f0bf981_Machete": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Models/Machete/machete.res"
+}
+}
+}
 gltf/embedded_image_handling=1
 blender/nodes/visible=0
 blender/nodes/punctual_lights=true

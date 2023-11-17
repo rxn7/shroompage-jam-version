@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://clt5vvj47tla1"]
+
+[ext_resource type="AudioStream" uid="uid://cmsgoeh5bcgs2" path="res://Audio/Item/Drop/Drop1.wav" id="1_wrbct"]
+[ext_resource type="AudioStream" uid="uid://bjbn8l7u8r4cs" path="res://Audio/Item/Drop/Drop2.wav" id="2_6hqm4"]
+[ext_resource type="AudioStream" uid="uid://b5jkmskxi31d2" path="res://Audio/Item/Drop/Drop3.wav" id="3_xqo0c"]
+[ext_resource type="AudioStream" uid="uid://xmbgtbx4bgmo" path="res://Audio/Item/Drop/Drop4.wav" id="4_1tmpa"]
+[ext_resource type="ArrayMesh" uid="uid://bxvk45gl5risr" path="res://Models/Machete/machete.res" id="5_p2qpw"]
+[ext_resource type="AudioStream" uid="uid://cn2xppgjmawf" path="res://Audio/Item/Pickup/ItemPickup.wav" id="5_t7t0j"]
+[ext_resource type="AudioStream" uid="uid://bqesjnd026pnm" path="res://Audio/Item/Pickup/ItemPickup2.wav" id="6_yhjkb"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/HoldableItemData.cs" id="7_brid8"]
+
+[resource]
+script = ExtResource("7_brid8")
+PickupSounds = [ExtResource("5_t7t0j"), ExtResource("6_yhjkb")]
+DropSounds = [ExtResource("1_wrbct"), ExtResource("2_6hqm4"), ExtResource("3_xqo0c"), ExtResource("4_1tmpa")]
+HandSlotOffset = Vector3(0, 0, 0)
+HandSlotRotation = Vector3(-90, 0, 0)
+EquipAnimationName = &"Equip"
+IdleAnimationName = &"Idle"
+AttackAnimationName = &"Attack"
+Name = &"Machete"
+Mass = 1.0
+Mesh = ExtResource("5_p2qpw")

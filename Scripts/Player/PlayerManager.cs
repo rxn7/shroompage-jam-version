@@ -1,5 +1,6 @@
 using Godot;
 using Game.Utils;
+using Game.ItemSystem;
 
 namespace Game.Player;
 
@@ -38,6 +39,10 @@ internal partial class PlayerManager : CharacterBody3D {
 		Controller = new PlayerController(this);
 		Bobbing = new PlayerBobbing(this);
 		ItemManager = new PlayerItemManager(this);
+
+		ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
+		AddChild(ItemManager.HeldItem);
+		ItemManager.HeldItem.Equip(this);
 	}
 
 	public override void _Process(double dt) {
