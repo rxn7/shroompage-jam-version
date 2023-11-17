@@ -12,20 +12,20 @@ internal class PlayerBobbing {
 	public Vector2 Bob { get; private set; }
 
 	private readonly PlayerManager m_Player;
-	private readonly SineWaveBase m_BobWaveBaseX = new SineWaveBase();
-	private readonly CosineWaveBase m_BobWaveBaseY = new CosineWaveBase();
+	private readonly SineWave m_BobWaveX = new SineWave();
+	private readonly CosineWave m_BobWaveY = new CosineWave();
 	private Vector2 m_LastBob;
 
 	public PlayerBobbing(PlayerManager player) {
 		m_Player = player;
-		m_BobWaveBaseY.Offset = MathUtils.PiHalf;
+		m_BobWaveY.Offset = MathUtils.PiHalf;
 	}
 
 	public void Update(float dt) {
 		if (m_Player.Controller.MovementState == EMovementState.InAir || m_Player.Controller.Inputs.Move.LengthSquared() == 0.0f || m_Player.Controller.Velocity .LengthSquared() < BobVelocityThreshold * BobVelocityThreshold) {
 			Bob = Bob.SafeLerp(Vector2.Zero, BobResetLerpSpeed * dt);
-			m_BobWaveBaseX.Reset();
-			m_BobWaveBaseY.Reset();
+			m_BobWaveX.Reset();
+			m_BobWaveY.Reset();
 			return;
 		}
 
@@ -34,12 +34,12 @@ internal class PlayerBobbing {
 		float moveSpeedRatio = m_Player.Controller.MoveSpeed / PlayerController.WalkMoveSpeed;
 
 		Bob = new Vector2(
-			m_BobWaveBaseX.GetValue(footstepFrequency * 0.5f), 
-			m_BobWaveBaseY.GetValue(footstepFrequency)
+			m_BobWaveX.GetValue(footstepFrequency * 0.5f), 
+			m_BobWaveY.GetValue(footstepFrequency)
 		) * moveSpeedRatio;
 
-		m_BobWaveBaseX.UpdateTimer(dt);
-		m_BobWaveBaseY.UpdateTimer(dt);
+		m_BobWaveX.UpdateTimer(dt);
+		m_BobWaveY.UpdateTimer(dt);
 
 		if (Bob.Y < 0 && m_LastBob.Y >= 0) {
 			float volume = 20.0f * Mathf.Log(moveSpeedRatio) - 20.0f;

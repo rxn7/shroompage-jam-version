@@ -23,12 +23,13 @@ internal partial class PlayerDebug : Label {
 					   .AppendLine($"  Height: {Player.Controller.Height:0.00}")
 
 					   .AppendLine($"\nHead:")
-					   .AppendLine($"  Battery: {Player.Headlight.BatteryPercentage*100:0}%")
 					   .AppendLine($"  Pitch: {Player.Head.Pitch:0.00}")
 					   .AppendLine($"  StrafeRoll: {Player.Head.StrafeRoll:0.00}")
 
 					   .AppendLine($"\nViewmodel:")
-					   .AppendLine($"  Sway: {Player.Viewmodel.Sway.ToString("0.00")}");
+					   .AppendLine($"  Sway: {Player.Viewmodel.Sway.ToString("0.00")}")
+					   .AppendLine($"\nBattery: {Player.Headlight.BatteryPercentage*100:0}%")
+					   .AppendLine($"High Level: {Player.HighLevel*100:0}%");
 
 		Text = m_StringBuilder.ToString();
 	}

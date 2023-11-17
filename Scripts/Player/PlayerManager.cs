@@ -4,8 +4,8 @@ using Game.Utils;
 namespace Game.Player;
 
 internal partial class PlayerManager : CharacterBody3D {
+	private const float HighLevelReduceRate = 0.05f;
 	private static readonly StringName AttackInputAction = "Attack";
-	private static readonly StringName DefaultAttackAnimation = "Attack";
 	private static readonly AudioStream PunchSound = GD.Load<AudioStream>("res://Audio/Punch.wav");
 	
 	public PlayerHead Head { get; private set; }
@@ -15,6 +15,13 @@ internal partial class PlayerManager : CharacterBody3D {
 	public PlayerBobbing Bobbing { get; private set; }
 	public PlayerItemRaycast ItemRaycast { get; private set; }
 	public Headlight Headlight { get; private set; }
+	public ScreenEffect ScreenEffect { get; private set; }
+
+	public float HighLevel { 
+		get => m_HighLevel;
+		set { m_HighLevel = Mathf.Clamp(value, 0.0f, 1.0f); }
+	}
+	private float m_HighLevel = 0.0f;
 
 	public override void _Ready() {
 		Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -25,12 +32,17 @@ internal partial class PlayerManager : CharacterBody3D {
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
 
+		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
+		ScreenEffect.Player = this;
+
 		Controller = new PlayerController(this);
 		Bobbing = new PlayerBobbing(this);
 		ItemManager = new PlayerItemManager(this);
 	}
 
 	public override void _Process(double dt) {
+		HighLevel -= (float)dt * HighLevelReduceRate;
+
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
 		

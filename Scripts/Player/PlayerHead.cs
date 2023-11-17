@@ -14,7 +14,6 @@ internal partial class PlayerHead : Node3D {
 	public float Pitch { get; set;}
 	public float StrafeRoll { get; private set; }
 	public Camera3D Camera { get; private set; }
-	public Vector2 CameraRotationDegrees => new Vector2(Pitch, m_Player.RotationDegrees.Y);
 
 	[Export] private PlayerManager m_Player;
 	private Transform3D m_OldTransform, m_Transform; 

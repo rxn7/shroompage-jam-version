@@ -32,5 +32,5 @@ internal abstract class WaveBase {
     protected abstract float TrigFunc(float x);
 }
 
-internal class SineWaveBase : WaveBase { protected override float TrigFunc(float x) => Mathf.Sin(x); }
-internal class CosineWaveBase : WaveBase { protected override float TrigFunc(float x) => Mathf.Cos(x); }
+internal class SineWave : WaveBase { protected override float TrigFunc(float x) => Mathf.Sin(x); }
+internal class CosineWave : WaveBase { protected override float TrigFunc(float x) => Mathf.Cos(x); }

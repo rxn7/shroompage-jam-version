@@ -40,10 +40,11 @@ internal partial class PlayerViewmodel : Node3D {
 	public override void _Input(InputEvent e) {
 		if(e is InputEventMouseMotion m) {
 			Vector2 cameraRotationDelta = new Vector2(
-				MathUtils.AngleDelta(m_LastCameraRotationDegrees.Y, Player.Head.CameraRotationDegrees.Y),
-				-MathUtils.AngleDelta(m_LastCameraRotationDegrees.X, Player.Head.CameraRotationDegrees.X)
+				-MathUtils.AngleDelta(m_LastCameraRotationDegrees.Y, Player.Controller.Yaw),
+				-MathUtils.AngleDelta(m_LastCameraRotationDegrees.X, Player.Controller.Pitch)
 			);
-			m_LastCameraRotationDegrees = Player.Head.CameraRotationDegrees;
+			m_LastCameraRotationDegrees.Y = Player.Controller.Yaw;
+			m_LastCameraRotationDegrees.X = Player.Controller.Pitch;
 
 			m_TargetSway = cameraRotationDelta * SwayAmount;
 			m_TargetSway.X = Mathf.Clamp(m_TargetSway.X, -MaxSwayAmount, MaxSwayAmount);

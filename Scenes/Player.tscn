@@ -49,3 +49,5 @@ light_projector = ExtResource("8_tmn47")
 shadow_enabled = true
 spot_angle = 35.0
 script = ExtResource("9_2lkjr")
+
+[editable path="HUD"]

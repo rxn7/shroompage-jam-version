@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5n5y20qad6qf"]
+[gd_scene load_steps=8 format=3 uid="uid://c5n5y20qad6qf"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_2f4cr"]
 [ext_resource type="PackedScene" uid="uid://bd6t4eddphhiw" path="res://Scenes/FloorTIle.tscn" id="2_lxhpv"]
 [ext_resource type="Resource" uid="uid://ecb38e67s4te" path="res://Items/LightFlower.tres" id="4_1bhn8"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/ItemSpawner.cs" id="4_ohs6c"]
+[ext_resource type="Resource" uid="uid://dy5xfht1a4og1" path="res://Items/MagicMushroom.tres" id="5_x47yc"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="7_5656n"]
 [ext_resource type="AudioStream" uid="uid://bo12dtyj0nlq8" path="res://Audio/Ambient/cave_ambient_water_dripping.wav" id="8_sjhxt"]
 
@@ -35,6 +36,66 @@ m_ItemData = ExtResource("4_1bhn8")
 transform = Transform3D(0.945831, 0.32466, 0, -0.32466, 0.945831, 0, 0, 0, 1, -1.07245, 3, -3)
 script = ExtResource("4_ohs6c")
 m_ItemData = ExtResource("4_1bhn8")
+
+[node name="BatteryItemSpawner4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426456, 1, -5)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573544, 2, -5)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner6" type="Node3D" parent="."]
+transform = Transform3D(0.945831, 0.32466, 0, -0.32466, 0.945831, 0, 0, 0, 1, -1.07245, 3, -5)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426456, 1, -7)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner8" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573544, 2, -7)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner9" type="Node3D" parent="."]
+transform = Transform3D(0.945831, 0.32466, 0, -0.32466, 0.945831, 0, 0, 0, 1, -1.07245, 3, -7)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner10" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426456, 1, -9)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner11" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573544, 2, -9)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner12" type="Node3D" parent="."]
+transform = Transform3D(0.945831, 0.32466, 0, -0.32466, 0.945831, 0, 0, 0, 1, -1.07245, 3, -9)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner13" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426456, 1, -11)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner14" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573544, 2, -11)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
+
+[node name="BatteryItemSpawner15" type="Node3D" parent="."]
+transform = Transform3D(0.945831, 0.32466, 0, -0.32466, 0.945831, 0, 0, 0, 1, -1.07245, 3, -11)
+script = ExtResource("4_ohs6c")
+m_ItemData = ExtResource("5_x47yc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_5656n")

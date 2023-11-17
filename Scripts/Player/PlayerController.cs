@@ -45,6 +45,12 @@ internal class PlayerController {
 	private bool m_WasOnFloorLastFrame = false;
 	private bool m_IsMoving;
 
+    public float Yaw { get; private set; }
+    public float Pitch { get; private set; }
+    private Vector2 m_HighLevelEffectOffset;
+    private SineWave m_HighLevelEffectYawWave = new();
+    private CosineWave m_HighLevelEffectPitchWave = new();
+
 	public PlayerController(PlayerManager player) {
 		m_Player = player;
 
@@ -55,6 +61,11 @@ internal class PlayerController {
 	}
 
 	public void Update(float dt) {
+        HandleHighLevelEffect(dt);
+
+        m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
+        m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
+
 		UpdateInput();
 		UpdateMovementState();
 		UpdateDirection(dt);
@@ -76,12 +87,11 @@ internal class PlayerController {
 	}
 
 	public void HandleMouseMotionEvent(InputEventMouseMotion motion) {
-		m_Player.Head.Pitch = Mathf.Clamp(m_Player.Head.Pitch - motion.Relative.Y * 0.1f, -90.0f, 90.0f);
+		Pitch = Mathf.Clamp(Pitch - motion.Relative.Y * 0.1f, -90.0f, 90.0f);
 
-		Vector3 rootRotation = m_Player.RotationDegrees + Vector3.Down * motion.Relative.X * 0.1f;
-		while (rootRotation.Y >= 360.0f) rootRotation.Y -= 360.0f;
-		while (rootRotation.Y <= -360.0f) rootRotation.Y += 360.0f;
-		m_Player.RotationDegrees = rootRotation;
+		Yaw += motion.Relative.X * 0.1f;
+		while (Yaw >= 360.0f) Yaw -= 360.0f;
+		while (Yaw <= -360.0f) Yaw += 360.0f;
 	}
 
 	public void PlayFootstep(float volume = 0.0f) {
@@ -167,6 +177,17 @@ internal class PlayerController {
 			m_Collider.Position = Vector3.Up * Height * 0.5f;
 		}
 	}
+
+    private void HandleHighLevelEffect(float dt) {
+        m_HighLevelEffectYawWave.UpdateTimer(dt);
+        m_HighLevelEffectPitchWave.UpdateTimer(dt);
+
+        float amplitude = m_Player.HighLevel * 20.0f;
+        float frequency = m_Player.HighLevel * 10.0f;
+
+        m_HighLevelEffectOffset.Y = m_HighLevelEffectYawWave.GetValue(frequency) * amplitude;
+        m_HighLevelEffectOffset.X = m_HighLevelEffectPitchWave.GetValue(frequency) * amplitude;
+    }
 
 	internal struct PlayerMovementInputs {
 		public bool Jump { get; set; }

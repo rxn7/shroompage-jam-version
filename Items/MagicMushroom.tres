@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dy5xfht1a4og1"]
+
+[ext_resource type="AudioStream" uid="uid://7k06q5jxu77u" path="res://Audio/Crunch.wav" id="1_aivid"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/Items/MagicMushroom.cs" id="2_44tw4"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/ConsumableItemData.cs" id="3_fhkwn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxo4f"]
+albedo_color = Color(1, 1, 0.490196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xd1ki"]
+material = SubResource("StandardMaterial3D_wxo4f")
+radial_segments = 16
+rings = 8
+
+[resource]
+script = ExtResource("3_fhkwn")
+Script = ExtResource("2_44tw4")
+ConsumeSounds = [ExtResource("1_aivid")]
+Name = &"Magic Mushroom"
+Mass = 1.0
+Mesh = SubResource("SphereMesh_xd1ki")
