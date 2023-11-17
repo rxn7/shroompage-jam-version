@@ -30,7 +30,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="GodotStage" type="Control" parent="Stages"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,6 +73,7 @@ script = ExtResource("2_6jnpk")
 DisplayTime = 0.5
 
 [node name="PjpLogo" type="TextureRect" parent="Stages/PjpStage"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
@@ -92,6 +92,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6hwww")
 
 [node name="AuthorsStage" type="Control" parent="Stages"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,10 +115,11 @@ theme_override_fonts/font = ExtResource("5_iiamc")
 theme_override_font_sizes/font_size = 30
 text = "Authors
 
-rxn7 | code/ui
-blackshibe| art/music
-moss | sfx/ideas
-drerizo | ideas"
+         rxn7 | code/ui
+  blackshibe| art/music
+             moss | sfx/ideas
+drerizo | ideas
+                        orchids | mushroom models"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -126,7 +128,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -47.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_7ssro")
