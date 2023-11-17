@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dwfb3ap65kdpt"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bqrmif2rb13es"]
 
 [ext_resource type="Script" path="res://Scripts/ItemSystem/SimpleItemData.cs" id="1_elxh4"]
 
@@ -12,6 +12,6 @@ Mesh = SubResource("TextMesh_gv1v8")
 Name = &"Test item"
 HandSlotOffset = Vector3(0, 0, 0)
 HandSlotRotation = Vector3(0, 0, 0)
-EquipAnimationName = &"FistsEquip"
-IdleAnimationName = &"FistsIdle"
-AttackAnimationName = &"FistsAttack"
+EquipAnimationName = &"Equip"
+IdleAnimationName = &"Idle"
+AttackAnimationName = &"Attack"

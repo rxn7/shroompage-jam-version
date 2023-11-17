@@ -14,10 +14,11 @@ internal partial class PlayerViewmodel : Node3D {
 	private const float JumpFeedbackOffset = 0.002f;
 
 	public Vector3 Sway { get; private set; }
-	[Export] public AnimationPlayer AnimPlayer { get; private set; }
+	public AnimationPlayer AnimPlayer { get; private set; }
+	public PlayerManager Player { get; set; }
 
-	[Export] private PlayerManager m_Player;
 	[Export] private Node3D m_LeftHandSlot, m_RightHandSlot;
+
 	private Vector2 m_LastCameraRotationDegrees;
 	private Vector2 m_TargetSway;
 	private Vector3 m_Bob;
@@ -27,7 +28,7 @@ internal partial class PlayerViewmodel : Node3D {
 
 	public override void _Ready() {
 		m_InitPosition = Position;
-		AnimPlayer = GetNode<AnimationPlayer>("Viewmodel2/AnimationPlayer");
+		AnimPlayer = GetNode<AnimationPlayer>("Viewmodel/AnimationPlayer");
 		AnimPlayer.AnimationFinished += AnimationFinished;
 		PlayAnimation("Equip");
 	}
@@ -35,10 +36,10 @@ internal partial class PlayerViewmodel : Node3D {
 	public override void _Input(InputEvent e) {
 		if(e is InputEventMouseMotion m) {
 			Vector2 cameraRotationDelta = new Vector2(
-				MathUtils.AngleDelta(m_LastCameraRotationDegrees.Y, m_Player.Head.CameraRotationDegrees.Y),
-				-MathUtils.AngleDelta(m_LastCameraRotationDegrees.X, m_Player.Head.CameraRotationDegrees.X)
+				MathUtils.AngleDelta(m_LastCameraRotationDegrees.Y, Player.Head.CameraRotationDegrees.Y),
+				-MathUtils.AngleDelta(m_LastCameraRotationDegrees.X, Player.Head.CameraRotationDegrees.X)
 			);
-			m_LastCameraRotationDegrees = m_Player.Head.CameraRotationDegrees;
+			m_LastCameraRotationDegrees = Player.Head.CameraRotationDegrees;
 
 			m_TargetSway = cameraRotationDelta * SwayAmount;
 			m_TargetSway.X = Mathf.Clamp(m_TargetSway.X, -MaxSwayAmount, MaxSwayAmount);
@@ -54,13 +55,13 @@ internal partial class PlayerViewmodel : Node3D {
 			m_TargetSway = Vector2.Zero;
 
 		Sway = Sway.SafeLerp(new Vector3(m_TargetSway.X, m_TargetSway.Y, 0.0f), SwayLerpSpeed * (float)dt);
-		m_Bob = m_Bob.SafeLerp(new Vector3(m_Player.Bobbing.Bob.X, m_Player.Bobbing.Bob.Y, 0.0f) * BobAmplitude, BobLerpSpeed * (float)dt);
+		m_Bob = m_Bob.SafeLerp(new Vector3(Player.Bobbing.Bob.X, Player.Bobbing.Bob.Y, 0.0f) * BobAmplitude, BobLerpSpeed * (float)dt);
 
-		if(!m_Player.IsOnFloor())
+		if(!Player.IsOnFloor())
 			m_Bob += Vector3.Up * JumpFeedbackOffset;
 
 		Position = m_InitPosition + m_Bob;
-		RotationDegrees = new Vector3(Sway.Y, -Sway.X, m_Player.Head.StrafeRoll * HeadRollMultiplier);
+		RotationDegrees = new Vector3(Sway.Y, -Sway.X, Player.Head.StrafeRoll * HeadRollMultiplier);
 	}
 
 	public void PlayAnimation(StringName animation) {
@@ -76,6 +77,6 @@ internal partial class PlayerViewmodel : Node3D {
 	}
 
 	private void AnimationFinished(StringName name) {
-		AnimPlayer.Play("Idle");
+		PlayAnimation("Idle");
 	}
 }

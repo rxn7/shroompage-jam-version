@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5n5y20qad6qf"]
+[gd_scene load_steps=12 format=3 uid="uid://c5n5y20qad6qf"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_c3ciq"]
 [ext_resource type="PackedScene" uid="uid://bd6t4eddphhiw" path="res://Scenes/FloorTIle.tscn" id="2_kr25n"]
 [ext_resource type="Material" uid="uid://bff7bp7ljsxme" path="res://Materials/Surfaces/Grass.tres" id="3_oxv1c"]
+[ext_resource type="Resource" uid="uid://bqrmif2rb13es" path="res://Items/TestItem.tres" id="5_qs675"]
+[ext_resource type="Resource" uid="uid://ckvvc4khvm42p" path="res://Items/BoxItem.tres" id="6_fnqgg"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/ItemSpawner.cs" id="7_5fu4m"]
 [ext_resource type="PackedScene" uid="uid://bg6gdh8fvojly" path="res://Models/ForestObjets/glb/bush.glb" id="7_c4hkf"]
 [ext_resource type="PackedScene" uid="uid://busente74o5sx" path="res://Models/ForestObjets/glb/foliage.glb" id="8_2h03y"]
-[ext_resource type="Resource" uid="uid://dwfb3ap65kdpt" path="res://Items/TestItem/TestItem.tres" id="8_5ekts"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="9_5htbv"]
 [ext_resource type="PackedScene" uid="uid://cw22fqvmom43j" path="res://Models/ForestObjets/glb/tree3.glb" id="9_i1n7l"]
 [ext_resource type="PackedScene" uid="uid://ccw2ewhixyhjm" path="res://Models/ForestObjets/glb/tree.glb" id="10_qjkit"]
@@ -27,10 +28,15 @@ transform = Transform3D(1, 0, 0, 0, -0.513811, 0.857904, 0, -0.857904, -0.513811
 light_energy = 0.192
 shadow_enabled = true
 
-[node name="Node" type="Node3D" parent="."]
+[node name="TestItemSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+script = ExtResource("7_5fu4m")
+m_ItemData = ExtResource("5_qs675")
+
+[node name="BoxItemSPawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 script = ExtResource("7_5fu4m")
-m_ItemData = ExtResource("8_5ekts")
+m_ItemData = ExtResource("6_fnqgg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("9_5htbv")

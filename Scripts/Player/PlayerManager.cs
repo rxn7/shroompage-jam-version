@@ -6,7 +6,7 @@ namespace Game.Player;
 
 internal partial class PlayerManager : CharacterBody3D {
 	private static readonly StringName AttackInputAction = "Attack";
-	private static readonly StringName DefaultAttackAnimation = "FistsAttack";
+	private static readonly StringName DefaultAttackAnimation = "Attack";
 	private static readonly AudioStream PunchSound = GD.Load<AudioStream>("res://Audio/Punch.wav");
 	
 	public PlayerHead Head { get; private set; }
@@ -21,6 +21,7 @@ internal partial class PlayerManager : CharacterBody3D {
 
 		Head = GetNode<PlayerHead>("Head");
 		Viewmodel = Head.Camera.GetNode<PlayerViewmodel>("Viewmodel");
+		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 
 		Controller = new PlayerController(this);
@@ -54,11 +55,11 @@ internal partial class PlayerManager : CharacterBody3D {
 		if (!Viewmodel.AnimPlayer.CurrentAnimation.EndsWith("Idle"))
 			return;
 
-        if(ItemManager.HeldItem is not null) {
-            Viewmodel.PlayAnimation(ItemManager.HeldItem.Data.AttackAnimationName);
-        } else {
-            Viewmodel.PlayAnimation(DefaultAttackAnimation);
-        }
+		if(ItemManager.HeldItem is not null) {
+			Viewmodel.PlayAnimation(ItemManager.HeldItem.Data.AttackAnimationName);
+		} else {
+			Viewmodel.PlayAnimation(DefaultAttackAnimation);
+		}
 
 		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
 	}

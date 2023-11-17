@@ -11,9 +11,9 @@ internal abstract partial class ItemData : Resource {
     [Export] public Vector3 HandSlotRotation { get; set; }
 
     [ExportSubgroup("Animations")]
-    [Export] public StringName EquipAnimationName = "FistsEquip";
-    [Export] public StringName IdleAnimationName = "FistsIdle";
-    [Export] public StringName AttackAnimationName = "FistsAttack";
+    [Export] public StringName EquipAnimationName = "Equip";
+    [Export] public StringName IdleAnimationName = "Idle";
+    [Export] public StringName AttackAnimationName = "Attack";
 
     public abstract Item Spawn();
 }
