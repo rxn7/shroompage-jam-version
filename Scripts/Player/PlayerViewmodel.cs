@@ -76,9 +76,9 @@ internal partial class PlayerViewmodel : Node3D {
 		node.RotationDegrees = rotation;
 	}
 
-	public void PlayIdleAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.IdleAnimationName ?? "Idle");
-	public void PlayEquipAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.EquipAnimationName ?? "Equip");
-	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.AttackAnimationName ?? "Attack");
+	public void PlayIdleAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.IdleAnimationName ?? "Idle");
+	public void PlayEquipAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.EquipAnimationName ?? "Equip");
+	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.AttackAnimationName ?? "Attack");
 
 	private void AnimationFinished(StringName name) {
 		PlayIdleAnimation();

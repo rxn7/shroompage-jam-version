@@ -14,6 +14,7 @@ internal partial class PlayerManager : CharacterBody3D {
 	public PlayerItemManager ItemManager { get; private set; }
 	public PlayerBobbing Bobbing { get; private set; }
 	public PlayerItemRaycast ItemRaycast { get; private set; }
+	public Headlight Headlight { get; private set; }
 
 	public override void _Ready() {
 		Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -22,6 +23,7 @@ internal partial class PlayerManager : CharacterBody3D {
 		Viewmodel = Head.Camera.GetNode<PlayerViewmodel>("Viewmodel");
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
+		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
 
 		Controller = new PlayerController(this);
 		Bobbing = new PlayerBobbing(this);

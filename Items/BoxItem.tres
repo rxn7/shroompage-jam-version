@@ -1,23 +1,25 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ckvvc4khvm42p"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://ckvvc4khvm42p"]
 
-[ext_resource type="Script" path="res://Scripts/ItemSystem/SimpleItemData.cs" id="1_c54l7"]
+[ext_resource type="AudioStream" uid="uid://cmsgoeh5bcgs2" path="res://Audio/Item/Drop/Drop1.wav" id="1_hfll8"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/HoldableItemData.cs" id="1_wu8b1"]
+[ext_resource type="AudioStream" uid="uid://bjbn8l7u8r4cs" path="res://Audio/Item/Drop/Drop2.wav" id="2_k5gvf"]
+[ext_resource type="AudioStream" uid="uid://b5jkmskxi31d2" path="res://Audio/Item/Drop/Drop3.wav" id="3_hrqh6"]
+[ext_resource type="AudioStream" uid="uid://xmbgtbx4bgmo" path="res://Audio/Item/Drop/Drop4.wav" id="4_nth58"]
+[ext_resource type="AudioStream" uid="uid://cn2xppgjmawf" path="res://Audio/Item/Pickup/ItemPickup.wav" id="5_6r2a0"]
+[ext_resource type="AudioStream" uid="uid://bqesjnd026pnm" path="res://Audio/Item/Pickup/ItemPickup2.wav" id="6_cvpey"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeubv"]
-albedo_color = Color(1, 0.552941, 1, 1)
-metallic = 1.0
-metallic_specular = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_f78ad"]
-material = SubResource("StandardMaterial3D_jeubv")
-size = Vector3(0.04, 0.04, 0.04)
+[sub_resource type="BoxMesh" id="BoxMesh_lkyk6"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [resource]
-script = ExtResource("1_c54l7")
-Mass = 1.0
-Mesh = SubResource("BoxMesh_f78ad")
-Name = &"Box"
-HandSlotOffset = Vector3(0.02, 0, 0.01)
+script = ExtResource("1_wu8b1")
+PickupSounds = [ExtResource("5_6r2a0"), ExtResource("6_cvpey")]
+DropSounds = [ExtResource("1_hfll8"), ExtResource("2_k5gvf"), ExtResource("3_hrqh6"), ExtResource("4_nth58")]
+HandSlotOffset = Vector3(0, 0, 0)
 HandSlotRotation = Vector3(0, 0, 0)
 EquipAnimationName = &"CubeEquip"
 IdleAnimationName = &"CubeIdle"
 AttackAnimationName = &"Attack"
+Name = &"Box"
+Mass = 1.0
+Mesh = SubResource("BoxMesh_lkyk6")

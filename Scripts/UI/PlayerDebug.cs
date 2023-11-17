@@ -23,6 +23,7 @@ internal partial class PlayerDebug : Label {
 					   .AppendLine($"  Height: {Player.Controller.Height:0.00}")
 
 					   .AppendLine($"\nHead:")
+					   .AppendLine($"  Battery: {Player.Headlight.BatteryPercentage*100:0}%")
 					   .AppendLine($"  Pitch: {Player.Head.Pitch:0.00}")
 					   .AppendLine($"  StrafeRoll: {Player.Head.StrafeRoll:0.00}")
 

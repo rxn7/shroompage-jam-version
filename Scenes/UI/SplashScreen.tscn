@@ -115,8 +115,10 @@ theme_override_fonts/font = ExtResource("5_iiamc")
 theme_override_font_sizes/font_size = 30
 text = "Authors
 
-rxn7 | maciejniziolek.xyz
-blackshibe | blackshibe.github.io"
+rxn7 | code
+blackshibe| code/art/music
+moss | sfx
+drerizo | ideas"
 horizontal_alignment = 1
 vertical_alignment = 1
 

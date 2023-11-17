@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=11 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
+[ext_resource type="Texture2D" uid="uid://daxild3xmosjt" path="res://Textures/headlight-projector.png" id="8_tmn47"]
+[ext_resource type="Script" path="res://Scripts/Headlight.cs" id="9_2lkjr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
 radius = 0.2
@@ -40,3 +42,10 @@ current = true
 fov = 90.0
 
 [node name="Viewmodel" parent="Head/Camera3D" instance=ExtResource("6_018si")]
+
+[node name="Headlight" type="SpotLight3D" parent="Head/Camera3D"]
+light_color = Color(1, 1, 0.337255, 1)
+light_projector = ExtResource("8_tmn47")
+shadow_enabled = true
+spot_angle = 35.0
+script = ExtResource("9_2lkjr")

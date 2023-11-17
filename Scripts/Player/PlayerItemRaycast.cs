@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 using Game.ItemSystem;
-using System.Collections.ObjectModel;
 
 namespace Game.Player; 
 
@@ -18,18 +17,21 @@ internal partial class PlayerItemRaycast : Node {
 	public Item HighlightedItem {
 		get => m_HighlightedItem;
 		private set {
-			m_HighlightedItem?.Unhighlight();
+			if(m_HighlightedItem is not null && IsInstanceValid(m_HighlightedItem) && !m_HighlightedItem.IsQueuedForDeletion())
+				m_HighlightedItem.Unhighlight();
+
 			m_HighlightedItem = value;
 
 			if (m_HighlightedItem is null) {
-				if(m_PickupLabel is not null) m_PickupLabel.Visible = false;
+				if(m_PickupLabel is not null) 
+					m_PickupLabel.Visible = false;
 				return;
 			}
 
 			m_PickupLabel.Visible = true;
 
 			using InputEventKey keyEvent = InputMap.ActionGetEvents(PlayerItemManager.PickupInputName)[0] as InputEventKey;
-			m_PickupLabel.Text = $"Press [{keyEvent.PhysicalKeycode}] to pickup {m_HighlightedItem.Data.Name}";
+			m_PickupLabel.Text = $"Press [{keyEvent.PhysicalKeycode}] to {(m_HighlightedItem is ConsumableItem ? "consume" : "pickup")} {m_HighlightedItem.Data.Name}";
 
 			m_HighlightedItem.Highlight();
 		}
@@ -61,7 +63,6 @@ internal partial class PlayerItemRaycast : Node {
 	}
 	
 	public void ResetHighlightedItem() {
-		if(HighlightedItem is not null)
-			HighlightedItem = null;
+		HighlightedItem = null;
 	}
 }

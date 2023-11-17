@@ -35,7 +35,7 @@ bones/26/rotation = Quaternion(-0.154203, -0.171964, 0.646076, 0.727485)
 bones/29/rotation = Quaternion(0.0027223, 0.122777, 0.0120854, 0.992357)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewmodel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.450314, -0.278948, 0.848178, -0.875083, 0.326551, -0.357203, -0.177332, -0.90308, -0.391153, 0.111877, -0.10945, -0.224529)
+transform = Transform3D(-0.450314, -0.278948, 0.848177, -0.875083, 0.32655, -0.357204, -0.177331, -0.90308, -0.391153, 0.111877, -0.10945, -0.224529)
 bone_name = "Index 3.R"
 bone_idx = 9
 

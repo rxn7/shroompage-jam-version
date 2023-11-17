@@ -4,7 +4,7 @@ using Godot;
 
 namespace Game.SplashScreen;
 
-public partial class SplashScreen : Node {
+internal partial class SplashScreen : Node {
 	private SplashScreenStage[] m_Stages;
 	private int m_CurrentStageIdx = 0;
 
@@ -42,7 +42,8 @@ public partial class SplashScreen : Node {
 	}
 
 	private void End() {
-		GetTree().ChangeSceneToFile("res://Scenes/Levels/Sandbox.tscn");
+		// TODO: Main menu
+		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
 	}
 
 	private async Task PlayCurrentStage() {

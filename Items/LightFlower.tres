@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ecb38e67s4te"]
+
+[ext_resource type="Script" path="res://Scripts/ItemSystem/Items/LightFlower.cs" id="1_0tvh2"]
+[ext_resource type="AudioStream" uid="uid://7k06q5jxu77u" path="res://Audio/Crunch.wav" id="1_5gh8y"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/ConsumableItemData.cs" id="2_2a3pm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ck8d"]
+albedo_color = Color(1, 0.545098, 0.290196, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ujg4x"]
+material = SubResource("StandardMaterial3D_4ck8d")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 8
+rings = 2
+
+[resource]
+script = ExtResource("2_2a3pm")
+Script = ExtResource("1_0tvh2")
+ConsumeSounds = [ExtResource("1_5gh8y")]
+Name = &"Light Flower"
+Mass = 1.0
+Mesh = SubResource("CylinderMesh_ujg4x")

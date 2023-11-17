@@ -12,6 +12,8 @@ internal static class ResourceUtils {
 	public static List<T> LoadAllFromDirectory<T>(string path, string[] allowedExtensions) where T : Resource {
 		using DirAccess dir = DirAccess.Open(path);
 	
+		if(dir is null) return new();
+	
 		List<T> list = new();
 		foreach (string fileName in dir.GetFiles()) {
 			string extension = fileName.GetExtension();

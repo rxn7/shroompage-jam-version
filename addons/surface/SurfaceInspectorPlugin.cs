@@ -26,7 +26,11 @@ internal partial class SurfaceInspectorPlugin : EditorInspectorPlugin {
 			m_ChangeSurfaceUndoRedo.CreateAction("Change the surface");
 			m_ChangeSurfaceUndoRedo.CommitAction();
 
-			string surfaceName = Enum.GetName<ESurfaceMaterial>((ESurfaceMaterial)idx);
+            ESurfaceMaterial surface = (ESurfaceMaterial)idx;
+            if(surface == ESurfaceMaterial.None)
+                return;
+
+			string surfaceName = Enum.GetName<ESurfaceMaterial>(surface);
 			obj.SetMeta("Surface", surfaceName);
 
 			StaticBody3D body = (StaticBody3D)obj;

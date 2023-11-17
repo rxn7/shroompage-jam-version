@@ -7,7 +7,7 @@ internal class PlayerItemManager {
 	public static readonly StringName PickupInputName = "ItemPickup";
 	public static readonly StringName DropInputPickup = "ItemDrop";
 	
-	public Item HeldItem { get; private set; }
+	public HoldableItem HeldItem { get; private set; }
 	private readonly PlayerManager m_Player;
 
 	public PlayerItemManager(PlayerManager player) {
@@ -16,13 +16,15 @@ internal class PlayerItemManager {
 
 	public void Update() {
 		if (m_Player.ItemRaycast.HighlightedItem is not null && Input.IsActionJustPressed(PickupInputName)) {
-			DropHeldItem();
-			
-			HeldItem = m_Player.ItemRaycast.HighlightedItem;
+			Item highligtedItem = m_Player.ItemRaycast.HighlightedItem;
+
+			if(highligtedItem is HoldableItem highlitedHoldableItem) {
+				DropHeldItem();
+				HeldItem = highlitedHoldableItem;
+			}
+
+			highligtedItem.Equip(m_Player);
 			m_Player.ItemRaycast.ResetHighlightedItem();
-			
-			HeldItem.Equip(m_Player);
-            m_Player.Viewmodel.PlayEquipAnimation();
 		} else if (HeldItem is not null && Input.IsActionJustPressed(DropInputPickup)) {
 			DropHeldItem();
 		}
