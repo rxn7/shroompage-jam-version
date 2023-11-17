@@ -30,7 +30,11 @@ internal partial class PlayerViewmodel : Node3D {
 		m_InitPosition = Position;
 		AnimPlayer = GetNode<AnimationPlayer>("Viewmodel/AnimationPlayer");
 		AnimPlayer.AnimationFinished += AnimationFinished;
-		PlayAnimation("Equip");
+		PlayEquipAnimation();
+	}
+
+	public override void _ExitTree() {
+		AnimPlayer.AnimationFinished -= AnimationFinished;
 	}
 
 	public override void _Input(InputEvent e) {
@@ -64,10 +68,6 @@ internal partial class PlayerViewmodel : Node3D {
 		RotationDegrees = new Vector3(Sway.Y, -Sway.X, Player.Head.StrafeRoll * HeadRollMultiplier);
 	}
 
-	public void PlayAnimation(StringName animation) {
-		AnimPlayer.Play(animation);
-	}
-
 	public void AttachToHandSlot(Node3D node, Vector3 offset = default, Vector3 rotation = default, bool right = true) {
 		node.GetParent()?.RemoveChild(node);
 		Node3D slot = right ? m_RightHandSlot : m_LeftHandSlot;
@@ -76,7 +76,11 @@ internal partial class PlayerViewmodel : Node3D {
 		node.RotationDegrees = rotation;
 	}
 
+	public void PlayIdleAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.IdleAnimationName ?? "Idle");
+	public void PlayEquipAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.EquipAnimationName ?? "Equip");
+	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.Data.AttackAnimationName ?? "Attack");
+
 	private void AnimationFinished(StringName name) {
-		PlayAnimation("Idle");
+		PlayIdleAnimation();
 	}
 }

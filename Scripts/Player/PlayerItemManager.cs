@@ -22,6 +22,7 @@ internal class PlayerItemManager {
 			m_Player.ItemRaycast.ResetHighlightedItem();
 			
 			HeldItem.Equip(m_Player);
+            m_Player.Viewmodel.PlayEquipAnimation();
 		} else if (HeldItem is not null && Input.IsActionJustPressed(DropInputPickup)) {
 			DropHeldItem();
 		}

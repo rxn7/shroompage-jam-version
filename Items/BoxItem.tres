@@ -9,15 +9,15 @@ metallic_specular = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_f78ad"]
 material = SubResource("StandardMaterial3D_jeubv")
-size = Vector3(0.1, 0.1, 0.1)
+size = Vector3(0.04, 0.04, 0.04)
 
 [resource]
 script = ExtResource("1_c54l7")
 Mass = 1.0
 Mesh = SubResource("BoxMesh_f78ad")
 Name = &"Box"
-HandSlotOffset = Vector3(0, 0, 0)
+HandSlotOffset = Vector3(0.02, 0, 0.01)
 HandSlotRotation = Vector3(0, 0, 0)
-EquipAnimationName = &"Equip"
-IdleAnimationName = &"Idle"
+EquipAnimationName = &"CubeEquip"
+IdleAnimationName = &"CubeIdle"
 AttackAnimationName = &"Attack"

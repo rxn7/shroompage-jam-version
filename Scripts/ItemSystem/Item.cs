@@ -33,9 +33,6 @@ internal partial class Item : RigidBody3D {
 		ProcessMode = ProcessModeEnum.Disabled;
 		SoundManager.Play3D(player.GlobalPosition, PickupSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 		player.Viewmodel.AttachToHandSlot(this, Data.HandSlotOffset, Data.HandSlotRotation);
-
-		// TODO: Play equip anim first
-		player.Viewmodel.PlayAnimation(Data.IdleAnimationName);
 	}
 
 	public virtual void Drop(Vector3 playerVelocity, Vector3 forward) {
