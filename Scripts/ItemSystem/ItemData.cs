@@ -9,7 +9,7 @@ internal abstract partial class ItemData : Resource {
     [Export] public Mesh Mesh { get; private set; }
     [Export()] public Shape3D CollisionShape { 
         get {
-            return m_CollisionShape ??= Mesh.CreateConvexShape();
+            return m_CollisionShape ??= Mesh.CreateConvexShape(true, true);
         }
         private set {
             m_CollisionShape = value;

@@ -3,11 +3,13 @@ using Godot;
 namespace Game;
 
 public partial class Headlight : SpotLight3D {
-	private const float MaxBatteryTime = 5.0f;
-	private const float MaxLightEnergy = 1.0f;
-	private const float MinLightEnergy = 0.1f;
-	private const float MaxLightAngle = 35.0f;
-	private const float MinLightAngle = 15.0f;
+	private const float MaxBatteryTime = 10.0f;
+	private const float MaxLightEnergy = 1.5f;
+	private const float MinLightEnergy = 0.2f;
+	private const float MaxLightRange = 10.0f;
+	private const float MinLightRange = 5.0f;
+	private const float MaxLightAngle = 50.0f;
+	private const float MinLightAngle = 30.0f;
 
 	public float BatteryPercentage => m_BatteryTimer / MaxBatteryTime;
 
@@ -18,6 +20,7 @@ public partial class Headlight : SpotLight3D {
 			float batteryPercentage = BatteryPercentage;
 			LightIndirectEnergy = LightEnergy = batteryPercentage * (MaxLightEnergy - MinLightEnergy) + MinLightEnergy;
 			SpotAngle = batteryPercentage * (MaxLightAngle - MinLightAngle) + MinLightAngle;
+			SpotRange = batteryPercentage * (MaxLightRange - MinLightRange) + MinLightRange;
 		}
 	}
 	private float m_BatteryTimer;

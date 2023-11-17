@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc5vfdi4001jm"
-path.s3tc="res://.godot/imported/DefaultMaterial_Base_color.png-c53e9b98c8cd86b1305abd57c1613864.s3tc.ctex"
+path.s3tc="res://.godot/imported/machete_texture.png-65a1c929dc379276c688a424864394d8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Machete/DefaultMaterial_Base_color.png"
-dest_files=["res://.godot/imported/DefaultMaterial_Base_color.png-c53e9b98c8cd86b1305abd57c1613864.s3tc.ctex"]
+source_file="res://Models/Machete/machete_texture.png"
+dest_files=["res://.godot/imported/machete_texture.png-65a1c929dc379276c688a424864394d8.s3tc.ctex"]
 
 [params]
 

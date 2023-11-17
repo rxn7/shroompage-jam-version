@@ -92,7 +92,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6hwww")
 
 [node name="AuthorsStage" type="Control" parent="Stages"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,9 +114,9 @@ theme_override_fonts/font = ExtResource("5_iiamc")
 theme_override_font_sizes/font_size = 30
 text = "Authors
 
-rxn7 | code
-blackshibe| code/art/music
-moss | sfx
+rxn7 | code/ui
+blackshibe| art/music
+moss | sfx/ideas
 drerizo | ideas"
 horizontal_alignment = 1
 vertical_alignment = 1

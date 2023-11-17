@@ -13,9 +13,9 @@ sky_material = SubResource("ProceduralSkyMaterial_a8j5c")
 
 [resource]
 sky = SubResource("Sky_jay6v")
-ambient_light_source = 3
+ambient_light_source = 2
 ambient_light_color = Color(0.205117, 0.205117, 0.205117, 1)
-ambient_light_energy = 0.35
+ambient_light_energy = 0.5
 tonemap_mode = 2
 ssao_intensity = 3.73
 ssao_power = 6.43064

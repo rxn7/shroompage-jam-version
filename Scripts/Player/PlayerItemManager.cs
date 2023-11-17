@@ -4,10 +4,11 @@ using Game.ItemSystem;
 namespace Game.Player; 
 
 internal class PlayerItemManager {
+	public static readonly HoldableItemData MacheteItemData = GD.Load<HoldableItemData>("res://Items/MacheteItem.tres");
 	public static readonly StringName PickupInputName = "ItemPickup";
 	public static readonly StringName DropInputPickup = "ItemDrop";
 	
-	public HoldableItem HeldItem { get; private set; }
+	public HoldableItem HeldItem { get; set; }
 	private readonly PlayerManager m_Player;
 
 	public PlayerItemManager(PlayerManager player) {

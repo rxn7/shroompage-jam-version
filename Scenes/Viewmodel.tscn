@@ -12,33 +12,17 @@ m_RightHandSlot = NodePath("Viewmodel/Armature/Skeleton3D/BoneAttachment3D/Right
 
 [node name="Skeleton3D" parent="Viewmodel/Armature" index="0"]
 bones/2/rotation = Quaternion(-0.154203, 0.171963, -0.646077, 0.727485)
-bones/5/rotation = Quaternion(-0.294472, -0.498108, 0.286256, 0.763697)
-bones/7/rotation = Quaternion(0.72421, -0.0379834, -0.034293, 0.687678)
-bones/9/position = Vector3(-0.0132836, 0.0620068, -0.0110456)
-bones/9/rotation = Quaternion(-0.091062, 0.0948152, -0.305518, 0.943068)
-bones/10/rotation = Quaternion(0.0282713, 0.00947121, -0.383883, 0.9229)
-bones/11/rotation = Quaternion(-0.0187458, -0.000161777, -0.344163, 0.938723)
-bones/12/position = Vector3(-0.00944581, 0.0633325, 0.0165913)
-bones/12/rotation = Quaternion(0.0252252, 0.0771421, -0.289435, 0.95375)
-bones/13/rotation = Quaternion(-0.0149747, -0.00387085, -0.388307, 0.9214)
-bones/14/rotation = Quaternion(0.00145812, 0.00408246, -0.350496, 0.936554)
-bones/15/position = Vector3(-0.00808369, 0.0566269, 0.0286164)
-bones/15/rotation = Quaternion(0.0733717, 0.0671181, -0.300471, 0.948593)
-bones/16/rotation = Quaternion(-0.0359152, -0.0122795, -0.416426, 0.908377)
-bones/17/rotation = Quaternion(-0.00471989, -0.0122343, -0.357326, 0.933888)
-bones/18/position = Vector3(-0.0111503, 0.0660858, 0.00163293)
-bones/18/rotation = Quaternion(-0.0159764, 0.082593, -0.297817, 0.950909)
-bones/19/rotation = Quaternion(-0.00244517, 0.00360954, -0.389246, 0.921124)
-bones/20/rotation = Quaternion(-0.00230321, 0.00199037, -0.351565, 0.936158)
-bones/21/rotation = Quaternion(-0.153513, 0.742033, -0.32709, 0.564654)
+bones/5/rotation = Quaternion(0.00272214, -0.122778, -0.0120857, 0.992357)
+bones/6/rotation = Quaternion(-0.768782, 0.0427536, 0.0630234, 0.63496)
 bones/26/rotation = Quaternion(-0.154203, -0.171964, 0.646076, 0.727485)
 bones/29/rotation = Quaternion(0.0027223, 0.122777, 0.0120854, 0.992357)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewmodel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.450314, -0.278948, 0.848177, -0.875083, 0.32655, -0.357204, -0.177331, -0.90308, -0.391153, 0.111877, -0.10945, -0.224529)
-bone_name = "Index 3.R"
-bone_idx = 9
+transform = Transform3D(-0.964965, -0.00515862, 0.26233, -0.262293, -0.00683878, -0.964964, 0.00677183, -0.999963, 0.00524619, 0.109278, -0.166646, -0.195116)
+bone_name = "Hand.R"
+bone_idx = 5
 
 [node name="RightHandSlot" type="Node3D" parent="Viewmodel/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 7.91624e-09, 2.33194e-09, 0, 1, -6.51926e-09, 1.41517e-09, -7.91624e-09, 1, 0.0140495, 0.0507623, -0.00417854)
 
 [editable path="Viewmodel"]
