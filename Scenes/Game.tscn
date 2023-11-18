@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/ItemSystem/ItemSpawner.cs" id="4_ohs6c"]
 [ext_resource type="Resource" uid="uid://dy5xfht1a4og1" path="res://Items/MagicMushroom.tres" id="5_x47yc"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="7_5656n"]
-[ext_resource type="AudioStream" uid="uid://bo12dtyj0nlq8" path="res://Audio/Ambient/cave_ambient_water_dripping.wav" id="8_sjhxt"]
+[ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="8_cwgak"]
 
 [node name="Cave" type="Node"]
 
@@ -98,8 +98,8 @@ m_ItemData = ExtResource("5_x47yc")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_5656n")
 
-[node name="CaveAmbientWaterDrip" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_sjhxt")
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cwgak")
 autoplay = true
 
 [editable path="GrassTile"]

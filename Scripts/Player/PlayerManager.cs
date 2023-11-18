@@ -21,6 +21,9 @@ internal partial class PlayerManager : CharacterBody3D {
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
 
+	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
+	[Export] private AudioStream[] m_KickImpactSounds = new AudioStream[0];
+
 	public float Health {
 		get => m_Health;
 		set { 
@@ -105,6 +108,6 @@ internal partial class PlayerManager : CharacterBody3D {
 		m_KickCooldownTimer = 0.0f;
 
 		Viewmodel.PlayLegKickAnimation();
-		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
+		SoundManager.Play3D(GlobalPosition, m_KickSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
 	}
 }
