@@ -6,6 +6,8 @@ namespace Game.Enemy.Stage;
 
 internal partial class Stage : Area3D {
 	private List<EnemySpawner> m_Spawners = new();
+
+	public int EnemyCount => m_Spawners.Count;
 	
 	public Stage() {
 		BodyEntered += OnBodyEntered;
