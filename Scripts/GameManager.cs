@@ -20,7 +20,7 @@ internal partial class GameManager : Node {
 		StageCleared += (Stage stage) => CurrentStage = null;
 	}
 
-	public int CurrentEnemies() {
+	public int GetEnemyCount() {
 		if(CurrentStage is null) {
 			return 0;
 		}

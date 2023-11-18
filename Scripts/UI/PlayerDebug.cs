@@ -30,7 +30,7 @@ internal partial class PlayerDebug : Label {
 					   .AppendLine($"  Sway: {Player.Viewmodel.Sway.ToString("0.00")}")
 					   .AppendLine($"\nBattery: {Player.Headlight.BatteryPercentage*100:0}%")
 					   .AppendLine($"High Level: {Player.HighLevel*100:0}%")
-					   .AppendLine($"\nEnemy count: {GameManager.Singleton.CurrentEnemies()}");
+					   .AppendLine($"\nEnemy count: {GameManager.Singleton.GetEnemyCount()}");
 
 		Text = m_StringBuilder.ToString();
 	}
