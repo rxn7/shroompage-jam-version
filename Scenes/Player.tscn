@@ -1,16 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=18 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHead.cs" id="3_034oa"]
 [ext_resource type="Theme" uid="uid://bnq1gtjv54rfs" path="res://Themes/Debug.tres" id="4_4vmce"]
+[ext_resource type="AudioStream" uid="uid://d2gx0868nhy6k" path="res://Audio/Kick/kick_impact1.wav" id="5_7hj7x"]
+[ext_resource type="AudioStream" uid="uid://w480a4nshumt" path="res://Audio/Kick/kick_impact2.wav" id="6_2oxqy"]
 [ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
 [ext_resource type="AudioStream" uid="uid://ccftveuv6crvc" path="res://Audio/Kick/kick_swing1.wav" id="6_d2b8t"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="AudioStream" uid="uid://beyimx2d38xq3" path="res://Audio/Kick/kick_swing2.wav" id="7_ktvjd"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
+[ext_resource type="AudioStream" uid="uid://uloy46ubi8ld" path="res://Audio/Kick/kick_impact3.wav" id="7_sv44a"]
 [ext_resource type="AudioStream" uid="uid://dul3mhwrr4iat" path="res://Audio/Kick/kick_swing3.wav" id="8_t8ml1"]
 [ext_resource type="Texture2D" uid="uid://daxild3xmosjt" path="res://Textures/headlight-projector.png" id="8_tmn47"]
+[ext_resource type="AudioStream" uid="uid://k7x1i700elvi" path="res://Audio/Kick/kick_impact4.wav" id="8_yggr3"]
 [ext_resource type="Script" path="res://Scripts/Headlight.cs" id="9_2lkjr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
@@ -23,6 +27,7 @@ input_ray_pickable = false
 platform_floor_layers = 1
 script = ExtResource("1_1agp5")
 m_KickSounds = [ExtResource("6_d2b8t"), ExtResource("7_ktvjd"), ExtResource("8_t8ml1")]
+m_ImpactSounds = [ExtResource("5_7hj7x"), ExtResource("6_2oxqy"), ExtResource("7_sv44a"), ExtResource("8_yggr3")]
 
 [node name="ItemRaycast" type="Node" parent="." node_paths=PackedStringArray("m_PickupLabel")]
 script = ExtResource("7_n7ipg")

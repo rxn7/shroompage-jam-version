@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5n5y20qad6qf"]
+[gd_scene load_steps=14 format=3 uid="uid://c5n5y20qad6qf"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_2f4cr"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_4xjpq"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="8_cwgak"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="10_d554d"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="11_quvb3"]
+[ext_resource type="PackedScene" uid="uid://enoi712u155k" path="res://Scenes/Enemies/Basic/PinkEnemy2.tscn" id="14_nhg3v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33hba"]
 size = Vector3(25, 10, 25)
@@ -127,27 +128,33 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Spawner" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.268, 0, -22.1549)
 script = ExtResource("11_quvb3")
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [node name="Spawner2" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 0, -22.1549)
 script = ExtResource("11_quvb3")
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [node name="Spawner3" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 0, -1.1549)
 script = ExtResource("11_quvb3")
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [node name="Spawner4" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26802, 0, -1.1549)
 script = ExtResource("11_quvb3")
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [node name="Spawner5" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26802, 0, -16.1549)
 script = ExtResource("11_quvb3")
 m_SpawnDelayMs = 1000
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [node name="Spawner6" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73198, 0, -16.1549)
 script = ExtResource("11_quvb3")
 m_SpawnDelayMs = 2000
+m_EnemyScene = ExtResource("14_nhg3v")
 
 [editable path="GrassTile"]

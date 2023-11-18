@@ -7,6 +7,11 @@ namespace Game.Player;
 
 internal partial class PlayerManager : CharacterBody3D, IHealth {
 	private const float KickCooldown = 0.5f;
+	private const float KickRange = 3.0f;
+	private const float KickDamage = 10.0f;
+	private const float KickKnockback = 5.0f;
+	private const float MeleeRange = 5.0f;
+	private const float MeleeKnockback = 2.0f;
 	private const float HighLevelReduceRate = 0.05f;
 
 	private static readonly StringName AttackInputAction = "Attack";
@@ -23,14 +28,14 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public ScreenEffect ScreenEffect { get; private set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
-	[Export] private AudioStream[] m_KickImpactSounds = new AudioStream[0];
+	[Export] private AudioStream[] m_ImpactSounds = new AudioStream[0];
 
 	public float Health {
 		get => m_Health;
 		set { m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
 		}
 	}
-	private float m_Health = 10.0f;
+	private float m_Health = 100.0f;
 
 	public float HighLevel { 
 		get => m_HighLevel;
@@ -98,7 +103,9 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 			return;
 
 		Viewmodel.PlayAttackAnimation();
-		SoundManager.Play3D(GlobalPosition, PunchSound, (float)GD.RandRange(0.8f, 1.2f));
+		SoundManager.Play3D(GlobalPosition, ItemManager.HeldItem?.HoldableData.AttackSounds.GetRandomItem() ?? PunchSound, (float)GD.RandRange(0.8f, 1.2f));
+
+		Raycast(MeleeRange, ItemManager.HeldItem?.HoldableData.Damage ?? 5, MeleeKnockback, out IHealth health);
 	}
 
 	private void Kick() {
@@ -109,5 +116,37 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Viewmodel.PlayLegKickAnimation();
 		SoundManager.Play3D(GlobalPosition, m_KickSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
+
+		Raycast(KickRange, KickDamage, KickKnockback, out IHealth health);
+	}
+
+	private bool Raycast(float range, float damage, float knockback, out IHealth health) {
+		PhysicsRayQueryParameters3D query = new() {
+			CollideWithAreas = false,
+			CollideWithBodies = true,
+			From = Head.Camera.GlobalPosition,
+			To = Head.Camera.GlobalPosition - Head.Camera.GlobalTransform.Basis.Z * range,
+		};
+
+		Godot.Collections.Dictionary raycastResults = PhysicsServer3D.SpaceGetDirectState(GetWorld3D().Space).IntersectRay(query);
+		if(raycastResults.Count == 0) {
+			health = null;
+			return false;
+		}
+
+		GodotObject collider = raycastResults["collider"].As<GodotObject>();
+		if(collider is not IHealth h) {
+			health = null;
+			return false;
+		}
+
+		if(collider is Enemy.Enemy enemy) {
+			enemy.ApplyImpulse(-Head.Camera.GlobalTransform.Basis.Z * knockback + Vector3.Up * 5);
+		}
+
+		health = h;
+		health.Damage(damage);
+		SoundManager.Play3D(GlobalPosition, m_ImpactSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
+		return true;
 	}
 }

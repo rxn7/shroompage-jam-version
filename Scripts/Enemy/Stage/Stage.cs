@@ -49,5 +49,6 @@ internal partial class Stage : Area3D {
 	private void StageCleared() {
 		GameManager.Singleton.StageCleared?.Invoke(this);
 		GD.Print($"Stage {this} has been cleared.");
+		QueueFree();
 	}
 }

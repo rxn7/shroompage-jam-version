@@ -1,18 +1,24 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://clt5vvj47tla1"]
+[gd_resource type="Resource" load_steps=13 format=3 uid="uid://clt5vvj47tla1"]
 
+[ext_resource type="AudioStream" uid="uid://r7xxkk4q1win" path="res://Audio/Machete/machete_swing1.wav" id="1_jy4nq"]
 [ext_resource type="AudioStream" uid="uid://cmsgoeh5bcgs2" path="res://Audio/Item/Drop/Drop1.wav" id="1_wrbct"]
 [ext_resource type="AudioStream" uid="uid://bjbn8l7u8r4cs" path="res://Audio/Item/Drop/Drop2.wav" id="2_6hqm4"]
+[ext_resource type="AudioStream" uid="uid://dvh5rpjr28p4a" path="res://Audio/Machete/machete_swing2.wav" id="2_dyws2"]
+[ext_resource type="AudioStream" uid="uid://fgqv4cvx51oc" path="res://Audio/Machete/machete_swing3.wav" id="3_evymg"]
 [ext_resource type="AudioStream" uid="uid://b5jkmskxi31d2" path="res://Audio/Item/Drop/Drop3.wav" id="3_xqo0c"]
 [ext_resource type="AudioStream" uid="uid://xmbgtbx4bgmo" path="res://Audio/Item/Drop/Drop4.wav" id="4_1tmpa"]
 [ext_resource type="ArrayMesh" uid="uid://bxvk45gl5risr" path="res://Models/Machete/machete.res" id="5_p2qpw"]
-[ext_resource type="AudioStream" uid="uid://cn2xppgjmawf" path="res://Audio/Item/Pickup/ItemPickup.wav" id="5_t7t0j"]
-[ext_resource type="AudioStream" uid="uid://bqesjnd026pnm" path="res://Audio/Item/Pickup/ItemPickup2.wav" id="6_yhjkb"]
+[ext_resource type="AudioStream" uid="uid://tfa1u0xstbyd" path="res://Audio/Item/Equip/Blade/Blade1.wav" id="6_txewm"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/HoldableItemData.cs" id="7_brid8"]
+[ext_resource type="AudioStream" uid="uid://qm2ah7tft0uo" path="res://Audio/Item/Equip/Blade/Blade2.wav" id="7_fcm3m"]
+[ext_resource type="AudioStream" uid="uid://cieltqlfb3sbl" path="res://Audio/Item/Equip/Blade/Blade3.wav" id="8_3d16g"]
 
 [resource]
 script = ExtResource("7_brid8")
-PickupSounds = [ExtResource("5_t7t0j"), ExtResource("6_yhjkb")]
+Damage = 10.0
+PickupSounds = [ExtResource("6_txewm"), ExtResource("7_fcm3m"), ExtResource("8_3d16g")]
 DropSounds = [ExtResource("1_wrbct"), ExtResource("2_6hqm4"), ExtResource("3_xqo0c"), ExtResource("4_1tmpa")]
+AttackSounds = [ExtResource("1_jy4nq"), ExtResource("2_dyws2"), ExtResource("3_evymg")]
 HandSlotOffset = Vector3(0, 0, 0)
 HandSlotRotation = Vector3(-90, 0, 0)
 EquipAnimationName = &"MacheteEquip"

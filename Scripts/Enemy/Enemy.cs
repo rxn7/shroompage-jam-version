@@ -10,35 +10,48 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private const float HopHeight = 4.0f;
 
 	public PlayerManager TargetPlayer { get; set; }
-	public float Health { get; set; }
+	public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
 
 	private float m_HopCooldownTimer = 0.0f;
 	private float m_HopCooldown = HopCooldown;
 	private Vector3 m_Velocity;
+	private Vector3 m_Force;
+	private bool m_WasOnFloor = false;
 
 	public Enemy() {
 		MotionMode = MotionModeEnum.Grounded;
 		UpDirection = Vector3.Up;
 		Scale = Vector3.One * (GD.Randf() * 0.5f + 0.75f);
+		RotationDegrees += Vector3.Up * GD.Randf() * 360.0f;
+
+		OnDied += () => {
+			QueueFree();
+			// TODO: Play death sound / animation
+		};
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		m_Velocity.Y -= 9.8f * (float)delta;
-
-		if(IsOnFloor()) {
-			m_Velocity.X = 0.0f;
-			m_Velocity.Z = 0.0f;
+		if(IsOnFloor()) { 
+			m_Velocity = Vector3.Zero;
 
 			m_HopCooldownTimer += (float)delta;
-			if(m_HopCooldownTimer >= HopCooldown) {
+			if(m_HopCooldownTimer >= HopCooldown)
 				Hop();
-			}
+		} else {
+			m_Velocity.Y -= 9.8f * (float)delta;
 		}
+
+		m_Velocity += m_Force;
+		m_Force = Vector3.Zero;
 
 		Velocity = m_Velocity;
 		MoveAndSlide();
+	}
+
+	public void ApplyImpulse(Vector3 force) {
+		m_Force += force;
 	}
 
 	public void Hop() {
