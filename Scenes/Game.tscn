@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c5n5y20qad6qf"]
+[gd_scene load_steps=61 format=3 uid="uid://c5n5y20qad6qf"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_2f4cr"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_4xjpq"]
@@ -16,10 +16,14 @@
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="14_grtfg"]
 [ext_resource type="Texture2D" uid="uid://bprvw3dbi6tnx" path="res://Textures/Surfaces/forrest_ground_01_diff_1k.png" id="15_fqn15"]
 [ext_resource type="Texture2D" uid="uid://c1hwsl225jkuh" path="res://Textures/Surfaces/grass_path_3_diff_1k.png" id="16_oescy"]
+[ext_resource type="Texture2D" uid="uid://bsfvjgipu7cbp" path="res://Textures/Surfaces/plastered_stone_wall_diff_1k.png" id="17_2mqpl"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="17_fxune"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="17_jpd3i"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="18_t8bcc"]
+[ext_resource type="Texture2D" uid="uid://5kwp6m5re28v" path="res://Textures/grass.png" id="19_i03ld"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="19_y5i7x"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="20_701x4"]
+[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="20_btxtv"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="21_sgev6"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="22_nn4y1"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="23_gm6kq"]
@@ -38,11 +42,11 @@ size = Vector3(22.5131, 8.17387, 31.7385)
 [sub_resource type="Resource" id="Resource_g6c6h"]
 script = ExtResource("14_grtfg")
 mode = 0
-textures = [[ExtResource("15_fqn15"), ExtResource("16_oescy"), null, null], [null, null, null, null]]
+textures = [[ExtResource("15_fqn15"), ExtResource("16_oescy"), ExtResource("17_2mqpl"), null], [null, null, null, null]]
 
 [sub_resource type="Resource" id="Resource_wlhlh"]
 script = ExtResource("19_y5i7x")
-amount = 8000
+amount = 6000
 enabled = true
 override_global_seed = false
 custom_seed = 0
@@ -79,7 +83,7 @@ ray_length = 50.0
 ray_offset = 5.0
 remove_points_on_miss = true
 align_with_collision_normal = true
-max_slope = 10.0
+max_slope = 4.0
 collision_mask = 1
 exclude_mask = 0
 enabled = true
@@ -228,7 +232,9 @@ disabled = true
 environment = ExtResource("7_5656n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.954662, 0.297691, 0, -0.297691, 0.954662, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.895526, 0.44501, 0, -0.44501, 0.895526, 0, 0, 0)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_cwgak")
@@ -352,7 +358,7 @@ m_SpawnDelayMs = 2000
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.4, -3.52, -65.21)
 script = ExtResource("12_jabgs")
 _terrain_data = ExtResource("13_34gyo")
-chunk_size = 32
+chunk_size = 64
 collision_enabled = true
 collision_layer = 1
 collision_mask = 1
@@ -361,11 +367,24 @@ custom_shader = null
 custom_globalmap_shader = null
 texture_set = SubResource("Resource_g6c6h")
 render_layers = 1
-cast_shadow = 1
+cast_shadow = 0
 shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="HTerrain"]
+script = ExtResource("17_fxune")
+texture = ExtResource("19_i03ld")
+view_distance = 87.525
+density = 0.5
+cast_shadow = 0
+shader_params/u_globalmap_tint_bottom = 1.0
+shader_params/u_globalmap_tint_top = 0.495
+shader_params/u_bottom_ao = 0.92
+shader_params/u_instance_scale = Vector3(2, 2, 2)
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("20_btxtv")
 
 [node name="TreeScatter" type="Node3D" parent="."]
 script = ExtResource("17_jpd3i")
