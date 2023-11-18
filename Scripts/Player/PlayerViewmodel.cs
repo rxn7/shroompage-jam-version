@@ -34,8 +34,6 @@ internal partial class PlayerViewmodel : Node3D {
 		AnimPlayer.AnimationFinished += AnimationFinished;
 
 		LegAnimPlayer = GetNode<AnimationPlayer>("Leg/AnimationPlayer");
-
-		PlayEquipAnimation();
 	}
 
 	public override void _ExitTree() {

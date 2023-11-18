@@ -18,7 +18,7 @@ external_skeleton = NodePath("../Viewmodel/Armature/Skeleton3D")
 [node name="RightHandSlot" type="Node3D" parent="RightHandSlotBone"]
 
 [node name="Leg" parent="." instance=ExtResource("2_6xtqg")]
-transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.441756, 0.138306)
+transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.542904, 0.138306)
 
 [node name="Armature" parent="Leg" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, -0.5, 0, 0.5, -0.866025, 0, 0.939498, 0.0664213)
