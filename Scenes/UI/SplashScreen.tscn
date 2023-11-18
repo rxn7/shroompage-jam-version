@@ -60,7 +60,6 @@ rotation = 0.00425429
 texture = ExtResource("3_juew4")
 
 [node name="PjpStage" type="Control" parent="Stages"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,7 +72,6 @@ script = ExtResource("2_6jnpk")
 DisplayTime = 0.5
 
 [node name="PjpLogo" type="TextureRect" parent="Stages/PjpStage"]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1

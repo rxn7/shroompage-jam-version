@@ -2,29 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerViewmodel.cs" id="1_sok61"]
 [ext_resource type="PackedScene" uid="uid://cdifiqbg30pxt" path="res://Models/Viewmodel.blend" id="2_ij2vb"]
-[ext_resource type="PackedScene" uid="uid://clxcw82bckqdv" path="res://Models/Leg/leg.blend" id="3_2kfk3"]
+[ext_resource type="PackedScene" uid="uid://cmtj7iq2swb5m" path="res://Models/Leg/leg.blend" id="3_2kfk3"]
 
 [node name="Viewmodel" type="Node3D" node_paths=PackedStringArray("m_LeftHandSlot", "m_RightHandSlot")]
 script = ExtResource("1_sok61")
-m_LeftHandSlot = NodePath("Viewmodel/Armature/Skeleton3D/BoneAttachment3D/RightHandSlot")
-m_RightHandSlot = NodePath("Viewmodel/Armature/Skeleton3D/BoneAttachment3D/RightHandSlot")
-
-[node name="Viewmodel" parent="." instance=ExtResource("2_ij2vb")]
-
-[node name="Skeleton3D" parent="Viewmodel/Armature" index="0"]
-bones/2/rotation = Quaternion(-0.154203, 0.171963, -0.646077, 0.727485)
-bones/5/rotation = Quaternion(0.00272214, -0.122778, -0.0120857, 0.992357)
-bones/6/rotation = Quaternion(-0.768782, 0.0427536, 0.0630234, 0.63496)
-bones/26/rotation = Quaternion(-0.154203, -0.171964, 0.646076, 0.727485)
-bones/29/rotation = Quaternion(0.0027223, 0.122777, 0.0120854, 0.992357)
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewmodel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.964965, -0.00515862, 0.26233, -0.262293, -0.00683878, -0.964964, 0.00677183, -0.999963, 0.00524619, 0.109278, -0.166646, -0.195116)
-bone_name = "Hand.R"
-bone_idx = 5
-
-[node name="RightHandSlot" type="Node3D" parent="Viewmodel/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(1, 7.91624e-09, 2.33194e-09, 0, 1, -6.51926e-09, 1.41517e-09, -7.91624e-09, 1, 0.0140495, 0.0507623, -0.00417854)
+m_LeftHandSlot = NodePath("")
+m_RightHandSlot = NodePath("")
 
 [node name="Leg" parent="." instance=ExtResource("3_2kfk3")]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, -0.3, 0)
@@ -39,5 +22,6 @@ bones/2/rotation = Quaternion(-0.639558, 2.00143e-16, 6.6288e-17, 0.768743)
 [node name="AnimationPlayer" parent="Leg" index="1"]
 autoplay = "Idle"
 
-[editable path="Viewmodel"]
+[node name="Viewmodel" parent="." instance=ExtResource("2_ij2vb")]
+
 [editable path="Leg"]
