@@ -98,6 +98,14 @@ Kick={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Floor"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Stage"
+3d_physics/layer_30="Item"
+
 [rendering]
 
 anti_aliasing/quality/screen_space_aa=1

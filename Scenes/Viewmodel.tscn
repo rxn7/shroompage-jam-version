@@ -9,7 +9,7 @@ script = ExtResource("1_sok61")
 m_RightHandSlot = NodePath("RightHandSlotBone/RightHandSlot")
 
 [node name="RightHandSlotBone" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-0.968174, -1.9907e-08, 0.250277, -0.250277, 1.42027e-07, -0.968174, -5.06225e-08, -1, -2.468e-08, 0.182922, -0.25815, -0.316978)
+transform = Transform3D(-0.968174, -1.9907e-08, 0.250277, -0.250277, 1.42027e-07, -0.968174, -5.06225e-08, -1, -2.468e-08, 0.182922, -0.206036, -0.316978)
 bone_name = "RightHandSlot"
 bone_idx = 21
 use_external_skeleton = true
@@ -18,7 +18,7 @@ external_skeleton = NodePath("../Viewmodel/Armature/Skeleton3D")
 [node name="RightHandSlot" type="Node3D" parent="RightHandSlotBone"]
 
 [node name="Leg" parent="." instance=ExtResource("2_6xtqg")]
-transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.542904, 0.138306)
+transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.543, 0.138)
 
 [node name="Armature" parent="Leg" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, -0.5, 0, 0.5, -0.866025, 0, 0.939498, 0.0664213)

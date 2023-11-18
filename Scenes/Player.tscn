@@ -20,6 +20,7 @@ height = 1.8
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 input_ray_pickable = false
+platform_floor_layers = 1
 script = ExtResource("1_1agp5")
 m_KickSounds = [ExtResource("6_d2b8t"), ExtResource("7_ktvjd"), ExtResource("8_t8ml1")]
 
@@ -53,5 +54,3 @@ light_projector = ExtResource("8_tmn47")
 shadow_enabled = true
 spot_angle = 35.0
 script = ExtResource("9_2lkjr")
-
-[editable path="HUD"]

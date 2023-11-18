@@ -1,10 +1,11 @@
 using Godot;
 using Game.Utils;
 using Game.ItemSystem;
+using System;
 
 namespace Game.Player;
 
-internal partial class PlayerManager : CharacterBody3D {
+internal partial class PlayerManager : CharacterBody3D, IHealth {
 	private const float KickCooldown = 0.5f;
 	private const float HighLevelReduceRate = 0.05f;
 
@@ -26,12 +27,7 @@ internal partial class PlayerManager : CharacterBody3D {
 
 	public float Health {
 		get => m_Health;
-		set { 
-			m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
-			if(m_Health == 0.0f) {
-				// TODO:die
-				//Die();
-			}
+		set { m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
 		}
 	}
 	private float m_Health = 10.0f;
@@ -40,6 +36,10 @@ internal partial class PlayerManager : CharacterBody3D {
 		get => m_HighLevel;
 		set { m_HighLevel = Mathf.Clamp(value, 0.0f, 1.0f); }
 	}
+
+	public Action OnDied { get; set; }
+	public bool IsDead { get; set; } = false;
+
 	private float m_HighLevel = 0.0f;
 	
 	private float m_KickCooldownTimer = 0.0f;

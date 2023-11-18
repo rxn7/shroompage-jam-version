@@ -6,7 +6,7 @@ namespace Game.Surface;
 
 internal static class SurfaceManager {
 	private static readonly Dictionary<ESurfaceMaterial, SurfaceData> SurfaceDataMap = new();
-	private static readonly StringName SurfaceMetaName = "Surface";
+	public static readonly StringName SurfaceMetaName = "Surface";
 
 	public static void Init() {
 		foreach(ESurfaceMaterial mat in (ESurfaceMaterial[])System.Enum.GetValues(typeof(ESurfaceMaterial)))

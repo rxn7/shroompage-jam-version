@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/ScreenEffect.cs" id="2_luj3c"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="2_shb8l"]
 [ext_resource type="PackedScene" uid="uid://bai11qwjiwqpd" path="res://Scenes/UI/DebugUI.tscn" id="3_fy7ad"]
-[ext_resource type="FontFile" uid="uid://ca7acto1aa1wt" path="res://Fonts/HelpMe.ttf" id="5_kelso"]
 [ext_resource type="Script" path="res://Scenes/UI/PlayerStatsUI.cs" id="6_jekal"]
+[ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="7_o8np1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3ark"]
 shader = ExtResource("2_shb8l")
@@ -72,11 +72,13 @@ layout_mode = 1
 
 [node name="PlayerStats" type="Label" parent="."]
 layout_mode = 0
-offset_right = 318.0
-offset_bottom = 230.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 334.0
+offset_bottom = 246.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_kelso")
+theme_override_fonts/font = ExtResource("7_o8np1")
 theme_override_font_sizes/font_size = 30
 text = "Health: 100
 High: 100%
