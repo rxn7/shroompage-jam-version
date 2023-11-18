@@ -19,6 +19,18 @@ internal partial class PlayerManager : CharacterBody3D {
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
 
+	public float Health {
+		get => m_Health;
+		set { 
+			m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
+			if(m_Health == 0.0f) {
+				// TODO:die
+				//Die();
+			}
+		}
+	}
+	private float m_Health = 100.0f;
+
 	public float HighLevel { 
 		get => m_HighLevel;
 		set { m_HighLevel = Mathf.Clamp(value, 0.0f, 1.0f); }
