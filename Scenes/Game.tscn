@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5n5y20qad6qf"]
+[gd_scene load_steps=19 format=3 uid="uid://c5n5y20qad6qf"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_2f4cr"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_4xjpq"]
@@ -11,24 +11,38 @@
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="8_cwgak"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="10_d554d"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="11_quvb3"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="12_jabgs"]
+[ext_resource type="Resource" path="res://Scenes/Terrain/data.hterrain" id="13_34gyo"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="14_grtfg"]
+[ext_resource type="Texture2D" uid="uid://bprvw3dbi6tnx" path="res://Textures/Surfaces/forrest_ground_01_diff_1k.png" id="15_fqn15"]
+[ext_resource type="Texture2D" uid="uid://c1hwsl225jkuh" path="res://Textures/Surfaces/grass_path_3_diff_1k.png" id="16_oescy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33hba"]
 size = Vector3(25, 10, 25)
+
+[sub_resource type="Resource" id="Resource_g6c6h"]
+script = ExtResource("14_grtfg")
+mode = 0
+textures = [[ExtResource("15_fqn15"), ExtResource("16_oescy"), null, null], [null, null, null, null]]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("Player")]
 script = ExtResource("1_4xjpq")
 Player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_2f4cr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18849)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1781, -21.6413, -13.2251)
 collision_mask = 9
 
 [node name="GrassTile" parent="." instance=ExtResource("2_lxhpv")]
 transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+visible = false
 metadata/Surface = "Grass"
 
 [node name="MeshInstance3D" parent="GrassTile" index="0"]
 material_override = ExtResource("3_xvtfx")
+
+[node name="CollisionShape3D" parent="GrassTile" index="1"]
+disabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_5656n")
@@ -115,6 +129,7 @@ script = ExtResource("4_ohs6c")
 m_ItemData = ExtResource("5_x47yc")
 
 [node name="Stage1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4814, -17.5411, -14.8348)
 collision_layer = 8
 collision_mask = 2
 monitorable = false
@@ -149,5 +164,24 @@ m_SpawnDelayMs = 1000
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73198, 0, -16.1549)
 script = ExtResource("11_quvb3")
 m_SpawnDelayMs = 2000
+
+[node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.525, -20.335, -148.61)
+script = ExtResource("12_jabgs")
+_terrain_data = ExtResource("13_34gyo")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_g6c6h")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
 
 [editable path="GrassTile"]
