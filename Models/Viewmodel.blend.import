@@ -32,6 +32,15 @@ _subresources={
 "nodes": {
 "PATH:Camera": {
 "import/skip_import": true
+},
+"PATH:Circle": {
+"import/skip_import": true
+},
+"PATH:Rectangle": {
+"import/skip_import": true
+},
+"PATH:machete": {
+"import/skip_import": true
 }
 }
 }

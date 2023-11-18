@@ -1,25 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://5xkb76cxaain"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerViewmodel.cs" id="1_sok61"]
+[ext_resource type="PackedScene" uid="uid://cmtj7iq2swb5m" path="res://Models/Leg/leg.blend" id="2_6xtqg"]
 [ext_resource type="PackedScene" uid="uid://cdifiqbg30pxt" path="res://Models/Viewmodel.blend" id="2_ij2vb"]
-[ext_resource type="PackedScene" uid="uid://cmtj7iq2swb5m" path="res://Models/Leg/leg.blend" id="3_2kfk3"]
 
-[node name="Viewmodel" type="Node3D"]
+[node name="Viewmodel" type="Node3D" node_paths=PackedStringArray("m_RightHandSlot")]
 script = ExtResource("1_sok61")
+m_RightHandSlot = NodePath("Viewmodel/Armature/Skeleton3D/BoneAttachment3D/RightHandSlot")
 
-[node name="Leg" parent="." instance=ExtResource("3_2kfk3")]
-transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, -0.3, 0)
+[node name="Leg" parent="." instance=ExtResource("2_6xtqg")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.441756, 0.138306)
 
-[node name="Skeleton3D" parent="Leg/Armature" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
-bones/0/position = Vector3(-0.300948, 0.432111, 0.223365)
-bones/0/rotation = Quaternion(0.0347617, 2.87914e-17, 2.87914e-17, 0.999396)
-bones/1/rotation = Quaternion(0.318371, -1.13742e-17, 7.11765e-18, 0.947966)
-bones/2/rotation = Quaternion(-0.639558, 2.00143e-16, 6.6288e-17, 0.768743)
-
-[node name="AnimationPlayer" parent="Leg" index="1"]
-autoplay = "Idle"
+[node name="Armature" parent="Leg" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.866025, -0.5, 0, 0.5, -0.866025, 0, 0.939498, 0.0664213)
 
 [node name="Viewmodel" parent="." instance=ExtResource("2_ij2vb")]
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewmodel/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.968174, -1.9907e-08, 0.250277, -0.250277, 1.42027e-07, -0.968174, -5.06225e-08, -1, -2.468e-08, 0.182922, -0.25815, -0.316978)
+bone_name = "RightHandSlot"
+bone_idx = 21
+
+[node name="RightHandSlot" type="Node3D" parent="Viewmodel/Armature/Skeleton3D/BoneAttachment3D"]
+
 [editable path="Leg"]
+[editable path="Viewmodel"]
