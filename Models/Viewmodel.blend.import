@@ -36,6 +36,9 @@ _subresources={
 "PATH:Circle": {
 "import/skip_import": true
 },
+"PATH:Machete": {
+"import/skip_import": true
+},
 "PATH:Rectangle": {
 "import/skip_import": true
 },
