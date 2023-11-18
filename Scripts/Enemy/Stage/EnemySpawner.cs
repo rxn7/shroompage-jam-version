@@ -16,7 +16,6 @@ internal partial class EnemySpawner : Node3D {
 
 	public void SpawnEnemy() {
 		Enemy enemy = m_EnemyScene.Instantiate<Enemy>();
-		enemy.TargetPlayer = GameManager.Singleton.Player;
 		enemy.OnDied += () => Stage.OnEnemyDied(this);
 
 		AddChild(enemy);

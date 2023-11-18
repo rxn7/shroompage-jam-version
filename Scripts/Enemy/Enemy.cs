@@ -9,7 +9,6 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private const float HopForce = 10.0f;
 	private const float HopHeight = 4.0f;
 
-	public PlayerManager TargetPlayer { get; set; }
 	public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
@@ -58,7 +57,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		m_HopCooldownTimer = 0.0f;
 		m_HopCooldown = HopCooldown * (GD.Randf() * 0.4f + 0.8f);
 
-		Vector3 direction = GlobalPosition.DirectionTo(TargetPlayer.GlobalPosition);
+		Vector3 direction = GlobalPosition.DirectionTo(GameManager.Singleton.Player.GlobalPosition);
 		direction.Y = 0.0f;
 		direction = direction.Normalized();
 

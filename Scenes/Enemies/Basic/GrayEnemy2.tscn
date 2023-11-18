@@ -41,11 +41,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bsu1h")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3nydk"]
-points = PackedVector3Array(-0.159402, -0.318772, -2.55606, -0.0498508, 1.01282, -1.96876, -0.0489604, 1.03701, -2.00057, 0.983353, -0.115636, -1.98229, -0.829205, -0.773448, -1.9558, -0.874561, 0.716944, -1.91408, 0.280349, 0.485232, -2.48626, -0.573943, 0.457592, -2.45409, 0.0365412, -1.06223, -1.94117, 0.360172, -0.439267, -2.49, -0.928479, -0.0302789, -2.26741, -0.533705, -0.51356, -2.4527, 0.644393, 0.738983, -1.99835, 0.654113, -0.815246, -2.02349, -0.457211, 0.95456, -1.89997, -1.10982, -0.0677539, -1.92621, 0.713088, 0.00774741, -2.34343, -0.0868425, -0.670491, -2.45524, -0.704196, -0.774118, -1.89997, -0.198606, 0.641666, -2.45289, 0.0963148, 0.22773, -2.55923, -0.633223, -0.0284597, -2.48416, 0.365782, 0.830958, -1.94117, -0.163482, -1.02789, -1.99916, 0.50482, 0.118611, -2.48804, 0.473143, 0.567733, -2.34116, -0.659141, 0.580046, -2.3055, -0.124941, 0.846714, -2.26728, -0.304723, 0.116688, -2.55636)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m2bcs"]
+height = 2.1
+radius = 0.4
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_whu6q"]
-points = PackedVector3Array(-0.210347, 0.0900597, -1.85852, 0.118998, 0.0900597, 0.0348518, 0.118998, -0.115709, 0.0348518, 0.0778302, 0.00774748, -1.69375, -0.128011, -0.115709, -0.253342, -0.210347, -0.115709, -1.85852, -0.128011, 0.0900597, 0.0348518, -0.00450618, 0.131204, -1.85852, 0.036662, -0.115709, -1.85852, -0.0868426, 0.131204, 0.0348518)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gucc3"]
+size = Vector3(1.8, 1.8, 0.8)
 
 [node name="Grey" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -61,8 +62,10 @@ script = ExtResource("1_t5was")
 mesh = SubResource("ArrayMesh_acpf2")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_3nydk")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_whu6q")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.006)
+shape = SubResource("CylinderShape3D_m2bcs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05647e-08, -2.17352)
+shape = SubResource("BoxShape3D_gucc3")
