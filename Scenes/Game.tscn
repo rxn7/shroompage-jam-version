@@ -33,7 +33,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/offset_position.gd" id="29_24s26"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33hba"]
-size = Vector3(10.43, 2.215, 10.75)
+size = Vector3(22.5131, 8.17387, 31.7385)
 
 [sub_resource type="Resource" id="Resource_g6c6h"]
 script = ExtResource("14_grtfg")
@@ -42,7 +42,7 @@ textures = [[ExtResource("15_fqn15"), ExtResource("16_oescy"), null, null], [nul
 
 [sub_resource type="Resource" id="Resource_wlhlh"]
 script = ExtResource("19_y5i7x")
-amount = 10000
+amount = 8000
 enabled = true
 override_global_seed = false
 custom_seed = 0
@@ -79,7 +79,7 @@ ray_length = 50.0
 ray_offset = 5.0
 remove_points_on_miss = true
 align_with_collision_normal = true
-max_slope = 20.0
+max_slope = 10.0
 collision_mask = 1
 exclude_mask = 0
 enabled = true
@@ -123,21 +123,21 @@ radius = 6.629
 script = ExtResource("25_bi5qv")
 radius = 8.31528
 
-[sub_resource type="Resource" id="Resource_fwpba"]
-script = ExtResource("25_bi5qv")
-radius = 5.6477
-
 [sub_resource type="Resource" id="Resource_0r4rl"]
 script = ExtResource("25_bi5qv")
-radius = 9.4187
+radius = 7.75663
 
 [sub_resource type="Resource" id="Resource_6gc2a"]
 script = ExtResource("25_bi5qv")
-radius = 9.4187
+radius = 8.35049
 
 [sub_resource type="Resource" id="Resource_opn2x"]
 script = ExtResource("25_bi5qv")
 radius = 15.1022
+
+[sub_resource type="Resource" id="Resource_owp70"]
+script = ExtResource("25_bi5qv")
+radius = 10.9878
 
 [sub_resource type="Resource" id="Resource_yd0mq"]
 script = ExtResource("25_bi5qv")
@@ -319,7 +319,7 @@ monitorable = false
 script = ExtResource("10_d554d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage1"]
-transform = Transform3D(1.458, 0, 0, 0, 2.471, 0, 0, 0, 1, 0, 0, -11.352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03039, 0, -11.352)
 shape = SubResource("BoxShape3D_33hba")
 
 [node name="Spawner" type="Node3D" parent="Stage1"]
@@ -406,14 +406,8 @@ script = ExtResource("24_wl5bk")
 negative = true
 shape = SubResource("Resource_qy47l")
 
-[node name="ScatterShape11" type="Node3D" parent="TreeScatter"]
-transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 23.2026, -7.12465, -15.5294)
-script = ExtResource("24_wl5bk")
-negative = true
-shape = SubResource("Resource_fwpba")
-
 [node name="ScatterShape8" type="Node3D" parent="TreeScatter"]
-transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 32.114, -7.12465, 12.4267)
+transform = Transform3D(0.839516, 0, -0.543336, 0, 1, 0, 0.543336, 0, 0.839516, 32.114, -7.12465, 12.4267)
 script = ExtResource("24_wl5bk")
 negative = true
 shape = SubResource("Resource_0r4rl")
@@ -429,6 +423,12 @@ transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 63.3885,
 script = ExtResource("24_wl5bk")
 negative = true
 shape = SubResource("Resource_opn2x")
+
+[node name="ScatterShape11" type="Node3D" parent="TreeScatter"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 81.105, -7.12465, 45.8974)
+script = ExtResource("24_wl5bk")
+negative = true
+shape = SubResource("Resource_owp70")
 
 [node name="ScatterShape3" type="Node3D" parent="TreeScatter"]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0.632529, -7.12465, -3.26764)
