@@ -7,6 +7,6 @@ internal partial class MagicMushroom : ConsumableItem {
 
     public override void Consume(PlayerManager player) {
         player.HighLevel += HighLevelIncrease;
-        // TODO: Increase health
+        player.Health += HealthIncrease;
     }
 }
