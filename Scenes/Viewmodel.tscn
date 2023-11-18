@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cdifiqbg30pxt" path="res://Models/Viewmodel.blend" id="2_ij2vb"]
 [ext_resource type="PackedScene" uid="uid://cmtj7iq2swb5m" path="res://Models/Leg/leg.blend" id="3_2kfk3"]
 
-[node name="Viewmodel" type="Node3D" node_paths=PackedStringArray("m_LeftHandSlot", "m_RightHandSlot")]
+[node name="Viewmodel" type="Node3D"]
 script = ExtResource("1_sok61")
-m_LeftHandSlot = NodePath("")
-m_RightHandSlot = NodePath("")
 
 [node name="Leg" parent="." instance=ExtResource("3_2kfk3")]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, -0.3, 0)
