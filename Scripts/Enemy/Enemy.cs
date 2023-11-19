@@ -64,9 +64,6 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		}
 	}
 
-	public void DamagePlayer(PlayerManager player) {
-	}
-
 	public void ApplyImpulse(Vector3 force) {
 		m_Force += force;
 	}
