@@ -30,6 +30,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="GodotStage" type="Control" parent="Stages"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,6 +61,7 @@ rotation = 0.00425429
 texture = ExtResource("3_juew4")
 
 [node name="PjpStage" type="Control" parent="Stages"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,7 +92,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6hwww")
 
 [node name="AuthorsStage" type="Control" parent="Stages"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,10 +114,11 @@ theme_override_fonts/font = ExtResource("5_iiamc")
 theme_override_font_sizes/font_size = 30
 text = "Authors
 
-         rxn7 | code/ui
-  blackshibe| art/music
-             moss | sfx/ideas
-drerizo | ideas
+           rxn7 | code/ui
+    blackshibe | art/music
+              moss | sfx/ideas
+ drerizo | ideas
+    science6uru | particle guy
                         orchids | mushroom models"
 horizontal_alignment = 1
 vertical_alignment = 1
