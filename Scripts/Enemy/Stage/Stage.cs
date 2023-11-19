@@ -10,14 +10,19 @@ internal partial class Stage : Area3D {
 
 	private bool m_Started = false;
 	private List<EnemySpawner> m_Spawners = new();
+	private GameSoundtrack m_soundtrack;
 
 	public int EnemyCount => m_Spawners.Count;
+	[Export] private bool m_IncreaseOstStageAfterClear = false;
 	
+
 	public Stage() {
 		BodyEntered += OnBodyEntered;
 	}
 
 	public override void _Ready() {
+		m_soundtrack = GetNode<GameSoundtrack>("/root/Game/Soundtrack");
+
 		foreach(Node child in GetChildren()) {
 			if(child is EnemySpawner spawner) {
 				spawner.Stage = this;
@@ -26,7 +31,7 @@ internal partial class Stage : Area3D {
 		}
 	}
 
-	public override void _ExitTree() {
+    public override void _ExitTree() {
 		BodyEntered -= OnBodyEntered;
 	}
 
@@ -61,6 +66,7 @@ internal partial class Stage : Area3D {
 	private void StageCleared() {
 		GameManager.Singleton.StageCleared?.Invoke(this);
 		GD.Print($"Stage {this} has been cleared.");
+		if (m_IncreaseOstStageAfterClear) m_soundtrack.IncreaseStage();
 		QueueFree();
 	}
 }

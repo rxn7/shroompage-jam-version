@@ -125,4 +125,8 @@ internal partial class GameSoundtrack : Node {
 				m_TrackLists[i].Tracks[j] = (AudioStreamPlayer)child.GetChild(j);
 		}
 	}
+
+	public void IncreaseStage() {
+		m_QueuedStage++;
+	}
 }
