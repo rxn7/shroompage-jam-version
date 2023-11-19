@@ -6,4 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_0mgck")
 shader_parameter/outline_width = 5.0
-shader_parameter/base_color = Color(0.411765, 0.956863, 0.564706, 0.133333)
+shader_parameter/base_color = Color(0.819608, 1.91765, 1.11765, 1)
