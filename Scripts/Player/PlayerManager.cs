@@ -2,6 +2,7 @@ using Godot;
 using Game.Utils;
 using Game.ItemSystem;
 using System;
+using Game.Story;
 
 namespace Game.Player;
 
@@ -26,6 +27,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public PlayerItemRaycast ItemRaycast { get; private set; }
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
+	public PlayerNotificationDisplay NotificationDisplay { get; private set; }
 	public Action<float> OnHealthChanged { get; set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
@@ -49,6 +51,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 	public Action OnDied { get; set; }
 	public Action<float> OnDamage { get; set; }
+	public bool ViewmodelDisabled { get; set; } = false;
 	public bool IsDead { get; set; } = false;
 
 	private float m_KickCooldownTimer = 0.0f;
@@ -61,6 +64,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
+		NotificationDisplay = GetNode("HUD").GetNode<PlayerNotificationDisplay>("Notification");
 
 		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
@@ -80,6 +84,11 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		OnDamage += (float dmg) => {
 			SoundManager.Play3D(GlobalPosition, m_HurtSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 		};
+
+		// not all scenes will have an intro
+		// this can be generalized to run a single scene specific script but idc since this is a jam
+		StoryIntro intro = GetNodeOrNull<StoryIntro>("../Intro");
+		intro?.Start(this);
 	}
 
 	public override void _Process(double dt) {
@@ -88,6 +97,13 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
+
+		if (ViewmodelDisabled) {
+			Viewmodel.Hide();
+			return;
+		} else {
+			Viewmodel.Show();
+		}
 		
 		ItemManager.Update();
 		

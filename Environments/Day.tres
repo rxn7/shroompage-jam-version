@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://j7yvfc6g18o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4say"]
+
+[sub_resource type="Sky" id="Sky_rsitc"]
+sky_material = SubResource("ProceduralSkyMaterial_c4say")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_rsitc")
+ambient_light_energy = 0.83
+ssao_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.454902, 0.564706, 0.67451, 1)
+fog_light_energy = 1.51
+fog_density = 0.026

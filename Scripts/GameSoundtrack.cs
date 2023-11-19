@@ -48,8 +48,6 @@ internal partial class GameSoundtrack : Node {
 			m_IntensityLevel = m_QueuedIntensityLevel;
 			m_Stage = m_QueuedStage;
 			m_TimeUntilUpdate += m_UpdateTimer;
-
-			GD.Print("Stage: " + m_Stage + " Intensity: " + m_IntensityLevel);
 		}
 
 		ApplyVolumeTargets(GetVolumeTargets(), delta_time * 10);

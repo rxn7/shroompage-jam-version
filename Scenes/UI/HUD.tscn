@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqghedx0pa5c8"]
+[gd_scene load_steps=9 format=3 uid="uid://cqghedx0pa5c8"]
 
 [ext_resource type="Texture2D" uid="uid://bcpm1boumx14q" path="res://Textures/UI/crosshair001.png" id="1_ul7ro"]
 [ext_resource type="Script" path="res://Scripts/ScreenEffect.cs" id="2_luj3c"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="2_shb8l"]
 [ext_resource type="PackedScene" uid="uid://bai11qwjiwqpd" path="res://Scenes/UI/DebugUI.tscn" id="3_fy7ad"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerNotificationDisplay.cs" id="5_by3ky"]
 [ext_resource type="Script" path="res://Scenes/UI/PlayerStatsUI.cs" id="6_jekal"]
 [ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="7_o8np1"]
 
@@ -68,6 +69,21 @@ theme_override_fonts/font = ExtResource("7_o8np1")
 theme_override_font_sizes/font_size = 30
 text = "Press [F] to pickup ''Name\""
 horizontal_alignment = 1
+
+[node name="Notification" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.637
+anchor_right = 1.0
+anchor_bottom = 0.677
+offset_top = -105.776
+offset_bottom = -84.696
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_o8np1")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+script = ExtResource("5_by3ky")
 
 [node name="DebugManager" parent="." instance=ExtResource("3_fy7ad")]
 layout_mode = 1

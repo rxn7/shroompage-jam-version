@@ -1,11 +1,12 @@
-[gd_scene load_steps=94 format=3 uid="uid://7brfm7bmsjsj"]
+[gd_scene load_steps=95 format=3 uid="uid://7brfm7bmsjsj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_tv4rc"]
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="2_v3vcd"]
-[ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="3_36e2j"]
+[ext_resource type="Script" path="res://Scripts/Story/StoryIntro.cs" id="3_gojia"]
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="4_22plm"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="5_smtrw"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="6_hyxak"]
+[ext_resource type="Environment" uid="uid://j7yvfc6g18o" path="res://Environments/Day.tres" id="6_nctxi"]
 [ext_resource type="PackedScene" uid="uid://pm01sg7pio1j" path="res://Scenes/Enemies/Basic/GrayEnemy2.tscn" id="7_qqq61"]
 [ext_resource type="PackedScene" uid="uid://2v5t2np043ci" path="res://Scenes/Enemies/Basic/GrayEnemy.tscn" id="8_7gtrn"]
 [ext_resource type="PackedScene" uid="uid://enoi712u155k" path="res://Scenes/Enemies/Basic/PinkEnemy2.tscn" id="9_v1x88"]
@@ -61,7 +62,7 @@ size = Vector3(19.2096, 14.9473, 45.957)
 [sub_resource type="BoxShape3D" id="BoxShape3D_33hba"]
 size = Vector3(7.62936, 8.17387, 83.2573)
 
-[sub_resource type="Resource" id="Resource_gvys8"]
+[sub_resource type="Resource" id="Resource_2xjsl"]
 script = ExtResource("22_gm3eo")
 amount = 8000
 enabled = true
@@ -70,7 +71,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_qswwk"]
+[sub_resource type="Resource" id="Resource_14kvu"]
 script = ExtResource("23_qpdhn")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 360, 0)
@@ -81,7 +82,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_jr20x"]
+[sub_resource type="Resource" id="Resource_fqgq7"]
 script = ExtResource("24_t0btv")
 iterations = 3
 offset_step = 0.2
@@ -93,7 +94,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_6v68c"]
+[sub_resource type="Resource" id="Resource_c0qdv"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 50.0
@@ -109,7 +110,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ejibl"]
+[sub_resource type="Resource" id="Resource_chwcl"]
 script = ExtResource("26_8dedt")
 operation = 1
 scale = Vector3(0.75, 0.75, 0.75)
@@ -119,7 +120,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_liwn3"]
+[sub_resource type="Resource" id="Resource_odmlo"]
 script = ExtResource("27_664wt")
 negative_shapes_only = false
 enabled = true
@@ -128,9 +129,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_hjcek"]
+[sub_resource type="Resource" id="Resource_yq4vb"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_gvys8"), SubResource("Resource_qswwk"), SubResource("Resource_jr20x"), SubResource("Resource_6v68c"), SubResource("Resource_ejibl"), SubResource("Resource_liwn3")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_2xjsl"), SubResource("Resource_14kvu"), SubResource("Resource_fqgq7"), SubResource("Resource_c0qdv"), SubResource("Resource_chwcl"), SubResource("Resource_odmlo")])
 
 [sub_resource type="Resource" id="Resource_v4q3w"]
 script = ExtResource("30_owj5m")
@@ -268,7 +269,7 @@ radius = 5.9429
 script = ExtResource("31_vkyl7")
 radius = 7.52226
 
-[sub_resource type="Resource" id="Resource_dk5hc"]
+[sub_resource type="Resource" id="Resource_m7u4q"]
 script = ExtResource("32_sh0fd")
 item_length = 3.7
 ignore_slopes = false
@@ -278,7 +279,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_iiwc2"]
+[sub_resource type="Resource" id="Resource_7xetq"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 1000.0
@@ -294,7 +295,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_73ies"]
+[sub_resource type="Resource" id="Resource_koxqe"]
 script = ExtResource("33_58lio")
 operation = 0
 rotation = Vector3(0, 90, 0)
@@ -304,7 +305,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_s1waq"]
+[sub_resource type="Resource" id="Resource_6kwg3"]
 script = ExtResource("34_y3g7e")
 operation = 0
 position = Vector3(0, 0.75, 0)
@@ -314,9 +315,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_lfjea"]
+[sub_resource type="Resource" id="Resource_t702i"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_dk5hc"), SubResource("Resource_iiwc2"), SubResource("Resource_73ies"), SubResource("Resource_s1waq")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_m7u4q"), SubResource("Resource_7xetq"), SubResource("Resource_koxqe"), SubResource("Resource_6kwg3")])
 
 [sub_resource type="Resource" id="Resource_xfv10"]
 script = ExtResource("30_owj5m")
@@ -330,7 +331,14 @@ stream = ExtResource("4_22plm")
 volume_db = -8.432
 autoplay = true
 
-[node name="Soundtrack" parent="." instance=ExtResource("35_8syie")]
+[node name="Intro" type="Node" parent="."]
+script = ExtResource("3_gojia")
+
+[node name="Soundtrack" parent="." node_paths=PackedStringArray("m_TracksIntro", "m_TracksIntensity_0", "m_TracksIntensity_1", "m_TracksIntensity_2") instance=ExtResource("35_8syie")]
+m_TracksIntro = [null]
+m_TracksIntensity_0 = [null, null, null, null, null]
+m_TracksIntensity_1 = [null, null, null, null, null]
+m_TracksIntensity_2 = [null, null, null, null, null]
 
 [node name="MasterAudioBusManager" type="Node" parent="."]
 script = ExtResource("36_pq6c5")
@@ -340,11 +348,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20087, -4.59501, 102.792)
 collision_mask = 9
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_36e2j")
+environment = ExtResource("6_nctxi")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.895526, 0.44501, 0, -0.44501, 0.895526, 0, 0, 0)
+[node name="DayLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.102879, 0.890774, 0.442649, -0.82237, -0.174175, 0.541637, 0.559575, -0.419744, 0.714626, 0, 0, 0)
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 0.948
+directional_shadow_mode = 0
+
+[node name="NightLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.994636, 0.0926285, 0.0460295, -0.103435, -0.890722, -0.442623, 0, -0.44501, 0.895526, 0, 0, 0)
+visible = false
 light_color = Color(0.172549, 0.156863, 0.360784, 1)
+light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_mode = 0
 
@@ -359,6 +376,7 @@ directional_shadow_mode = 0
 [node name="HTerrain" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.4, -3.52, -65.21)
 script = ExtResource("11_32wu8")
+ambient_wind = 0.1
 _terrain_data = ExtResource("12_hmxcs")
 chunk_size = 64
 collision_enabled = true
@@ -369,7 +387,7 @@ custom_shader = null
 custom_globalmap_shader = null
 texture_set = SubResource("Resource_g6c6h")
 render_layers = 1
-cast_shadow = 0
+cast_shadow = 1
 shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
@@ -616,7 +634,7 @@ m_EnemyScene = ExtResource("7_qqq61")
 
 [node name="TreeScatter" type="Node3D" parent="."]
 script = ExtResource("20_nb60j")
-modifier_stack = SubResource("Resource_hjcek")
+modifier_stack = SubResource("Resource_yq4vb")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -624,7 +642,7 @@ Performance/chunk_dimensions = Vector3(15, 15, 15)
 transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("28_ctx8a")
 proportion = 115
-visibility_range_end = 70.0
+visibility_range_end = 100.0
 visibility_range_end_margin = 30.0
 visibility_range_fade_mode = 1
 path = "res://Models/ForestObjets/glb/tree1.glb"
@@ -852,7 +870,7 @@ shape = SubResource("Resource_ispk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5948, 24.6184, 0)
 script = ExtResource("20_nb60j")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_lfjea")
+modifier_stack = SubResource("Resource_t702i")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=24 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://w480a4nshumt" path="res://Audio/Kick/kick_impact2.wav" id="6_2oxqy"]
 [ext_resource type="PackedScene" uid="uid://5xkb76cxaain" path="res://Scenes/Viewmodel.tscn" id="6_018si"]
 [ext_resource type="AudioStream" uid="uid://ccftveuv6crvc" path="res://Audio/Kick/kick_swing1.wav" id="6_d2b8t"]
-[ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="6_yatk4"]
 [ext_resource type="AudioStream" uid="uid://beyimx2d38xq3" path="res://Audio/Kick/kick_swing2.wav" id="7_ktvjd"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerItemRaycast.cs" id="7_n7ipg"]
 [ext_resource type="AudioStream" uid="uid://uloy46ubi8ld" path="res://Audio/Kick/kick_impact3.wav" id="7_sv44a"]
@@ -55,7 +54,6 @@ script = ExtResource("3_034oa")
 m_Player = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-environment = ExtResource("6_yatk4")
 current = true
 fov = 90.0
 
