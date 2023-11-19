@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dycdrsnekfaqv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.cs" id="1_wev2t"]
+[ext_resource type="ArrayMesh" uid="uid://cakuk7xeuuoi3" path="res://Models/Enemies/OrangeEnemy.res" id="2_4su5r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8y20a"]
+height = 1.6
+radius = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s70kc"]
+size = Vector3(2.5, 2.5, 1.454)
+
+[node name="Orange" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+collision_layer = 4
+collision_mask = 5
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+platform_floor_layers = 1
+script = ExtResource("1_wev2t")
+Damage = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_4su5r")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.848332)
+shape = SubResource("CylinderShape3D_8y20a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.67263)
+shape = SubResource("BoxShape3D_s70kc")

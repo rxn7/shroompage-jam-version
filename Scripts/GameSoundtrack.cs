@@ -19,8 +19,11 @@ internal partial class GameSoundtrack : Node {
 	private int m_QueuedStage = 0;
 	private double m_UpdateTimer = 0;
 	private double m_TimeUntilUpdate = 0;
+	[Export] public AudioStreamPlayer[] Tracks;
 
 	public override void _Ready() {
+		var sun = new DirectionalLight3D();
+
 		InitTrackLists();
 		ApplyVolumeTargets(GetVolumeTargets(), 1);
 		

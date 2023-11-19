@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy02inte8t6ip"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.cs" id="1_tfbw8"]
+[ext_resource type="ArrayMesh" uid="uid://tau7s5muu3gx" path="res://Models/Enemies/BlueEnemy.res" id="2_yx378"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8y20a"]
+height = 1.6
+radius = 0.45
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s70kc"]
+size = Vector3(2.45836, 2.47314, 0.8)
+
+[node name="Blue" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+collision_layer = 4
+collision_mask = 5
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+platform_floor_layers = 1
+script = ExtResource("1_tfbw8")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_yx378")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.8)
+shape = SubResource("CylinderShape3D_8y20a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7)
+shape = SubResource("BoxShape3D_s70kc")
