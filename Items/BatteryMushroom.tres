@@ -6,8 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://cmqctoydoh6mi" path="res://Models/Mushrooms/BatteryMushroom.res" id="2_y4uqd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gmux4"]
-height = 1.08715
-radius = 0.22
+height = 0.544
+radius = 0.11
 
 [resource]
 script = ExtResource("2_2a3pm")
