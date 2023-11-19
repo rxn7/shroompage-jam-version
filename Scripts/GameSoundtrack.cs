@@ -35,11 +35,9 @@ internal partial class GameSoundtrack : Node {
 
 		int enemyCount = GameManager.Singleton.GetEnemyCount();
 		if (enemyCount == 0) m_QueuedIntensityLevel = 0;
-		else if (enemyCount < 3) m_QueuedIntensityLevel = 1;
-		else if (enemyCount < 5) m_QueuedIntensityLevel = 2;
-		else if (enemyCount < 7) m_QueuedIntensityLevel = 3;
-		else if (enemyCount < 7)  m_QueuedIntensityLevel = 4;
-		else m_QueuedIntensityLevel = 5;
+		else if (enemyCount <= 2) m_QueuedIntensityLevel = 1;
+		else if (enemyCount <= 5) m_QueuedIntensityLevel = 3;
+		else m_QueuedIntensityLevel = 4;
 
 		if (m_QueuedIntensityLevel > m_IntensityLevel) {
 			m_IntensityLevel = m_QueuedIntensityLevel;
@@ -117,6 +115,6 @@ internal partial class GameSoundtrack : Node {
 	}
 
 	public void UpdateStage(int stage) {
-		m_QueuedStage = stage;
+        m_QueuedStage = stage;
 	}
 }
