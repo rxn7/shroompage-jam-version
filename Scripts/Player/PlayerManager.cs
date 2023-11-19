@@ -8,8 +8,8 @@ namespace Game.Player;
 internal partial class PlayerManager : CharacterBody3D, IHealth {
 	private const float KickCooldown = 0.5f;
 	private const float KickRange = 3.0f;
-	private const float KickDamage = 10.0f;
-	private const float KickKnockback = 5.0f;
+	private const float KickDamage = 5.0f;
+	private const float KickKnockback = 6.0f;
 	private const float MeleeRange = 4.0f;
 	private const float MeleeKnockback = 2.0f;
 	private const float HighLevelReduceRate = 0.05f;
@@ -26,6 +26,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public PlayerItemRaycast ItemRaycast { get; private set; }
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
+	public Action<float> OnHealthChanged { get; set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
 	[Export] private AudioStream[] m_KickImpactSounds = new AudioStream[0];
@@ -34,7 +35,10 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 	public float Health {
 		get => m_Health;
-		set { m_Health = Mathf.Clamp(value, 0.0f, 100.0f); }
+		set { 
+			m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
+			OnHealthChanged?.Invoke(m_Health); 
+		}
 	}
 	private float m_Health = 40.0f;
 

@@ -6,6 +6,9 @@ using Godot;
 namespace Game.Enemy;
 
 internal partial class Enemy : CharacterBody3D, IHealth {
+	private static readonly Color DamageEffectColor = new Color(4.0f, 0.0f, 0.0f);
+	private static readonly StandardMaterial3D DamageEffectMaterial = new StandardMaterial3D() { AlbedoColor = DamageEffectColor, Roughness = 1.0f, Metallic = 0.0f };
+	private const float DamageEffectDuration = 0.1f;
 	private const float DamagePlayerMaxDistanceSquared = 1.2f;
 	private const float HopCooldown = 1.0f;
 	private const float HopForce = 10.0f;
@@ -20,9 +23,11 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	[Export] private float m_Damage = 5.0f;
 	[Export] private float m_HighLevelIncrease = 0.075f;
 	[Export] private ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
+	private MeshInstance3D m_MeshInstance;
 	private float m_DamageCooldownTimer = 0.0f;
 	private float m_HopCooldownTimer = 0.0f;
 	private float m_HopCooldown = HopCooldown;
+	private float m_DamageEffectTimer = 0.0f;
 	private Vector3 m_Velocity;
 	private Vector3 m_Force;
 	private bool m_WasOnFloor = false;
@@ -44,7 +49,16 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 
 		OnDamage += (float dmg) => {
 			// TODO: PLAY THEM PARTICLES
+			m_DamageEffectTimer = DamageEffectDuration;
 		};
+	}
+
+	public override void _Ready() {
+		m_MeshInstance = GetChild<MeshInstance3D>(0);
+	}
+
+	public override void _Process(double delta) {
+		UpdateDamageEffect((float)delta);
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -90,5 +104,16 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		float height = HopHeight * (GD.Randf() * 0.4f + 0.8f);
 
 		m_Velocity = direction * force + Vector3.Up * height;
+	}
+
+	private void UpdateDamageEffect(float delta) {
+		if(m_DamageEffectTimer > 0.0f) {
+			m_DamageEffectTimer -= delta;
+
+			m_MeshInstance.MaterialOverride = DamageEffectMaterial;
+			return;
+		}
+
+		m_MeshInstance.MaterialOverride = null;
 	}
 }

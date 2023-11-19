@@ -1,14 +1,17 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dy5xfht1a4og1"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://dy5xfht1a4og1"]
 
-[ext_resource type="AudioStream" uid="uid://7k06q5jxu77u" path="res://Audio/Crunch.wav" id="1_aivid"]
+[ext_resource type="AudioStream" uid="uid://dluthrik5m2ib" path="res://Audio/Consume/mushroom_consume1.wav" id="1_6robh"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/Items/MagicMushroom.cs" id="2_44tw4"]
 [ext_resource type="ArrayMesh" uid="uid://nysv2wrm3de" path="res://Models/Mushrooms/MagicMushroom.res" id="2_b1nmc"]
+[ext_resource type="AudioStream" uid="uid://cj4ex3fk4tgsk" path="res://Audio/Consume/mushroom_consume2.wav" id="2_ufe07"]
+[ext_resource type="AudioStream" uid="uid://c1r4lv35dqo4s" path="res://Audio/Consume/mushroom_consume3.wav" id="3_bx6f0"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/ConsumableItemData.cs" id="3_fhkwn"]
+[ext_resource type="AudioStream" uid="uid://couds58uy70y5" path="res://Audio/Consume/mushroom_consume4.wav" id="4_2p8kh"]
 
 [resource]
 script = ExtResource("3_fhkwn")
 Script = ExtResource("2_44tw4")
-ConsumeSounds = [ExtResource("1_aivid")]
+ConsumeSounds = [ExtResource("1_6robh"), ExtResource("2_ufe07"), ExtResource("3_bx6f0"), ExtResource("4_2p8kh")]
 Name = &"Magic Mushroom"
 Mass = 3.0
 Mesh = ExtResource("2_b1nmc")

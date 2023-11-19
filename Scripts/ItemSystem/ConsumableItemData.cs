@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Game.Utils;
 using Godot;
 
 namespace Game.ItemSystem;
@@ -6,7 +8,7 @@ internal partial class ConsumableItemData : ItemData {
 	[Export] public Script Script { get; private set; } = GD.Load<Script>("res://Scripts/ItemSystem/Item.cs");
 
 	[ExportSubgroup("Audio")]
-	[Export] public AudioStream[] ConsumeSounds = new AudioStream[0];
+	[Export] public AudioStream[] ConsumeSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Consume").ToArray();
 
 	public override ConsumableItem Spawn() {
 		RigidBody3D itemBody = new();

@@ -14,7 +14,7 @@ internal partial class HeartBeatSound : AudioStreamPlayer {
 		Play(0);
 		UpdateVolume();
 
-		m_Player.OnDamage += (float dmg) => UpdateVolume();
+		m_Player.OnHealthChanged += (float health) => UpdateVolume();
 	}
 
 	private void UpdateVolume() {
