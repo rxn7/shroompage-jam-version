@@ -28,7 +28,7 @@ internal partial class PlayerItemRaycast : Node {
 			m_PickupLabel.Visible = true;
 
 			using InputEventKey keyEvent = InputMap.ActionGetEvents(PlayerItemManager.PickupInputName)[0] as InputEventKey;
-			m_PickupLabel.Text = $"Press [{keyEvent.PhysicalKeycode}] to {(m_HighlightedItem is ConsumableItem ? "consume" : "pickup")} {m_HighlightedItem.Data.Name}";
+			m_PickupLabel.Text = $"Press [{keyEvent.PhysicalKeycode}] to pickup {m_HighlightedItem.Data.Name}";
 		}
 	}
 

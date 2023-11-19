@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Game.ItemSystem;
 using Game.Player;
-using Game.Utils;
 using Godot;
 
 namespace Game.Story;
@@ -13,6 +12,8 @@ namespace Game.Story;
 internal partial class StoryIntro : Node {
 	[Export] private bool m_DebugDisableIntro = false;
 	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
+	[Export] private Godot.Environment m_DayEnv, m_NightEnv;
+	[Export] private WorldEnvironment m_WorldEnv;
 	public bool DisableShroomEffects = true;
 
 	private Barrier m_IntroBarrier;
@@ -53,6 +54,8 @@ internal partial class StoryIntro : Node {
 			m_Soundtrack.SetMuted(false);
 		});
 
+		GameManager.Singleton.Player.Headlight.Visible = false;
+
 		if (m_DebugDisableIntro) {
 			m_NotificationDisplay.DisplayNotification("INTRO DISABLED", 3);
 			m_Soundtrack.SetIntroMusic(false);
@@ -63,6 +66,8 @@ internal partial class StoryIntro : Node {
 			m_Player.ViewmodelDisabled = false;
 			DisableShroomEffects = false;
 			m_collectedShrooms = 100;
+			FinishEndSequence();
+			return;
 		}
 	}
 
@@ -121,10 +126,15 @@ internal partial class StoryIntro : Node {
 
 		await Task.Delay(5000);
 
+		FinishEndSequence();
+	}
+
+	private void FinishEndSequence() {
 		GameManager.Singleton.Player.Controller.Locked = false;
 
 		m_DayLight.Visible = false;
-		m_NightLight.Visible = false;
+		m_WorldEnv.Environment = m_NightEnv;
+		m_NightLight.Visible = true;
 
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
 
@@ -139,5 +149,7 @@ internal partial class StoryIntro : Node {
 		GameManager.Singleton.Player.ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
 		AddChild(GameManager.Singleton.Player.ItemManager.HeldItem);
 		GameManager.Singleton.Player.ItemManager.HeldItem.Equip(GameManager.Singleton.Player);
+
+		GameManager.Singleton.Player.Headlight.Visible = true;
 	}
 }

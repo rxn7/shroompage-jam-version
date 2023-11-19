@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://my476rao8teo"]
+[gd_scene load_steps=103 format=3 uid="uid://7brfm7bmsjsj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_tv4rc"]
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="2_v3vcd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Barrier.cs" id="4_eq1nh"]
 [ext_resource type="PackedScene" uid="uid://buaquiug5a8pc" path="res://Models/BarbedWire/wooden_fence.tscn" id="4_qxjip"]
 [ext_resource type="AudioStream" uid="uid://djk7m63nqb5qv" path="res://Audio/stage_intro.wav" id="5_74yy6"]
+[ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Night.tres" id="5_gx1ic"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="5_smtrw"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="6_hyxak"]
 [ext_resource type="PackedScene" uid="uid://pm01sg7pio1j" path="res://Scenes/Enemies/Basic/GrayEnemy2.tscn" id="7_qqq61"]
@@ -347,10 +348,13 @@ stream = ExtResource("4_22plm")
 volume_db = -8.432
 autoplay = true
 
-[node name="Intro" type="Node" parent="." node_paths=PackedStringArray("m_DayLight", "m_NightLight")]
+[node name="Intro" type="Node" parent="." node_paths=PackedStringArray("m_DayLight", "m_NightLight", "m_WorldEnv")]
 script = ExtResource("3_b13xm")
 m_DayLight = NodePath("../WorldEnvironment/DayLight")
 m_NightLight = NodePath("../WorldEnvironment/NightLight")
+m_DayEnv = ExtResource("8_s0442")
+m_NightEnv = ExtResource("5_gx1ic")
+m_WorldEnv = NodePath("../WorldEnvironment")
 
 [node name="IntroGate" type="Node3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49516, -2.69267, 11.6187)
