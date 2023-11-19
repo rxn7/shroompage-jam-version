@@ -13,7 +13,7 @@ internal partial class StoryIntro : Node {
 	[Export] private bool m_DebugDisableIntro = true;
     public bool DisableShroomEffects = true;
 
-	private Node m_IntroGate;
+	private Node3D m_IntroGate;
 	private PlayerNotificationDisplay m_NotificationDisplay;
 	private GameSoundtrack m_Soundtrack;    
 	private PlayerManager m_Player;
@@ -41,7 +41,7 @@ internal partial class StoryIntro : Node {
 		m_NotificationDisplay = game.Player.NotificationDisplay;
 		m_Soundtrack = game.Soundtrack;
    		m_ShroomCollectProgress = game.Player.HUD.GetNode<Label>("ShroomProgress");
-		m_IntroGate = GetNode<Node>("IntroGate");
+		m_IntroGate = GetNode<Node3D>("IntroGate");
 
 		m_Player.ViewmodelDisabled = true;
 		m_Soundtrack.SetIntroMusic(true);
@@ -54,6 +54,7 @@ internal partial class StoryIntro : Node {
 		if (m_DebugDisableIntro) {
 			m_NotificationDisplay.DisplayNotification("INTRO DISABLED", 3);
 			m_Soundtrack.SetIntroMusic(false);
+			m_Player.GlobalPosition = m_IntroGate.GlobalPosition;
 			m_IntroGate.QueueFree();
 			m_playedLastShroomNotification = true;
 			m_FinishedIntro = true;
