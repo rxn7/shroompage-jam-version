@@ -54,7 +54,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public Action OnDied { get; set; }
 	public Action<float> OnDamage { get; set; }
 	public bool ViewmodelDisabled { 
-		get => Viewmodel.Visible;
+		get => !Viewmodel.Visible;
 
 		set {
 			HUD.GetNode<Control>("Bars").Visible = !value;
