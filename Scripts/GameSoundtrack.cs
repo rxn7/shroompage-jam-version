@@ -31,10 +31,12 @@ internal partial class GameSoundtrack : Node {
 	public override void _Process(double deltaTime) {
 		int enemyCount = GameManager.Singleton.GetEnemyCount();
 
-		if(enemyCount == 0)        m_QueuedIntensityLevel = 0;
-		else if(enemyCount <= 2)   m_QueuedIntensityLevel = 1;
-		else if(enemyCount <= 5)   m_QueuedIntensityLevel = 3;
-		else                        m_QueuedIntensityLevel = 4;
+		m_QueuedIntensityLevel = enemyCount switch {
+			0    => 0,
+			<= 2 => 1,
+			<= 5 => 3,
+			_    => 4
+		};
 
 		if(m_QueuedIntensityLevel > m_IntensityLevel)
 			m_IntensityLevel = m_QueuedIntensityLevel;
