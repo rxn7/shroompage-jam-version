@@ -98,7 +98,6 @@ horizontal_alignment = 1
 script = ExtResource("5_by3ky")
 
 [node name="ShroomProgress" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
