@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo8y6sdf6ud74"]
+
+[ext_resource type="Script" path="res://Scripts/ParticleFx.cs" id="1_kemh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r12r6"]
+albedo_color = Color(0.4, 0, 0, 1)
+ao_enabled = true
+ao_light_affect = 1.0
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4u1t1"]
+material = SubResource("StandardMaterial3D_r12r6")
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="Curve" id="Curve_dwnda"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lg75t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75059, 0.510588), -2.29068, -2.29068, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CPUParticles3D_die" type="CPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3, 0)
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 0.1
+lifetime_randomness = 0.2
+fract_delta = false
+mesh = SubResource("QuadMesh_4u1t1")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -25, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angular_velocity_min = -400.0
+angular_velocity_max = 400.0
+tangential_accel_min = -10.0
+tangential_accel_max = 20.0
+tangential_accel_curve = SubResource("Curve_dwnda")
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_lg75t")
+color = Color(1, 0, 0, 1)
+script = ExtResource("1_kemh6")

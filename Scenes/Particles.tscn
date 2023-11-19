@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3kyjxdlce18c"]
+
+[ext_resource type="PackedScene" uid="uid://bo8y6sdf6ud74" path="res://Scenes/Particles/Death.tscn" id="1_g2i0d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_me2qv"]
+lightmap_size_hint = Vector2i(17, 14)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -3.48823, 0.238049, 0)
+lod_bias = 3.438
+mesh = SubResource("CapsuleMesh_me2qv")
+
+[node name="CPUParticles3D_die" parent="." instance=ExtResource("1_g2i0d")]

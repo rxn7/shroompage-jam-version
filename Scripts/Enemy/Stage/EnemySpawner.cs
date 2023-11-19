@@ -25,5 +25,10 @@ internal partial class EnemySpawner : Node3D {
 		enemy.GlobalPosition = GlobalPosition;
 
 		SoundManager.Play3D(GlobalPosition, s_SpawnSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
+
+		ParticleFx spawnParticleFx = ParticleFx.s_SpawnParticles.Instantiate<ParticleFx>();
+		GetTree().Root.AddChild(spawnParticleFx);
+		spawnParticleFx.GlobalPosition = GlobalPosition;
+		spawnParticleFx.Emitting = true;
 	}
 }

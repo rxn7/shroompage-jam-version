@@ -51,6 +51,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		OnDamage += (float dmg) => {
 			// TODO: PLAY THEM PARTICLES
 			m_DamageEffectTimer = DamageEffectDuration;
+			SpawnDamageParticles();
 		};
 	}
 
@@ -116,5 +117,12 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		}
 
 		m_MeshInstance.MaterialOverride = null;
+	}
+
+	private void SpawnDamageParticles() {
+		ParticleFx deathParticleFx = ParticleFx.s_DeathParticles.Instantiate<ParticleFx>();
+		GetTree().Root.AddChild(deathParticleFx);
+		deathParticleFx.GlobalPosition = GlobalPosition + Vector3.Up;
+		deathParticleFx.Emitting = true;
 	}
 }

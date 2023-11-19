@@ -11,12 +11,12 @@ public interface IHealth {
 	public void Damage(float damage) {
 		if(IsDead) return; // YOUR ASS IS ALREADY DEAD!
 
+		OnDamage?.Invoke(damage);
+
 		Health -= damage;
 		if(Health <= 0.0f) {
 			IsDead = true;
 			OnDied?.Invoke();
 		}
-
-		OnDamage?.Invoke(damage);
 	}
 }
