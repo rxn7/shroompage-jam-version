@@ -60,14 +60,15 @@ internal class PlayerController {
 	}
 
 	public void Update(float dt) {
+        if(Locked)
+            return;
+
 		HandleHighLevelEffect(dt);
 
-        if(!Locked) {
-            m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
-            m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
+        m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
+        m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
 
-            UpdateInput();
-        }
+        UpdateInput();
 
 		UpdateMovementState();
 		UpdateDirection(dt);
