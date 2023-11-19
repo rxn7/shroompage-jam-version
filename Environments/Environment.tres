@@ -31,5 +31,4 @@ glow_map_strength = 0.0
 fog_light_energy = 0.11
 fog_density = 0.0509
 fog_height = 42.66
-volumetric_fog_enabled = true
 volumetric_fog_temporal_reprojection_enabled = false
