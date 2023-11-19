@@ -15,8 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://dr4svjq31o1lj" path="res://Audio/Soundtrack/3-snares.ogg" id="12_x17tj"]
 [ext_resource type="AudioStream" uid="uid://covglysthhn0v" path="res://Audio/Soundtrack/3-guitar-lead.ogg" id="13_ji0da"]
 
-[node name="Soundtrack" type="Node"]
+[node name="Soundtrack" type="Node" node_paths=PackedStringArray("m_TracksIntro", "m_TracksIntensity_0", "m_TracksIntensity_1", "m_TracksIntensity_2")]
 script = ExtResource("1_edtqn")
+m_TracksIntro = [NodePath("0/0_start")]
+m_TracksIntensity_0 = [NodePath("1/1_drums"), NodePath("1/1_guitar_bass"), NodePath("1/1_snares"), NodePath("1/1_guitar_lead"), NodePath("1/1_crash")]
+m_TracksIntensity_1 = [NodePath("1/1_drums"), NodePath("2/2_guitar_bass"), NodePath("1/1_snares"), NodePath("2/2_guitar_lead"), NodePath("1/1_crash")]
+m_TracksIntensity_2 = [NodePath("3/3_drums"), NodePath("3/3_bass"), NodePath("3/3_snares"), NodePath("3/3_guitar_lead"), NodePath("3/3_crash")]
 
 [node name="0" type="Node" parent="."]
 
