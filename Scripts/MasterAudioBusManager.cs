@@ -21,4 +21,3 @@ internal partial class MasterAudioBusManager : Node {
 		m_Chorus.Dry = 1.0f - factor * 0.5f;
 	}
 }
- 

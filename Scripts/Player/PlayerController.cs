@@ -34,7 +34,6 @@ internal class PlayerController {
 	public EMovementState MovementState { get; private set; }
 	public Vector3 Direction { get; private set; }
 	public PlayerMovementInputs Inputs => m_Inputs;
-	public ESurfaceMaterial SurfaceMaterial { get; private set; }
 
 	private readonly PlayerManager m_Player;
 	private readonly CollisionShape3D m_Collider;
@@ -44,11 +43,11 @@ internal class PlayerController {
 	private bool m_WasOnFloorLastFrame = false;
 	private bool m_IsMoving;
 
-    public float Yaw { get; private set; }
-    public float Pitch { get; private set; }
-    private Vector2 m_HighLevelEffectOffset;
-    private SineWave m_HighLevelEffectYawWave = new();
-    private CosineWave m_HighLevelEffectPitchWave = new();
+	public float Yaw { get; private set; }
+	public float Pitch { get; private set; }
+	private Vector2 m_HighLevelEffectOffset;
+	private SineWave m_HighLevelEffectYawWave = new();
+	private CosineWave m_HighLevelEffectPitchWave = new();
 
 	public PlayerController(PlayerManager player) {
 		m_Player = player;
@@ -60,10 +59,10 @@ internal class PlayerController {
 	}
 
 	public void Update(float dt) {
-        HandleHighLevelEffect(dt);
+		HandleHighLevelEffect(dt);
 
-        m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
-        m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
+		m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
+		m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
 
 		UpdateInput();
 		UpdateMovementState();
@@ -76,12 +75,9 @@ internal class PlayerController {
 		UpdatePhysicsMovement(dt);
 		Velocity = m_Player.GetRealVelocity();
 		m_IsMoving = Velocity.LengthSquared() >= float.Epsilon;
-
-        if(m_Player.IsOnFloor())
-            SurfaceMaterial = m_Player.GetSurfaceMaterial(SurfaceMaterial);
 		
 		if (JustLanded)
-			PlayFootstep();
+			FootstepManager.PlayLand(m_Player.GlobalPosition, (float)GD.RandRange(0.9f, 1.1f), 0.0f);
 
 		m_WasOnFloorLastFrame = m_Player.IsOnFloor();
 	}
@@ -95,7 +91,7 @@ internal class PlayerController {
 	}
 
 	public void PlayFootstep(float volume = 0.0f) {
-		SurfaceManager.PlayRandomFootstep(SurfaceMaterial, m_Player.GlobalPosition, (float)GD.RandRange(0.9f, 1.1f), volume);
+		FootstepManager.PlayFootstep(m_Player.GlobalPosition, (float)GD.RandRange(0.9f, 1.1f), volume);
 	}
 
 	private void UpdatePhysicsMovement(float dt) {
@@ -106,7 +102,7 @@ internal class PlayerController {
 			verticalVelocity -= GravityForce * dt;
 		else if (m_Inputs.Jump) {
 			verticalVelocity += JumpForce;
-			PlayFootstep();
+			FootstepManager.PlayJump(m_Player.GlobalPosition, (float)GD.RandRange(0.9f, 1.1f), 0.0f);
 		}
 
 		m_Player.Velocity = groundVelocity + Vector3.Up * verticalVelocity;
@@ -178,16 +174,16 @@ internal class PlayerController {
 		}
 	}
 
-    private void HandleHighLevelEffect(float dt) {
-        m_HighLevelEffectYawWave.UpdateTimer(dt);
-        m_HighLevelEffectPitchWave.UpdateTimer(dt);
+	private void HandleHighLevelEffect(float dt) {
+		m_HighLevelEffectYawWave.UpdateTimer(dt);
+		m_HighLevelEffectPitchWave.UpdateTimer(dt);
 
-        float amplitude = m_Player.HighLevel * 20.0f;
-        float frequency = m_Player.HighLevel * 10.0f;
+		float amplitude = m_Player.HighLevel * 20.0f;
+		float frequency = m_Player.HighLevel * 10.0f;
 
-        m_HighLevelEffectOffset.Y = m_HighLevelEffectYawWave.GetValue(frequency) * amplitude;
-        m_HighLevelEffectOffset.X = m_HighLevelEffectPitchWave.GetValue(frequency) * amplitude;
-    }
+		m_HighLevelEffectOffset.Y = m_HighLevelEffectYawWave.GetValue(frequency) * amplitude;
+		m_HighLevelEffectOffset.X = m_HighLevelEffectPitchWave.GetValue(frequency) * amplitude;
+	}
 
 	internal struct PlayerMovementInputs {
 		public bool Jump { get; set; }

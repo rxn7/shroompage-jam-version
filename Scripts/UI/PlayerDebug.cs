@@ -13,7 +13,6 @@ internal partial class PlayerDebug : Label {
 
 		m_StringBuilder.AppendLine($"Controller:")
 					   .AppendLine($"  MovementState: {Player.Controller.MovementState}")
-					   .AppendLine($"  Surface: {Player.Controller.SurfaceMaterial}")
 					   .AppendLine($"  Input: {Player.Controller.Inputs.Move.ToString("0.00")}")
 					   .AppendLine($"  Direction: {Player.Controller.Direction.ToString("0.00")}")
 					   .AppendLine($"  MoveSpeed: {Player.Controller.MoveSpeed:0.00}")
