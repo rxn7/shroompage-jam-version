@@ -106,6 +106,9 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
+
+		if(ViewmodelDisabled)
+			return;
 		
 		ItemManager.Update();
 		
