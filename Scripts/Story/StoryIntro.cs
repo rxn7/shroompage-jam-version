@@ -63,6 +63,7 @@ internal partial class StoryIntro : Node {
 			m_Player.ViewmodelDisabled = false;
 			DisableShroomEffects = false;
 			m_collectedShrooms = 100;
+			SpawnMachete();
 		}
 	}
 
@@ -135,7 +136,10 @@ internal partial class StoryIntro : Node {
 		m_IntroBarrier.Destruct();
 
 		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick", 3);
+		SpawnMachete();
+	}
 
+	private void SpawnMachete() {
 		GameManager.Singleton.Player.ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
 		AddChild(GameManager.Singleton.Player.ItemManager.HeldItem);
 		GameManager.Singleton.Player.ItemManager.HeldItem.Equip(GameManager.Singleton.Player);

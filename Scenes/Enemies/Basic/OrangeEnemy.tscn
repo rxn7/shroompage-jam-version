@@ -19,11 +19,12 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_wev2t")
-HopCooldown = 4.0
-HopHeight = 25.0
+HopCooldown = 0.1
+HopHeight = 3.0
 Damage = 2.0
 HighLevelIncrease = 0.4
 DamagePlayerMaxDistanceSquared = 1.4
+Health = 25.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_4su5r")

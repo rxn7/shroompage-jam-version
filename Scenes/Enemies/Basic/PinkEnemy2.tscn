@@ -62,6 +62,7 @@ HopForce = 8.0
 HopHeight = 6.0
 Damage = 25.0
 HighLevelIncrease = 0.1
+Health = 25.0
 
 [node name="Pink" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_20mfn")
