@@ -115,13 +115,12 @@ internal partial class StoryIntro : Node {
 
 		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
 
-		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
 		GameManager.Singleton.Soundtrack.SetMuted(true);
 
 		await Task.Delay(5000);
 
+		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
-
 		GameManager.Singleton.Soundtrack.SetMuted(false);
 
 		m_IntroBarrier.Destruct();

@@ -58,7 +58,8 @@ axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_gtuc7")
 HopCooldown = 2.2
-HopHeight = 8.0
+HopForce = 8.0
+HopHeight = 6.0
 Damage = 25.0
 HighLevelIncrease = 0.1
 

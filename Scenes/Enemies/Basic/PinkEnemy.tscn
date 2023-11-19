@@ -58,7 +58,7 @@ axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_7ajjr")
 HopCooldown = 1.5
-HopHeight = 8.0
+HopHeight = 5.0
 Damage = 15.0
 HighLevelIncrease = 0.15
 
