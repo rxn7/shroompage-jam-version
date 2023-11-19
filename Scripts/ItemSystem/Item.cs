@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Godot;
 using Game.Player;
-using Game.Utils;
 
 namespace Game.ItemSystem; 
 
@@ -17,13 +15,7 @@ internal abstract partial class Item : RigidBody3D {
 		DisableMode = DisableModeEnum.Remove;
 		ApplyHighlightShader();
 	}
-
-	public virtual void Highlight() {
-	}
-
-	public virtual void Unhighlight() {
-	}
-	
+		  
 	public virtual void Equip(PlayerManager player) { 
 		MeshInstance.MaterialOverlay = null;
 	}

@@ -17,9 +17,6 @@ internal partial class PlayerItemRaycast : Node {
 	public Item HighlightedItem {
 		get => m_HighlightedItem;
 		private set {
-			if(m_HighlightedItem is not null && IsInstanceValid(m_HighlightedItem) && !m_HighlightedItem.IsQueuedForDeletion())
-				m_HighlightedItem.Unhighlight();
-
 			m_HighlightedItem = value;
 
 			if (m_HighlightedItem is null) {
@@ -32,8 +29,6 @@ internal partial class PlayerItemRaycast : Node {
 
 			using InputEventKey keyEvent = InputMap.ActionGetEvents(PlayerItemManager.PickupInputName)[0] as InputEventKey;
 			m_PickupLabel.Text = $"Press [{keyEvent.PhysicalKeycode}] to {(m_HighlightedItem is ConsumableItem ? "consume" : "pickup")} {m_HighlightedItem.Data.Name}";
-
-			m_HighlightedItem.Highlight();
 		}
 	}
 

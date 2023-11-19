@@ -238,7 +238,8 @@ shadow_enabled = true
 directional_shadow_mode = 0
 
 [node name="DebugLight" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.871445, 0.395641, -0.289916, -8.88178e-16, 0.591071, 0.80662, 0.490493, -0.702925, 0.515086, 0, 0, 0)
+transform = Transform3D(0.871445, 0.395641, -0.289916, -8.88178e-16, 0.591071, 0.80662, 0.490493, -0.702925, 0.515086, 2.90764, 4.0331, 5.02789)
+visible = false
 light_color = Color(0.811765, 0.819608, 0.952941, 1)
 light_energy = 5.219
 shadow_enabled = true

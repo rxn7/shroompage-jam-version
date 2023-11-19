@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dmbjbkj8ngu04"]
 
-[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="1_0mgck"]
+[ext_resource type="Shader" path="res://Shaders/Highlight.gdshader" id="1_pftup"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_0mgck")
+shader = ExtResource("1_pftup")
 shader_parameter/shine_color = Color(0.756863, 0.905882, 0.247059, 1)
 shader_parameter/cycle_interval = 3.5
 shader_parameter/shine_speed = 1.838
