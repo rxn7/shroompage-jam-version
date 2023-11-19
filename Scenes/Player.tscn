@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=23 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://wb0cbtp1cg27" path="res://Audio/Hurt/player_hurt4.wav" id="12_5arxt"]
 [ext_resource type="AudioStream" uid="uid://cwx5m8va7chr" path="res://Audio/player_lowhp.wav" id="21_22ehh"]
 [ext_resource type="Script" path="res://Scripts/Player/HeartBeatSound.cs" id="21_kb7jm"]
-[ext_resource type="PackedScene" uid="uid://bo8y6sdf6ud74" path="res://Scenes/Particles/Death.tscn" id="23_e6c1e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
 radius = 0.2
@@ -69,6 +68,3 @@ script = ExtResource("9_2lkjr")
 [node name="LowHp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_22ehh")
 script = ExtResource("21_kb7jm")
-
-[node name="CPUParticles3D_die" parent="." instance=ExtResource("23_e6c1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199975, 0.490678, 0.00315186)

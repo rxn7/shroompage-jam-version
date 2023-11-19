@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dluthrik5m2ib"
-path="res://.godot/imported/mushroom_consume1.wav-d096ffe2a2e156bbe33192bbb16bccef.sample"
+path="res://.godot/imported/mushroom_consume1.wav-a8c126664a90c93d908361cf465b90f8.sample"
 
 [deps]
 
-source_file="res://Audio/Consume/mushroom_consume1.wav"
-dest_files=["res://.godot/imported/mushroom_consume1.wav-d096ffe2a2e156bbe33192bbb16bccef.sample"]
+source_file="res://Audio/Items/mushroom_consume1.wav"
+dest_files=["res://.godot/imported/mushroom_consume1.wav-a8c126664a90c93d908361cf465b90f8.sample"]
 
 [params]
 
