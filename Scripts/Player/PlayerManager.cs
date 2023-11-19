@@ -28,6 +28,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
 	public PlayerNotificationDisplay NotificationDisplay { get; private set; }
+	public Node HUD;
 	public Action<float> OnHealthChanged { get; set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
@@ -59,14 +60,15 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public override void _Ready() {
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 
+		HUD =  GetNode("HUD");
 		Head = GetNode<PlayerHead>("Head");
 		Viewmodel = Head.Camera.GetNode<PlayerViewmodel>("Viewmodel");
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
-		NotificationDisplay = GetNode("HUD").GetNode<PlayerNotificationDisplay>("Notification");
+		NotificationDisplay = HUD.GetNode<PlayerNotificationDisplay>("Notification");
 
-		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
+		ScreenEffect = HUD.GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
 
 		Controller = new PlayerController(this);
@@ -84,11 +86,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		OnDamage += (float dmg) => {
 			SoundManager.Play3D(GlobalPosition, m_HurtSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 		};
-
-		// not all scenes will have an intro
-		// this can be generalized to run a single scene specific script but idc since this is a jam
-		StoryIntro intro = GetNodeOrNull<StoryIntro>("../Intro");
-		intro?.Start(this);
 	}
 
 	public override void _Process(double dt) {
@@ -97,6 +94,8 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
+		
+		ItemManager.Update();
 
 		if (ViewmodelDisabled) {
 			Viewmodel.Hide();
@@ -104,8 +103,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		} else {
 			Viewmodel.Show();
 		}
-		
-		ItemManager.Update();
 		
 		if(Input.IsActionPressed(AttackInputAction))
 			Attack();

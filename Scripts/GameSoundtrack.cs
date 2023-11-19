@@ -10,6 +10,7 @@ struct audioVolumeTargets {
 	public float[] m_volumes;
 }
 
+// SHIT CODE!!!!!! but im too lazy to fix the new code
 internal partial class GameSoundtrack : Node {
 
 	[Export] private AudioStreamPlayer[] m_TracksIntro = new AudioStreamPlayer[1];
@@ -23,6 +24,8 @@ internal partial class GameSoundtrack : Node {
 	private int m_QueuedStage = 0;
 	private double m_UpdateTimer = 0;
 	private double m_TimeUntilUpdate = 0;
+	private bool m_Muted = true;
+	private bool m_usingIntroMusic = false;
 
 	public override void _Ready() {
 		ApplyVolumeTargets(GetVolumeTargets(), 1);
@@ -67,34 +70,37 @@ internal partial class GameSoundtrack : Node {
 		int listedTracks = 0;  
 
 		AudioStreamPlayer[] currentStage = allStreams[m_Stage];
+		if (m_usingIntroMusic) currentStage = m_TracksIntro;
 		for (int i = 0; i < currentStage.Length; i++) {
 			targetStreams[listedTracks] = currentStage[i];
-			volumeTargets[listedTracks] = i <= m_IntensityLevel ? 0 : -100;
+			volumeTargets[listedTracks] = i <= m_IntensityLevel && !m_Muted ? 0 : -100;
 			listedTracks++;
 		}
 		
 		// compute volume for current state, and then mute all other tracks
-		for (int streamListPosition = 0; streamListPosition < allStreams.Length; streamListPosition++) {   
-			if (streamListPosition == m_Stage) continue;
-
-			AudioStreamPlayer[] streamList = allStreams[streamListPosition];
+		foreach (AudioStreamPlayer[] streamList in allStreams) {
+			if (streamList == allStreams[m_Stage]) continue;
 			for (int streamPosition = 0; streamPosition < streamList.Length; streamPosition++) {
 				AudioStreamPlayer stream = streamList[streamPosition];
 
-				bool changedVolume = false;
-				for (int i = 0; i < targetStreams.Length; i++) {
-					if (targetStreams[i] != stream) continue;
-					changedVolume = true; 
-					break;
-				}
+				if (!m_usingIntroMusic) {
+					// check if volume was already assigned for the previous track
+					bool changedVolume = false;
+					for (int i = 0; i < targetStreams.Length; i++) {
+						if (targetStreams[i] != stream) continue;
+						changedVolume = true; 
+						break;
+					}
 
-				if (changedVolume) continue;
+					if (changedVolume) continue;
+				}
 		
 				targetStreams[listedTracks] = stream;
 				volumeTargets[listedTracks] = -100;
 				listedTracks++;
 			}            
 		}
+	
 
 		targets.m_tracks = targetStreams;
 		targets.m_volumes = volumeTargets;
@@ -106,7 +112,6 @@ internal partial class GameSoundtrack : Node {
 		for (int i = 0; i < targets.m_tracks.Length; i++) {
 			AudioStreamPlayer track = targets.m_tracks[i];
 			if (track == null) continue;
-
 			if (!track.Playing) track.Play();
 			track.VolumeDb = Mathf.Lerp(targets.m_tracks[i].VolumeDb, targets.m_volumes[i], (float)alpha);
 		}
@@ -114,5 +119,13 @@ internal partial class GameSoundtrack : Node {
 
 	public void IncreaseStage() {
 		m_QueuedStage++;
+	}
+
+	public void SetMuted(bool mute) {
+		m_Muted = mute;
+	}
+
+	public void SetIntroMusic(bool enable) {
+		m_usingIntroMusic = enable;
 	}
 }

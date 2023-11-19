@@ -14,10 +14,10 @@ internal partial class PlayerNotificationDisplay : Label {
         if (m_TextCleared) return;
 
         m_TimeToClear -= (float)delta_time;
-        if (m_TimeToClear <= 0.0f) {
-            Text = "";
-            m_TextCleared = true;
-        }
+        if (m_TimeToClear > 0.0f) return;
+
+        Text = "";
+        m_TextCleared = true;
 	}
 
     public void DisplayNotification(string text, float duration) {

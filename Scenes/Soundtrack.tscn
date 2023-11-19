@@ -34,52 +34,76 @@ bus = &"Soundtrack"
 
 [node name="1_drums" type="AudioStreamPlayer" parent="1"]
 stream = ExtResource("3_ygqsc")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="1_snares" type="AudioStreamPlayer" parent="1"]
 stream = ExtResource("4_7he1v")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="1_crash" type="AudioStreamPlayer" parent="1"]
 stream = ExtResource("5_niur7")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="1_guitar_bass" type="AudioStreamPlayer" parent="1"]
 stream = ExtResource("6_36rqj")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="1_guitar_lead" type="AudioStreamPlayer" parent="1"]
 stream = ExtResource("7_2gnf5")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="2" type="Node" parent="."]
 
 [node name="2_guitar_bass" type="AudioStreamPlayer" parent="2"]
 stream = ExtResource("8_acwr0")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="2_guitar_lead" type="AudioStreamPlayer" parent="2"]
 stream = ExtResource("9_cknmv")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="3" type="Node" parent="."]
 
 [node name="3_bass" type="AudioStreamPlayer" parent="3"]
 stream = ExtResource("10_5jfxg")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="3_drums" type="AudioStreamPlayer" parent="3"]
 stream = ExtResource("11_5tlh7")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="3_snares" type="AudioStreamPlayer" parent="3"]
 stream = ExtResource("12_x17tj")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="3_crash" type="AudioStreamPlayer" parent="3"]
 stream = ExtResource("9_1gox2")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"
 
 [node name="3_guitar_lead" type="AudioStreamPlayer" parent="3"]
 stream = ExtResource("13_ji0da")
+volume_db = -80.0
+autoplay = true
 bus = &"Soundtrack"

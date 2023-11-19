@@ -1,6 +1,7 @@
 using System;
 using Game.Enemy.Stage;
 using Game.Player;
+using Game.Story;
 using Godot;
 
 namespace Game;
@@ -24,6 +25,14 @@ internal partial class GameManager : Node {
 	public override void _EnterTree() {
 		Soundtrack = GetNode<GameSoundtrack>("Soundtrack");
 		Player = GetNode<PlayerManager>("Player");
+	}
+
+	public override void _Ready()
+	{
+		// not all scenes will have an intro
+		// this can be generalized to run a single scene specific script but idc since this is a jam
+		StoryIntro intro = GetNodeOrNull<StoryIntro>("Intro");
+		intro?.Start(this);
 	}
 
 	public int GetEnemyCount() {

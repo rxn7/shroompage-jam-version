@@ -1,5 +1,6 @@
 using Godot;
 using Game.ItemSystem;
+using System;
 using Game.Utils;
 using System.Collections.Generic;
 
@@ -11,6 +12,7 @@ internal class PlayerItemManager {
 	public static readonly StringName DropInputPickup = "ItemDrop";
 	
 	public HoldableItem HeldItem { get; set; }
+	public Action OnItemEquipped { get; set; }
 	private readonly PlayerManager m_Player;
 
 	public PlayerItemManager(PlayerManager player) {
