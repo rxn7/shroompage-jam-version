@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://buaquiug5a8pc"]
+[gd_scene load_steps=3 format=3 uid="uid://buaquiug5a8pc"]
 
-[ext_resource type="PackedScene" uid="uid://g2y5qosj5rm5" path="res://Models/BarbedWire/Fence.glb" id="1_u7r58"]
+[ext_resource type="PackedScene" uid="uid://m77na37krhav" path="res://Models/BarbedWire/WoodFence.glb" id="1_o42mb"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh4ft"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fywjs"]
+size = Vector3(4.05629, 3.14893, 0.170205)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_un4su"]
-size = Vector3(3.94914, 7.19127, 0.126898)
+[node name="Node3D" type="Node3D"]
 
-[node name="Fence" instance=ExtResource("1_u7r58")]
+[node name="WoodFence" parent="." instance=ExtResource("1_o42mb")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Plane" index="0"]
-physics_material_override = SubResource("PhysicsMaterial_sh4ft")
+[node name="StaticBody3D" type="StaticBody3D" parent="WoodFence"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_un4su")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WoodFence/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.080435)
+shape = SubResource("BoxShape3D_fywjs")
