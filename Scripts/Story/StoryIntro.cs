@@ -118,13 +118,9 @@ internal partial class StoryIntro : Node {
 
 		await Task.Delay(5000);
 
-		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
-<<<<<<< HEAD
-=======
 
 		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
->>>>>>> 9b60f96 (intro story improved)
 		GameManager.Singleton.Soundtrack.SetMuted(false);
 
 		GameManager.Singleton.Player.ViewmodelDisabled = false;
