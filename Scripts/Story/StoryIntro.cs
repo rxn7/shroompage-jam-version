@@ -111,13 +111,19 @@ internal partial class StoryIntro : Node {
 	}
 
 	private async Task BeginEndSequence() {
-		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
 		m_EndSequenceSoundPlayer.Play();
+
+		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
+
 		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
 		GameManager.Singleton.Soundtrack.SetMuted(true);
+
 		await Task.Delay(5000);
+
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
-		m_IntroBarrier.Destruct();
+
 		GameManager.Singleton.Soundtrack.SetMuted(false);
+
+		m_IntroBarrier.Destruct();
 	}
 }
