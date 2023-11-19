@@ -31,7 +31,7 @@ internal partial class StoryIntro : Node {
 		"Press [WASD] to move",
 		"Press [Space] to jump",
 		"Press [Left Shift] to sprint",
-		"Harvest 6 mushrooms",
+		"Press [F] to pick up",
 	};
 
 	public async Task Start(GameManager game) {
@@ -107,7 +107,6 @@ internal partial class StoryIntro : Node {
 			return;
 
 		m_playedLastShroomNotification = true;
-		m_NotificationDisplay.DisplayNotification("I should eat one of these", 3);
 	}
 
 	private async Task BeginEndSequence() {
@@ -121,8 +120,16 @@ internal partial class StoryIntro : Node {
 
 		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
+<<<<<<< HEAD
+=======
+
+		GameManager.Singleton.Soundtrack.SetIntroMusic(false);
+>>>>>>> 9b60f96 (intro story improved)
 		GameManager.Singleton.Soundtrack.SetMuted(false);
 
+		GameManager.Singleton.Player.ViewmodelDisabled = false;
 		m_IntroBarrier.Destruct();
+
+		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick", 3);
 	}
 }
