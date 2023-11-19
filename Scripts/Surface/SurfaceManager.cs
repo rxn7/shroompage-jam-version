@@ -17,7 +17,7 @@ internal static class SurfaceManager {
 	}
 	
 	// TODO: This allocates a lot of memory every physics frame, possible memory leak?
-	public static ESurfaceMaterial GetSurfaceMaterial(this CharacterBody3D body) {
+	public static ESurfaceMaterial GetSurfaceMaterial(this CharacterBody3D body, ESurfaceMaterial currentMat) {
 		for (int i = 0; i < body.GetSlideCollisionCount(); ++i) {
 			KinematicCollision3D collision = body.GetSlideCollision(i);
 			using GodotObject collider = collision.GetCollider();
@@ -28,7 +28,7 @@ internal static class SurfaceManager {
 				return mat;
 		}
 
-		return ESurfaceMaterial.None;
+		return currentMat;
 	}
 
 	public static void PlayRandomFootstep(ESurfaceMaterial surfaceMaterial, Vector3 position, float pitch = 1.0f, float volumeDb = 0.0f) {

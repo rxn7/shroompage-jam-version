@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Game.Surface;
 using Game.Utils;
@@ -77,9 +76,10 @@ internal class PlayerController {
 		UpdatePhysicsMovement(dt);
 		Velocity = m_Player.GetRealVelocity();
 		m_IsMoving = Velocity.LengthSquared() >= float.Epsilon;
-		
-		SurfaceMaterial = m_Player.GetSurfaceMaterial();
 
+        if(m_Player.IsOnFloor())
+            SurfaceMaterial = m_Player.GetSurfaceMaterial(SurfaceMaterial);
+		
 		if (JustLanded)
 			PlayFootstep();
 

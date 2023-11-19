@@ -68,6 +68,10 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
 		AddChild(ItemManager.HeldItem);
 		ItemManager.HeldItem.Equip(this);
+
+		OnDied += () => {
+			GetTree().ChangeSceneToFile("res://Scenes/UI/SplashScreen.tscn");
+		};
 	}
 
 	public override void _Process(double dt) {
