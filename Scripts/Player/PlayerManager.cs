@@ -31,7 +31,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
 	[Export] private AudioStream[] m_KickImpactSounds = new AudioStream[0];
 	[Export] private AudioStream[] m_HurtSounds = new AudioStream[0];
-	private AudioStreamPlayer m_HurtSoundPlayer;
 
 	public float Health {
 		get => m_Health;
@@ -62,7 +61,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
-		m_HurtSoundPlayer = GetNode<AudioStreamPlayer>("HurtSoundPlayer");
 
 		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
@@ -80,9 +78,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		};
 
 		OnDamage += (float dmg) => {
-			m_HurtSoundPlayer.Stream = m_HurtSounds.GetRandomItem();
-			m_HurtSoundPlayer.PitchScale = (float)GD.RandRange(0.9f, 1.1f);
-			m_HurtSoundPlayer.Play();
+			SoundManager.Play3D(GlobalPosition, m_HurtSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 		};
 	}
 

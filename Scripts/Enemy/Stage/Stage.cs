@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using Game.Player;
+using Game.Utils;
 using Godot;
 
 namespace Game.Enemy.Stage;
 
 internal partial class Stage : Area3D {
+	private static readonly AudioStream s_StageStartAudio = GD.Load<AudioStream>("res://Audio/stage_start_stinger.wav");
+
 	private bool m_Started = false;
 	private List<EnemySpawner> m_Spawners = new();
 
@@ -21,8 +24,8 @@ internal partial class Stage : Area3D {
 				m_Spawners.Add(spawner);
 			}
 		}
-
 	}
+
 	public override void _ExitTree() {
 		BodyEntered -= OnBodyEntered;
 	}
@@ -51,6 +54,8 @@ internal partial class Stage : Area3D {
 			spawner.Start();
 
 		m_Started = true;
+
+		SoundManager.Play3D(GlobalPosition, s_StageStartAudio);
 	}
 
 	private void StageCleared() {

@@ -67,8 +67,6 @@ shadow_enabled = true
 spot_angle = 35.0
 script = ExtResource("9_2lkjr")
 
-[node name="HurtSoundPlayer" type="AudioStreamPlayer" parent="."]
-
 [node name="LowHp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_22ehh")
 script = ExtResource("21_kb7jm")

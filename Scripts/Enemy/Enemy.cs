@@ -8,6 +8,10 @@ namespace Game.Enemy;
 internal partial class Enemy : CharacterBody3D, IHealth {
 	private static readonly Color DamageEffectColor = new Color(4.0f, 0.0f, 0.0f);
 	private static readonly StandardMaterial3D DamageEffectMaterial = new StandardMaterial3D() { AlbedoColor = DamageEffectColor, Roughness = 1.0f, Metallic = 0.0f };
+	private static readonly ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
+
+	private const float Damage = 5.0f;
+	private const float HighLevelIncrease = 0.075f;
 	private const float DamageEffectDuration = 0.1f;
 	private const float DamagePlayerMaxDistanceSquared = 1.2f;
 	private const float HopCooldown = 1.0f;
@@ -20,9 +24,6 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	public bool IsDead { get; set; }
 	public Action<float> OnDamage { get; set; }
 
-	[Export] private float m_Damage = 5.0f;
-	[Export] private float m_HighLevelIncrease = 0.075f;
-	[Export] private ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
 	private MeshInstance3D m_MeshInstance;
 	private float m_DamageCooldownTimer = 0.0f;
 	private float m_HopCooldownTimer = 0.0f;
@@ -81,8 +82,8 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		if(m_DamageCooldownTimer < DamageCooldown) {
 			m_DamageCooldownTimer += (float)delta;
 		} else if(GlobalPosition.DistanceSquaredTo(GameManager.Singleton.Player.GlobalPosition) <= DamagePlayerMaxDistanceSquared) {
-			(GameManager.Singleton.Player as IHealth).Damage(m_Damage);
-			GameManager.Singleton.Player.HighLevel += m_HighLevelIncrease;
+			(GameManager.Singleton.Player as IHealth).Damage(Damage);
+			GameManager.Singleton.Player.HighLevel += HighLevelIncrease;
 			m_DamageCooldownTimer = 0.0f;
 		}
 	}
