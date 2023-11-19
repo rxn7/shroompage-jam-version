@@ -29,6 +29,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
 	public Control HUD { get; private set; }
+	public Control BlackoutFrame { get; private set; }
 	public PlayerNotificationDisplay NotificationDisplay { get; private set; }
 	public Action<float> OnHealthChanged { get; set; }
 
@@ -69,7 +70,8 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		HUD = GetNode<Control>("HUD");
 		NotificationDisplay = HUD.GetNode<PlayerNotificationDisplay>("Notification");
 
-		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
+		BlackoutFrame = HUD.GetNode<Control>("Blackout");
+		ScreenEffect = HUD.GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
 
 		Controller = new PlayerController(this);

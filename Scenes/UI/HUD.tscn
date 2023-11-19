@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqghedx0pa5c8"]
+[gd_scene load_steps=15 format=3 uid="uid://cqghedx0pa5c8"]
 
 [ext_resource type="Texture2D" uid="uid://bcpm1boumx14q" path="res://Textures/UI/crosshair001.png" id="1_ul7ro"]
 [ext_resource type="Script" path="res://Scripts/ScreenEffect.cs" id="2_luj3c"]
@@ -22,6 +22,15 @@ shader_parameter/fisheyeStrength = 0.0
 shader_parameter/resX = 640
 shader_parameter/resY = 360
 shader_parameter/rgb255 = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="Gradient" id="Gradient_bmoe5"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4juy7"]
+gradient = SubResource("Gradient_bmoe5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1q5a"]
+texture = SubResource("GradientTexture1D_4juy7")
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -136,3 +145,13 @@ layout_mode = 0
 offset_top = -32.0
 offset_bottom = 0.0
 script = ExtResource("10_htvny")
+
+[node name="Blackout" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 8848.0
+offset_bottom = 9352.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_v1q5a")
