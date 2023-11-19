@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmuqdovhgtka4"]
+[gd_scene load_steps=24 format=3 uid="uid://dmuqdovhgtka4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerManager.cs" id="1_1agp5"]
 [ext_resource type="PackedScene" uid="uid://cqghedx0pa5c8" path="res://Scenes/UI/HUD.tscn" id="2_prwv8"]
@@ -16,6 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://daxild3xmosjt" path="res://Textures/headlight-projector.png" id="8_tmn47"]
 [ext_resource type="AudioStream" uid="uid://k7x1i700elvi" path="res://Audio/Kick/kick_impact4.wav" id="8_yggr3"]
 [ext_resource type="Script" path="res://Scripts/Headlight.cs" id="9_2lkjr"]
+[ext_resource type="AudioStream" uid="uid://butugcxs2f75g" path="res://Audio/Hurt/player_hurt1.wav" id="9_w6f2x"]
+[ext_resource type="AudioStream" uid="uid://025esi8ytvgb" path="res://Audio/Hurt/player_hurt2.wav" id="10_hhx3s"]
+[ext_resource type="AudioStream" uid="uid://oqm677rkum7w" path="res://Audio/Hurt/player_hurt3.wav" id="11_cml0k"]
+[ext_resource type="AudioStream" uid="uid://wb0cbtp1cg27" path="res://Audio/Hurt/player_hurt4.wav" id="12_5arxt"]
+[ext_resource type="AudioStream" uid="uid://cwx5m8va7chr" path="res://Audio/player_lowhp.wav" id="21_22ehh"]
+[ext_resource type="Script" path="res://Scripts/Player/HeartBeatSound.cs" id="21_kb7jm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wer84"]
 radius = 0.2
@@ -27,7 +33,8 @@ input_ray_pickable = false
 platform_floor_layers = 1
 script = ExtResource("1_1agp5")
 m_KickSounds = [ExtResource("6_d2b8t"), ExtResource("7_ktvjd"), ExtResource("8_t8ml1")]
-m_ImpactSounds = [ExtResource("5_7hj7x"), ExtResource("6_2oxqy"), ExtResource("7_sv44a"), ExtResource("8_yggr3")]
+m_KickImpactSounds = [ExtResource("5_7hj7x"), ExtResource("6_2oxqy"), ExtResource("7_sv44a"), ExtResource("8_yggr3")]
+m_HurtSounds = [ExtResource("9_w6f2x"), ExtResource("10_hhx3s"), ExtResource("11_cml0k"), ExtResource("12_5arxt")]
 
 [node name="ItemRaycast" type="Node" parent="." node_paths=PackedStringArray("m_PickupLabel")]
 script = ExtResource("7_n7ipg")
@@ -59,3 +66,9 @@ light_projector = ExtResource("8_tmn47")
 shadow_enabled = true
 spot_angle = 35.0
 script = ExtResource("9_2lkjr")
+
+[node name="HurtSoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="LowHp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_22ehh")
+script = ExtResource("21_kb7jm")

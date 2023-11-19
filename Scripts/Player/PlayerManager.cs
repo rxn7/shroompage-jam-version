@@ -28,14 +28,15 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public ScreenEffect ScreenEffect { get; private set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
-	[Export] private AudioStream[] m_ImpactSounds = new AudioStream[0];
+	[Export] private AudioStream[] m_KickImpactSounds = new AudioStream[0];
+	[Export] private AudioStream[] m_HurtSounds = new AudioStream[0];
+	private AudioStreamPlayer m_HurtSoundPlayer;
 
 	public float Health {
 		get => m_Health;
-		set { m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
-		}
+		set { m_Health = Mathf.Clamp(value, 0.0f, 100.0f); }
 	}
-	private float m_Health = 100.0f;
+	private float m_Health = 40.0f;
 
 	public float HighLevel { 
 		get => m_HighLevel;
@@ -44,6 +45,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	private float m_HighLevel = 0.0f;
 
 	public Action OnDied { get; set; }
+	public Action<float> OnDamage { get; set; }
 	public bool IsDead { get; set; } = false;
 
 	private float m_KickCooldownTimer = 0.0f;
@@ -56,6 +58,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
+		m_HurtSoundPlayer = GetNode<AudioStreamPlayer>("HurtSoundPlayer");
 
 		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
@@ -70,6 +73,12 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		OnDied += () => {
 			GetTree().ChangeSceneToFile("res://Scenes/UI/SplashScreen.tscn");
+		};
+
+		OnDamage += (float dmg) => {
+			m_HurtSoundPlayer.Stream = m_HurtSounds.GetRandomItem();
+			m_HurtSoundPlayer.PitchScale = (float)GD.RandRange(0.9f, 1.1f);
+			m_HurtSoundPlayer.Play();
 		};
 	}
 
@@ -108,7 +117,9 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Viewmodel.PlayAttackAnimation();
 		SoundManager.Play3D(GlobalPosition, ItemManager.HeldItem?.HoldableData.AttackSounds.GetRandomItem() ?? PunchSound, (float)GD.RandRange(0.8f, 1.2f));
 
-		Raycast(MeleeRange, ItemManager.HeldItem?.HoldableData.Damage ?? 5, MeleeKnockback, out IHealth health);
+		if(Raycast(MeleeRange, ItemManager.HeldItem?.HoldableData.Damage ?? 5, MeleeKnockback, out IHealth health)) {
+			SoundManager.Play3D(GlobalPosition, ItemManager.HeldItem?.HoldableData.AttackHitSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
+		}
 	}
 
 	private void Kick() {
@@ -120,7 +131,9 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Viewmodel.PlayLegKickAnimation();
 		SoundManager.Play3D(GlobalPosition, m_KickSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
 
-		Raycast(KickRange, KickDamage, KickKnockback, out IHealth health);
+		if(Raycast(KickRange, KickDamage, KickKnockback, out IHealth health)) {
+			SoundManager.Play3D(GlobalPosition, m_KickImpactSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f), 50.0f);
+		}
 	}
 
 	private bool Raycast(float range, float damage, float knockback, out IHealth health) {
@@ -149,7 +162,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		health = h;
 		health.Damage(damage);
-		SoundManager.Play3D(GlobalPosition, m_ImpactSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
 		return true;
 	}
 }
