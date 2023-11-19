@@ -12,7 +12,6 @@ internal class PlayerItemManager {
 	public static readonly StringName DropInputPickup = "ItemDrop";
 	
 	public HoldableItem HeldItem { get; set; }
-	public Action OnItemEquipped { get; set; }
 	private readonly PlayerManager m_Player;
 
 	public PlayerItemManager(PlayerManager player) {

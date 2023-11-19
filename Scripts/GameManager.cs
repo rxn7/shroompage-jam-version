@@ -12,6 +12,7 @@ internal partial class GameManager : Node {
 	public PlayerManager Player { get; private set; }
 	public GameSoundtrack Soundtrack { get; private set; }
 	public Stage CurrentStage { get; set; }
+	public StoryIntro StoryIntro { get; private set; }
 
 	public Action<Stage> StageStarted;
 	public Action<Stage> StageCleared;
@@ -32,7 +33,11 @@ internal partial class GameManager : Node {
 		// not all scenes will have an intro
 		// this can be generalized to run a single scene specific script but idc since this is a jam
 		StoryIntro intro = GetNodeOrNull<StoryIntro>("Intro");
-		intro?.Start(this);
+		
+		if (intro != null) {
+			StoryIntro = intro;
+			intro.Start(this);
+		}
 	}
 
 	public int GetEnemyCount() {

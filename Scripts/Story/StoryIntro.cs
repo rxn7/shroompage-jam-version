@@ -7,7 +7,10 @@ using Godot;
 
 namespace Game.Story;
 
+// TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
+
+    public bool DisableShroomEffects = true;
 
     private PlayerNotificationDisplay m_NotificationDisplay;
     private GameSoundtrack m_Soundtrack;    
@@ -17,6 +20,8 @@ internal partial class StoryIntro : Node {
     private int m_CurrentMessage = 0;
     private double m_MessageTimer = 3;
     private bool m_FinishedTextIntro = false;
+    private int m_collectedShrooms = 0;
+    private bool m_playedLastShroomNotification = false;
     private readonly String[] m_Messages = {
         "Press [WASD] to move",
         "Press [Space] to jump",
@@ -24,7 +29,6 @@ internal partial class StoryIntro : Node {
         "Harvest 6 mushrooms",
     };
 
-    private int collectedShrooms = 0;
 
 	public void Start(GameManager game) {
         m_Player = game.Player;
@@ -42,13 +46,14 @@ internal partial class StoryIntro : Node {
 	}
 
 	public override void _Process(double delta_time) {
-        m_ShroomCollectProgress.Text = $"Mushrooms: {collectedShrooms}/6";
+        m_ShroomCollectProgress.Text = $"Mushrooms: {m_collectedShrooms}/6";
         TextIntroUpdate(delta_time);
 	}
 
     private void TextIntroUpdate(double delta_time) {
         m_MessageTimer -= delta_time;
 
+        if (m_playedLastShroomNotification) return;
         if (m_FinishedTextIntro) return;
         if (m_MessageTimer > 0) return;
 
@@ -65,6 +70,20 @@ internal partial class StoryIntro : Node {
     private void FinishedIntroText() {
         m_FinishedTextIntro = true;
         m_ShroomCollectProgress.Show();
+    }
+
+    public void CollectShroom() {
+        m_collectedShrooms++;
+        
+        if (m_collectedShrooms == 6) {
+            // ending sequence
+
+            return;
+        }
+
+        if (m_collectedShrooms != 5) return;
+        m_playedLastShroomNotification = true;
+        m_NotificationDisplay.DisplayNotification("I should eat one of these", 3);
     }
 
 }
