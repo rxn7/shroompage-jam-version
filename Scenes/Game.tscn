@@ -1,11 +1,16 @@
-[gd_scene load_steps=66 format=3 uid="uid://my476rao8teo"]
+[gd_scene load_steps=71 format=3 uid="uid://my476rao8teo"]
 
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="1_2f4cr"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_4xjpq"]
+[ext_resource type="AudioStream" uid="uid://c2riqnryv28oa" path="res://Audio/EnemySpawn/mushroom_spawn1.wav" id="7_512g8"]
 [ext_resource type="Environment" uid="uid://bs5k08oufxfte" path="res://Environments/Environment.tres" id="7_5656n"]
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="8_cwgak"]
+[ext_resource type="AudioStream" uid="uid://cyxjfeulhifck" path="res://Audio/EnemySpawn/mushroom_spawn2.wav" id="8_yt4gq"]
+[ext_resource type="AudioStream" uid="uid://dooao2ye2ouk0" path="res://Audio/EnemySpawn/mushroom_spawn3.wav" id="9_mcxk7"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="10_d554d"]
+[ext_resource type="AudioStream" uid="uid://bohlweakoeee" path="res://Audio/EnemySpawn/mushroom_spawn4.wav" id="10_q44xb"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="11_quvb3"]
+[ext_resource type="AudioStream" uid="uid://cr0ud738u5dyf" path="res://Audio/EnemySpawn/mushroom_spawn5.wav" id="11_s1xls"]
 [ext_resource type="PackedScene" uid="uid://pm01sg7pio1j" path="res://Scenes/Enemies/Basic/GrayEnemy2.tscn" id="12_824dp"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="12_jabgs"]
 [ext_resource type="Resource" path="res://Scenes/Terrain/data.hterrain" id="13_34gyo"]
@@ -53,7 +58,7 @@ plane = Plane(1, 0, 0, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cpux3"]
 plane = Plane(0, 0, 1, 0)
 
-[sub_resource type="Resource" id="Resource_cf3tx"]
+[sub_resource type="Resource" id="Resource_hluwl"]
 script = ExtResource("19_y5i7x")
 amount = 6000
 enabled = true
@@ -62,7 +67,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_70mbw"]
+[sub_resource type="Resource" id="Resource_2vtwj"]
 script = ExtResource("20_701x4")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 360, 0)
@@ -73,7 +78,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_aeyn6"]
+[sub_resource type="Resource" id="Resource_vtrbj"]
 script = ExtResource("21_sgev6")
 iterations = 3
 offset_step = 0.2
@@ -85,7 +90,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qkl06"]
+[sub_resource type="Resource" id="Resource_7o2y3"]
 script = ExtResource("22_nn4y1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 50.0
@@ -101,7 +106,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_pkntb"]
+[sub_resource type="Resource" id="Resource_6dsxk"]
 script = ExtResource("26_xu857")
 operation = 1
 scale = Vector3(0.75, 0.75, 0.75)
@@ -111,7 +116,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ucjef"]
+[sub_resource type="Resource" id="Resource_5pf0k"]
 script = ExtResource("24_dp6mn")
 negative_shapes_only = false
 enabled = true
@@ -120,9 +125,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3c0ly"]
+[sub_resource type="Resource" id="Resource_wl1pt"]
 script = ExtResource("18_t8bcc")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_cf3tx"), SubResource("Resource_70mbw"), SubResource("Resource_aeyn6"), SubResource("Resource_qkl06"), SubResource("Resource_pkntb"), SubResource("Resource_ucjef")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_hluwl"), SubResource("Resource_2vtwj"), SubResource("Resource_vtrbj"), SubResource("Resource_7o2y3"), SubResource("Resource_6dsxk"), SubResource("Resource_5pf0k")])
 
 [sub_resource type="Resource" id="Resource_v4q3w"]
 script = ExtResource("28_3p04t")
@@ -164,7 +169,7 @@ radius = 5.9429
 script = ExtResource("25_bi5qv")
 radius = 7.52226
 
-[sub_resource type="Resource" id="Resource_ugd7t"]
+[sub_resource type="Resource" id="Resource_d6xpp"]
 script = ExtResource("27_nxh55")
 item_length = 3.7
 ignore_slopes = false
@@ -174,7 +179,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_scnuj"]
+[sub_resource type="Resource" id="Resource_owe45"]
 script = ExtResource("22_nn4y1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 1000.0
@@ -190,7 +195,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_etg6v"]
+[sub_resource type="Resource" id="Resource_df14k"]
 script = ExtResource("28_vodrb")
 operation = 0
 rotation = Vector3(0, 90, 0)
@@ -200,7 +205,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_7hulo"]
+[sub_resource type="Resource" id="Resource_t0ce2"]
 script = ExtResource("29_24s26")
 operation = 0
 position = Vector3(0, 0.75, 0)
@@ -210,9 +215,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_xcumj"]
+[sub_resource type="Resource" id="Resource_hw2c4"]
 script = ExtResource("18_t8bcc")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ugd7t"), SubResource("Resource_scnuj"), SubResource("Resource_etg6v"), SubResource("Resource_7hulo")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_d6xpp"), SubResource("Resource_owe45"), SubResource("Resource_df14k"), SubResource("Resource_t0ce2")])
 
 [sub_resource type="Resource" id="Resource_xfv10"]
 script = ExtResource("28_3p04t")
@@ -253,32 +258,38 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Spawner" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60164, 1.73724, -18.8755)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("12_824dp")
 
 [node name="Spawner2" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 1.43765, -22.1549)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("13_rydpd")
 
 [node name="Spawner3" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 2.23849, -1.1549)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("14_umx8h")
 
 [node name="Spawner4" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6391, 1.50386, 0.106297)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("15_v8xqx")
 
 [node name="Spawner5" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52992, 2.21084, -20.7459)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 1000
 m_EnemyScene = ExtResource("12_824dp")
 
 [node name="Spawner6" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63736, 2.47697, -20.5633)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 2000
 m_EnemyScene = ExtResource("15_v8xqx")
 
@@ -296,50 +307,59 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Spawner" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60164, 1.73724, -18.8755)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("12_824dp")
 
 [node name="Spawner2" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 1.43765, -22.1549)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("13_rydpd")
 
 [node name="Spawner3" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 2.23849, -1.1549)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("14_umx8h")
 
 [node name="Spawner4" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6391, 1.50386, 0.106297)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_EnemyScene = ExtResource("15_v8xqx")
 
 [node name="Spawner5" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52992, 2.21084, -20.7459)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 1000
 m_EnemyScene = ExtResource("12_824dp")
 
 [node name="Spawner6" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63736, 2.47697, -20.5633)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 2000
 m_EnemyScene = ExtResource("15_v8xqx")
 
 [node name="Spawner7" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3609, 2.50386, 2.1063)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 5000
 m_EnemyScene = ExtResource("15_v8xqx")
 
 [node name="Spawner8" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.52991, 3.21084, -18.7459)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 5000
 m_EnemyScene = ExtResource("12_824dp")
 
 [node name="Spawner9" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63736, 3.47697, -18.5633)
 script = ExtResource("11_quvb3")
+m_SpawnSounds = Array[AudioStream]([ExtResource("7_512g8"), ExtResource("8_yt4gq"), ExtResource("9_mcxk7"), ExtResource("10_q44xb"), ExtResource("11_s1xls")])
 m_SpawnDelayMs = 5000
 m_EnemyScene = ExtResource("15_v8xqx")
 
@@ -398,7 +418,7 @@ shape = SubResource("WorldBoundaryShape3D_cpux3")
 
 [node name="TreeScatter" type="Node3D" parent="."]
 script = ExtResource("17_jpd3i")
-modifier_stack = SubResource("Resource_3c0ly")
+modifier_stack = SubResource("Resource_wl1pt")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -481,7 +501,7 @@ shape = SubResource("Resource_ispk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5948, 0, 0)
 script = ExtResource("17_jpd3i")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_xcumj")
+modifier_stack = SubResource("Resource_hw2c4")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

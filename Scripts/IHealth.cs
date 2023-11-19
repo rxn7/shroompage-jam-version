@@ -6,6 +6,7 @@ namespace Game;
 public interface IHealth {
     float Health { get; set; }
     Action OnDied { get; set; }
+    Action<float> OnDamage { get; set; }
     bool IsDead { get; set; }
 
     public void Damage(float damage) {
@@ -16,5 +17,7 @@ public interface IHealth {
             IsDead = true;
             OnDied?.Invoke();
         }
+
+        OnDamage?.Invoke(damage);
     }
 }

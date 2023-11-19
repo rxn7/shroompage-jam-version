@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Game.Utils;
 using Godot;
 
 namespace Game.Enemy.Stage;
@@ -6,6 +7,7 @@ namespace Game.Enemy.Stage;
 internal partial class EnemySpawner : Node3D {
 	public Stage Stage { get; set; }
 
+	[Export] private AudioStream[] m_SpawnSounds;
 	[Export] private int m_SpawnDelayMs;
 	[Export] private PackedScene m_EnemyScene;
 
@@ -20,5 +22,7 @@ internal partial class EnemySpawner : Node3D {
 
 		AddChild(enemy);
 		enemy.GlobalPosition = GlobalPosition;
+
+		SoundManager.Play3D(GlobalPosition, m_SpawnSounds.GetRandomItem(), (float)GD.RandRange(0.8f, 1.2f));
 	}
 }

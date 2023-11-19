@@ -10,6 +10,7 @@ internal partial class HoldableItemData : ItemData {
 	[Export] public AudioStream[] PickupSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Item/Pickup").ToArray();
 	[Export] public AudioStream[] DropSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Item/Drop").ToArray();
 	[Export] public AudioStream[] AttackSounds = new AudioStream[0];
+	[Export] public AudioStream[] AttackHitSounds = new AudioStream[0];
 
 	[ExportSubgroup("Hand Slot")]
 	[Export] public Vector3 HandSlotOffset { get; set; }

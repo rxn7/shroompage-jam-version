@@ -15,6 +15,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
+	public Action<float> OnDamage { get; set; }
 
 	[Export] private float m_Damage = 5.0f;
 	[Export] private float m_HighLevelIncrease = 0.075f;
@@ -39,6 +40,10 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 			dropItem.GlobalPosition = GlobalPosition + Vector3.Up;
 
 			QueueFree();
+		};
+
+		OnDamage += (float dmg) => {
+			// TODO: PLAY THEM PARTICLES
 		};
 	}
 
