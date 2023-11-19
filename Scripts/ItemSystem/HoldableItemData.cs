@@ -18,7 +18,7 @@ internal partial class HoldableItemData : ItemData {
 	[ExportSubgroup("Animations")]
 	[Export] public StringName EquipAnimationName = "Equip";
 	[Export] public StringName IdleAnimationName = "Idle";
-	[Export] public StringName AttackAnimationName = "Attack";
+	[Export] public StringName[] AttackAnimationNames = new StringName[] {"Attack"};
 
 	public override Item Spawn() {
 		HoldableItem item = new() {

@@ -5,10 +5,12 @@ namespace Game;
 
 internal partial class ScreenEffect : ColorRect {
 	private const float MaxHighSaturation = 5.0f;
-	private const float MaxHighContrast = 4.0f;
+	private const float MaxHighContrast = 2.0f;
 	private const float MaxHighNoiseIntensity = 0.02f;
 	private const float MaxHighFisheyeStrength = 3.00f;
 	private const float MaxHighHueAdjustSpeed = 5f;
+	private const float MaxHighResX = 430;
+	private const float MaxHighResY = 320;
 
 	public PlayerManager Player { get; set; }
 
@@ -22,8 +24,12 @@ internal partial class ScreenEffect : ColorRect {
 		ShaderMaterial shader = Material as ShaderMaterial;
 		shader.SetShaderParameter("saturation", Player.HighLevel * (MaxHighSaturation - 1.0) + 1.0);
 		shader.SetShaderParameter("contrast", Player.HighLevel * (MaxHighContrast - 1.0) + 1.0);
-		shader.SetShaderParameter("noiseIntensity", Player.HighLevel * (MaxHighNoiseIntensity - 0.001) + 0.001);
+		shader.SetShaderParameter("noiseIntensity", Player.HighLevel * MaxHighNoiseIntensity);
 		shader.SetShaderParameter("fisheyeStrength", Player.HighLevel * (MaxHighFisheyeStrength - 1.0f) + 1.0f);
 		shader.SetShaderParameter("hueAdjust", m_HueAdjust);
+
+		Vector2 fullRes = GetViewport().GetVisibleRect().Size;
+		shader.SetShaderParameter("resX", Mathf.FloorToInt(Mathf.Lerp(fullRes.X, MaxHighResX, Player.HighLevel)));
+		shader.SetShaderParameter("resY", Mathf.FloorToInt(Mathf.Lerp(fullRes.Y, MaxHighResY, Player.HighLevel)));
 	}
 }

@@ -77,7 +77,7 @@ void fragment() {
     float noise = rand(vec2(TIME* 0.00001, uvY));
     uv.x += noise * noiseIntensity;
 	
-	COLOR = vec4(pixelate(uv), 1.0);
+	COLOR = noiseIntensity > 0.0 ? vec4(pixelate(uv), 1.0) : texture(screenTexture, uv);
 
     // Saturation
     vec3 greyscale = vec3(COLOR.r + COLOR.g + COLOR.b) / 3.0;

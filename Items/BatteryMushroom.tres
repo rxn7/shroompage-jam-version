@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ecb38e67s4te"]
+
+[ext_resource type="Script" path="res://Scripts/ItemSystem/Items/BatteryMushroom.cs" id="1_0tvh2"]
+[ext_resource type="AudioStream" uid="uid://7k06q5jxu77u" path="res://Audio/Crunch.wav" id="1_5gh8y"]
+[ext_resource type="Script" path="res://Scripts/ItemSystem/ConsumableItemData.cs" id="2_2a3pm"]
+[ext_resource type="ArrayMesh" uid="uid://cmqctoydoh6mi" path="res://Models/Mushrooms/BatteryMushroom.res" id="2_y4uqd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gmux4"]
+height = 1.08715
+radius = 0.22
+
+[resource]
+script = ExtResource("2_2a3pm")
+Script = ExtResource("1_0tvh2")
+ConsumeSounds = [ExtResource("1_5gh8y")]
+Name = &"Battery Mushroom"
+Mass = 1.0
+Mesh = ExtResource("2_y4uqd")
+CollisionShape = SubResource("CylinderShape3D_gmux4")

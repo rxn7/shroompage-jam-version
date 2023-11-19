@@ -82,7 +82,7 @@ internal partial class PlayerViewmodel : Node3D {
 
 	public void PlayIdleAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.IdleAnimationName ?? "Idle");
 	public void PlayEquipAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.EquipAnimationName ?? "Equip");
-	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.AttackAnimationName ?? "Attack");
+	public void PlayAttackAnimation() => AnimPlayer.Play(Player?.ItemManager.HeldItem?.HoldableData.AttackAnimationNames.GetRandomItem() ?? "Attack");
 
 	public void PlayLegKickAnimation() {
 		LegAnimPlayer.Stop();

@@ -1,5 +1,6 @@
 using System;
-using Game.Player;
+using Game.ItemSystem;
+using Game.Utils;
 using Godot;
 
 namespace Game.Enemy;
@@ -16,6 +17,8 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	public bool IsDead { get; set; }
 
 	[Export] private float m_Damage = 5.0f;
+	[Export] private float m_HighLevelIncrease = 0.075f;
+	[Export] private ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
 	private float m_DamageCooldownTimer = 0.0f;
 	private float m_HopCooldownTimer = 0.0f;
 	private float m_HopCooldown = HopCooldown;
@@ -31,12 +34,12 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		RotationDegrees += Vector3.Up * GD.Randf() * 360.0f;
 
 		OnDied += () => {
-			QueueFree();
-			// TODO: Play death sound / animation
-		};
-	}
+			Item dropItem = m_DeathDropItems.GetRandomItem().Spawn();
+			GetTree().CurrentScene.AddChild(dropItem);
+			dropItem.GlobalPosition = GlobalPosition + Vector3.Up;
 
-	public override void _Process(double delta) {
+			QueueFree();
+		};
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -60,6 +63,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 			m_DamageCooldownTimer += (float)delta;
 		} else if(GlobalPosition.DistanceSquaredTo(GameManager.Singleton.Player.GlobalPosition) <= DamagePlayerMaxDistanceSquared) {
 			(GameManager.Singleton.Player as IHealth).Damage(m_Damage);
+			GameManager.Singleton.Player.HighLevel += m_HighLevelIncrease;
 			m_DamageCooldownTimer = 0.0f;
 		}
 	}
