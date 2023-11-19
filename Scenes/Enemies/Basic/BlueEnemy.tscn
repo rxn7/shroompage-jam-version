@@ -19,6 +19,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_tfbw8")
+Damage = 10.0
+HighLevelIncrease = 0.02
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_yx378")

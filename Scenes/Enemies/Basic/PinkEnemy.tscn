@@ -57,6 +57,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_7ajjr")
+HighLevelIncrease = 0.1
 
 [node name="Pink_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_j1ujl")

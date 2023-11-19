@@ -53,7 +53,7 @@ internal partial class GameSoundtrack : Node {
 			m_TimeUntilUpdate += m_UpdateTimer;
 		}
 
-		ApplyVolumeTargets(GetVolumeTargets(), delta_time * 10);
+		ApplyVolumeTargets(GetVolumeTargets(), delta_time * 6);
 	}
 
 	// exists so that you can have the same audio file play at 2 different stages

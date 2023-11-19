@@ -11,7 +11,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private static readonly ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
 
 	private const float DamageEffectDuration = 0.1f;
-	private const float HopCooldown = 1.0f;
+	[Export] private float HopCooldown = 1.0f;
 	private const float HopForce = 10.0f;
 	private const float HopHeight = 4.0f;
 	private const float DamageCooldown = 1.0f;
@@ -29,7 +29,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private MeshInstance3D m_MeshInstance;
 	private float m_DamageCooldownTimer = 0.0f;
 	private float m_HopCooldownTimer = 0.0f;
-	private float m_HopCooldown = HopCooldown;
+	private float m_HopCooldown;
 	private float m_DamageEffectTimer = 0.0f;
 	private Vector3 m_Velocity;
 	private Vector3 m_Force;
@@ -38,6 +38,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	public Enemy() {
 		MotionMode = MotionModeEnum.Grounded;
 		UpDirection = Vector3.Up;
+		m_HopCooldown = HopCooldown * (GD.Randf() * 0.4f + 0.8f);
 		FloorStopOnSlope = true;
 		Scale = Vector3.One * (GD.Randf() * 0.5f + 0.75f);
 		RotationDegrees += Vector3.Up * GD.Randf() * 360.0f;

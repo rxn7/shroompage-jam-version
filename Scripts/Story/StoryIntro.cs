@@ -60,6 +60,7 @@ internal partial class StoryIntro : Node {
 			m_FinishedIntro = true;
 			m_Player.ViewmodelDisabled = false;
 			DisableShroomEffects = false;
+			m_collectedShrooms = 100;
 		}
 	}
 
