@@ -53,7 +53,14 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 	public Action OnDied { get; set; }
 	public Action<float> OnDamage { get; set; }
-	public bool ViewmodelDisabled { get; set; } = false;
+	public bool ViewmodelDisabled { 
+		get => Viewmodel.Visible;
+
+		set {
+			HUD.GetNode<Control>("Bars").Visible = !value;
+			Viewmodel.Visible = !value;
+		}
+	}
 	public bool IsDead { get; set; } = false;
 
 	private float m_KickCooldownTimer = 0.0f;
@@ -95,13 +102,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
-
-		if (ViewmodelDisabled) {
-			Viewmodel.Hide();
-			return;
-		} else {
-			Viewmodel.Show();
-		}
 		
 		ItemManager.Update();
 		
