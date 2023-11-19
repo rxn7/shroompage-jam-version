@@ -8,7 +8,7 @@ public interface IHealth {
     Action OnDied { get; set; }
     bool IsDead { get; set; }
 
-    void Damage(float damage) {
+    public void Damage(float damage) {
         if(IsDead) return; // YOUR ASS IS ALREADY DEAD!
 
         GD.Print($"${this} ass got slapped!");

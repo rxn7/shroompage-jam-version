@@ -7,7 +7,7 @@ internal partial class EnemySpawner : Node3D {
 	public Stage Stage { get; set; }
 
 	[Export] private int m_SpawnDelayMs;
-	[Export] private PackedScene m_EnemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
+	[Export] private PackedScene m_EnemyScene;
 
 	public async void Start() {
 		await Task.Delay(m_SpawnDelayMs);

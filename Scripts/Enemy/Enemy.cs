@@ -5,14 +5,18 @@ using Godot;
 namespace Game.Enemy;
 
 internal partial class Enemy : CharacterBody3D, IHealth {
+	private const float DamagePlayerMaxDistanceSquared = 1.2f;
 	private const float HopCooldown = 1.0f;
 	private const float HopForce = 10.0f;
 	private const float HopHeight = 4.0f;
+	private const float DamageCooldown = 1.0f;
 
 	public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
 
+	[Export] private float m_Damage = 5.0f;
+	private float m_DamageCooldownTimer = 0.0f;
 	private float m_HopCooldownTimer = 0.0f;
 	private float m_HopCooldown = HopCooldown;
 	private Vector3 m_Velocity;
@@ -22,6 +26,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	public Enemy() {
 		MotionMode = MotionModeEnum.Grounded;
 		UpDirection = Vector3.Up;
+		FloorStopOnSlope = true;
 		Scale = Vector3.One * (GD.Randf() * 0.5f + 0.75f);
 		RotationDegrees += Vector3.Up * GD.Randf() * 360.0f;
 
@@ -29,6 +34,9 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 			QueueFree();
 			// TODO: Play death sound / animation
 		};
+	}
+
+	public override void _Process(double delta) {
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -47,6 +55,16 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 
 		Velocity = m_Velocity;
 		MoveAndSlide();
+
+		if(m_DamageCooldownTimer < DamageCooldown) {
+			m_DamageCooldownTimer += (float)delta;
+		} else if(GlobalPosition.DistanceSquaredTo(GameManager.Singleton.Player.GlobalPosition) <= DamagePlayerMaxDistanceSquared) {
+			(GameManager.Singleton.Player as IHealth).Damage(m_Damage);
+			m_DamageCooldownTimer = 0.0f;
+		}
+	}
+
+	public void DamagePlayer(PlayerManager player) {
 	}
 
 	public void ApplyImpulse(Vector3 force) {
@@ -54,6 +72,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	}
 
 	public void Hop() {
+		m_DamageCooldownTimer = DamageCooldown;
 		m_HopCooldownTimer = 0.0f;
 		m_HopCooldown = HopCooldown * (GD.Randf() * 0.4f + 0.8f);
 
