@@ -26,6 +26,7 @@ internal class PlayerController {
 	private static readonly StringName SprintInputName = "Sprint";
 
 	public bool JustLanded => m_Player.IsOnFloor() && !m_WasOnFloorLastFrame;
+    public bool Locked { get; set; } = false;
 	public float Height { get; private set; }
 	public Vector3 Velocity { get; private set; }
 	public bool IsMoving { get; private set; }
@@ -61,10 +62,13 @@ internal class PlayerController {
 	public void Update(float dt) {
 		HandleHighLevelEffect(dt);
 
-		m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
-		m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
+        if(!Locked) {
+            m_Player.Head.Pitch = Pitch + m_HighLevelEffectOffset.X;
+            m_Player.RotationDegrees = Vector3.Down * (Yaw + m_HighLevelEffectOffset.Y);
 
-		UpdateInput();
+            UpdateInput();
+        }
+
 		UpdateMovementState();
 		UpdateDirection(dt);
 		UpdateMoveSpeed(dt);
