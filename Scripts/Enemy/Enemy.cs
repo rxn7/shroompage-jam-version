@@ -21,7 +21,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	[Export] public float HighLevelIncrease { get; private set; } = 0.075f;
 	[Export] public float DamagePlayerMaxDistanceSquared { get; private set; } = 1.2f; // Distance at which the player gets hurt
 
-	public float Health { get; set; } = 30.0f;
+	[Export] public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
 	public Action<float> OnDamage { get; set; }
