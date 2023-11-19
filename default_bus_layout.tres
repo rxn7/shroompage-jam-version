@@ -23,5 +23,5 @@ bus/1/name = &"Soundtrack"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -2.11252
+bus/1/volume_db = -19.6683
 bus/1/send = &"Master"
