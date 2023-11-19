@@ -46,7 +46,7 @@ height = 1.6
 radius = 0.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s70kc"]
-size = Vector3(1.05337, 1, 1.048)
+size = Vector3(1.05337, 1.05171, 1.048)
 
 [node name="Pink_001" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)

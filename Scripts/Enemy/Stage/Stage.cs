@@ -64,7 +64,7 @@ internal partial class Stage : Area3D {
 		GameManager.Singleton.StageCleared?.Invoke(this);
 		GD.Print($"Stage {this} has been cleared.");
 
-		if (m_IncreaseOstStageAfterClear) GameManager.Singleton.Soundtrack.IncreaseStage();
+		// if (m_IncreaseOstStageAfterClear) GameManager.Singleton.Soundtrack.IncreaseStage();
 
 		QueueFree();
 	}

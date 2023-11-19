@@ -46,7 +46,7 @@ height = 2.1
 radius = 0.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gucc3"]
-size = Vector3(1.8, 1.8, 0.8)
+size = Vector3(2.2, 2.2, 0.8)
 
 [node name="Grey" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -67,5 +67,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 shape = SubResource("CylinderShape3D_m2bcs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05647e-08, -2.17352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.05647e-08, -2.17352)
 shape = SubResource("BoxShape3D_gucc3")

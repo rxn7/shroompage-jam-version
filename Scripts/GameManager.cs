@@ -1,7 +1,6 @@
 using System;
 using Game.Enemy.Stage;
 using Game.Player;
-using Game.Surface;
 using Godot;
 
 namespace Game;
@@ -22,7 +21,7 @@ internal partial class GameManager : Node {
 		StageCleared += (Stage stage) => CurrentStage = null;
 	}
 
-	public override void _Ready() {
+	public override void _EnterTree() {
 		Soundtrack = GetNode<GameSoundtrack>("Soundtrack");
 		Player = GetNode<PlayerManager>("Player");
 	}

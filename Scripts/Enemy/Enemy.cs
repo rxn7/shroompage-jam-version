@@ -10,14 +10,16 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private static readonly StandardMaterial3D DamageEffectMaterial = new StandardMaterial3D() { AlbedoColor = DamageEffectColor, Roughness = 1.0f, Metallic = 0.0f };
 	private static readonly ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
 
-	private const float Damage = 5.0f;
-	private const float HighLevelIncrease = 0.075f;
 	private const float DamageEffectDuration = 0.1f;
-	private const float DamagePlayerMaxDistanceSquared = 1.2f;
 	private const float HopCooldown = 1.0f;
 	private const float HopForce = 10.0f;
 	private const float HopHeight = 4.0f;
 	private const float DamageCooldown = 1.0f;
+
+	[ExportSubgroup("Stats")]
+	[Export] public float Damage { get; private set; } = 5.0f;
+	[Export] public float HighLevelIncrease { get; private set; } = 0.075f;
+	[Export] public float DamagePlayerMaxDistanceSquared { get; private set; } = 1.2f; // Distance at which the player gets hurt
 
 	public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
@@ -49,7 +51,6 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		};
 
 		OnDamage += (float dmg) => {
-			// TODO: PLAY THEM PARTICLES
 			m_DamageEffectTimer = DamageEffectDuration;
 			SpawnDamageParticles();
 		};

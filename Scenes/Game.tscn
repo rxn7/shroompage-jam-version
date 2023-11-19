@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://my476rao8teo"]
+[gd_scene load_steps=68 format=3 uid="uid://my476rao8teo"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_tv4rc"]
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="2_v3vcd"]
@@ -6,8 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="4_22plm"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="5_smtrw"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="6_hyxak"]
+[ext_resource type="PackedScene" uid="uid://dycdrsnekfaqv" path="res://Scenes/Enemies/Basic/OrangeEnemy.tscn" id="7_8sxpm"]
 [ext_resource type="PackedScene" uid="uid://pm01sg7pio1j" path="res://Scenes/Enemies/Basic/GrayEnemy2.tscn" id="7_qqq61"]
 [ext_resource type="PackedScene" uid="uid://2v5t2np043ci" path="res://Scenes/Enemies/Basic/GrayEnemy.tscn" id="8_7gtrn"]
+[ext_resource type="PackedScene" uid="uid://cy02inte8t6ip" path="res://Scenes/Enemies/Basic/BlueEnemy.tscn" id="8_cr8ty"]
 [ext_resource type="PackedScene" uid="uid://enoi712u155k" path="res://Scenes/Enemies/Basic/PinkEnemy2.tscn" id="9_v1x88"]
 [ext_resource type="PackedScene" uid="uid://dndyo5cgfxuat" path="res://Scenes/Enemies/Basic/PinkEnemy.tscn" id="10_ie442"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="11_32wu8"]
@@ -53,7 +55,7 @@ plane = Plane(1, 0, 0, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cpux3"]
 plane = Plane(0, 0, 1, 0)
 
-[sub_resource type="Resource" id="Resource_mr5tv"]
+[sub_resource type="Resource" id="Resource_jtluy"]
 script = ExtResource("22_gm3eo")
 amount = 6000
 enabled = false
@@ -62,7 +64,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_6ejqy"]
+[sub_resource type="Resource" id="Resource_gfmkp"]
 script = ExtResource("23_qpdhn")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 360, 0)
@@ -73,7 +75,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_lnjmy"]
+[sub_resource type="Resource" id="Resource_fo3qm"]
 script = ExtResource("24_t0btv")
 iterations = 3
 offset_step = 0.2
@@ -85,7 +87,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3m5hn"]
+[sub_resource type="Resource" id="Resource_xoc6j"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 50.0
@@ -101,7 +103,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_g2p8c"]
+[sub_resource type="Resource" id="Resource_1gqhi"]
 script = ExtResource("26_8dedt")
 operation = 1
 scale = Vector3(0.75, 0.75, 0.75)
@@ -111,7 +113,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_3bjio"]
+[sub_resource type="Resource" id="Resource_cpt5x"]
 script = ExtResource("27_664wt")
 negative_shapes_only = false
 enabled = true
@@ -120,9 +122,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_djf1b"]
+[sub_resource type="Resource" id="Resource_tkt7v"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_mr5tv"), SubResource("Resource_6ejqy"), SubResource("Resource_lnjmy"), SubResource("Resource_3m5hn"), SubResource("Resource_g2p8c"), SubResource("Resource_3bjio")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_jtluy"), SubResource("Resource_gfmkp"), SubResource("Resource_fo3qm"), SubResource("Resource_xoc6j"), SubResource("Resource_1gqhi"), SubResource("Resource_cpt5x")])
 
 [sub_resource type="Resource" id="Resource_v4q3w"]
 script = ExtResource("30_owj5m")
@@ -164,7 +166,7 @@ radius = 5.9429
 script = ExtResource("31_vkyl7")
 radius = 7.52226
 
-[sub_resource type="Resource" id="Resource_bmon1"]
+[sub_resource type="Resource" id="Resource_n1kav"]
 script = ExtResource("32_sh0fd")
 item_length = 3.7
 ignore_slopes = false
@@ -174,7 +176,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4gqpf"]
+[sub_resource type="Resource" id="Resource_kvtjf"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 1000.0
@@ -190,7 +192,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_xxl18"]
+[sub_resource type="Resource" id="Resource_snjfa"]
 script = ExtResource("33_58lio")
 operation = 0
 rotation = Vector3(0, 90, 0)
@@ -200,7 +202,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_f2u4f"]
+[sub_resource type="Resource" id="Resource_vqp1y"]
 script = ExtResource("34_y3g7e")
 operation = 0
 position = Vector3(0, 0.75, 0)
@@ -210,17 +212,16 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ywd43"]
+[sub_resource type="Resource" id="Resource_1hjb2"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_bmon1"), SubResource("Resource_4gqpf"), SubResource("Resource_xxl18"), SubResource("Resource_f2u4f")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_n1kav"), SubResource("Resource_kvtjf"), SubResource("Resource_snjfa"), SubResource("Resource_vqp1y")])
 
 [sub_resource type="Resource" id="Resource_xfv10"]
 script = ExtResource("30_owj5m")
 size = Vector3(209.848, 80.8658, 168.607)
 
-[node name="Game2" type="Node" node_paths=PackedStringArray("Player")]
+[node name="Game2" type="Node"]
 script = ExtResource("1_tv4rc")
-Player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_v3vcd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98883, -2.32658, 0.24448)
@@ -261,12 +262,12 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Spawner" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60164, 1.73724, -18.8755)
 script = ExtResource("6_hyxak")
-m_EnemyScene = ExtResource("7_qqq61")
+m_EnemyScene = ExtResource("7_8sxpm")
 
 [node name="Spawner2" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 1.43765, -22.1549)
 script = ExtResource("6_hyxak")
-m_EnemyScene = ExtResource("8_7gtrn")
+m_EnemyScene = ExtResource("8_cr8ty")
 
 [node name="Spawner3" type="Node3D" parent="Stage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73198, 2.23849, -1.1549)
@@ -288,7 +289,7 @@ m_EnemyScene = ExtResource("7_qqq61")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63736, 2.47697, -20.5633)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 2000
-m_EnemyScene = ExtResource("10_ie442")
+m_EnemyScene = ExtResource("8_7gtrn")
 
 [node name="Stage2" type="Area3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 58.5396, -2.57911, 31.0682)
@@ -406,7 +407,7 @@ shape = SubResource("WorldBoundaryShape3D_cpux3")
 
 [node name="TreeScatter" type="Node3D" parent="."]
 script = ExtResource("20_nb60j")
-modifier_stack = SubResource("Resource_djf1b")
+modifier_stack = SubResource("Resource_tkt7v")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -489,7 +490,7 @@ shape = SubResource("Resource_ispk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5948, 0, 0)
 script = ExtResource("20_nb60j")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_ywd43")
+modifier_stack = SubResource("Resource_1hjb2")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -502,7 +503,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.2924, 34.403, 53.9008)
 script = ExtResource("29_05nua")
 shape = SubResource("Resource_xfv10")
 
-[node name="Soundtrack" parent="." instance=ExtResource("35_8syie")]
+[node name="Soundtrack" parent="." node_paths=PackedStringArray("Tracks") instance=ExtResource("35_8syie")]
+Tracks = []
 
 [node name="MasterAudioBusManager" type="Node" parent="."]
 script = ExtResource("36_pq6c5")
