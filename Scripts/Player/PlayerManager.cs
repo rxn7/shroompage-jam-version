@@ -10,7 +10,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	private const float KickRange = 3.0f;
 	private const float KickDamage = 10.0f;
 	private const float KickKnockback = 5.0f;
-	private const float MeleeRange = 5.0f;
+	private const float MeleeRange = 4.0f;
 	private const float MeleeKnockback = 2.0f;
 	private const float HighLevelReduceRate = 0.05f;
 

@@ -1,22 +1,18 @@
-
-
 using Godot;
-using Game;
 
-namespace Game.Soundtrack;
+namespace Game;
 
-struct audioVolumeTargets {
-	public AudioStreamPlayer[] m_tracks;
-	public float[] m_volumes;
+internal struct TrackList {
+	[Export] public AudioStreamPlayer[] Tracks;
+}
+
+internal struct AudioVolumeTarget {
+	public AudioStreamPlayer Track;
+	public float Volume;
 }
 
 internal partial class GameSoundtrack : Node {
-
-	[Export] private AudioStreamPlayer[] m_TracksIntro = new AudioStreamPlayer[1];
-	[Export] private AudioStreamPlayer[] m_TracksIntensity_0 = new AudioStreamPlayer[5];
-	[Export] private AudioStreamPlayer[] m_TracksIntensity_1 = new AudioStreamPlayer[5];
-	[Export] private AudioStreamPlayer[] m_TracksIntensity_2 = new AudioStreamPlayer[5];
-
+	private TrackList[] m_TrackLists;
 	private int m_QueuedIntensityLevel = 0; // max 4
 	private int m_IntensityLevel = 0; // max 4
 	private int m_Stage = 0;
@@ -25,96 +21,106 @@ internal partial class GameSoundtrack : Node {
 	private double m_TimeUntilUpdate = 0;
 
 	public override void _Ready() {
+		InitTrackLists();
 		ApplyVolumeTargets(GetVolumeTargets(), 1);
 		
-		m_UpdateTimer = m_TracksIntensity_0[0].Stream.GetLength();
+		m_UpdateTimer = m_TrackLists[0].Tracks[0].Stream.GetLength();
 		m_TimeUntilUpdate = m_UpdateTimer;
 	}
 
-	public override void _Process(double delta_time) {
-
+	public override void _Process(double deltaTime) {
 		int enemyCount = GameManager.Singleton.GetEnemyCount();
-		if (enemyCount == 0) m_QueuedIntensityLevel = 0;
-		else if (enemyCount <= 2) m_QueuedIntensityLevel = 1;
-		else if (enemyCount <= 5) m_QueuedIntensityLevel = 3;
-		else m_QueuedIntensityLevel = 4;
 
-		if (m_QueuedIntensityLevel > m_IntensityLevel) {
+		if(enemyCount == 0)        m_QueuedIntensityLevel = 0;
+		else if(enemyCount <= 2)   m_QueuedIntensityLevel = 1;
+		else if(enemyCount <= 5)   m_QueuedIntensityLevel = 3;
+		else                        m_QueuedIntensityLevel = 4;
+
+		if(m_QueuedIntensityLevel > m_IntensityLevel)
 			m_IntensityLevel = m_QueuedIntensityLevel;
-		}
 
-		m_TimeUntilUpdate -= delta_time;
-		if (m_TimeUntilUpdate <= 0) {
+		m_TimeUntilUpdate -= deltaTime;
+		if(m_TimeUntilUpdate <= 0) {
 			m_IntensityLevel = m_QueuedIntensityLevel;
 			m_Stage = m_QueuedStage;
 			m_TimeUntilUpdate += m_UpdateTimer;
-
-			GD.Print("Stage: " + m_Stage + " Intensity: " + m_IntensityLevel);
 		}
 
-		ApplyVolumeTargets(GetVolumeTargets(), delta_time * 10);
+		ApplyVolumeTargets(GetVolumeTargets(), (float)deltaTime * 10.0f);
 	}
 
 	// exists so that you can have the same audio file play at 2 different stages
-	private audioVolumeTargets GetVolumeTargets() {
-		audioVolumeTargets targets = new audioVolumeTargets();
-		AudioStreamPlayer[][] allStreams = {
-			m_TracksIntensity_0,
-			m_TracksIntensity_1,
-			m_TracksIntensity_2
-		};
-
-		AudioStreamPlayer[] targetStreams = new AudioStreamPlayer[16];
-		float[] volumeTargets = new float[16];
+	private AudioVolumeTarget[] GetVolumeTargets() {
+		AudioVolumeTarget[] targets = new AudioVolumeTarget[16];
 		int listedTracks = 0;  
 
-		AudioStreamPlayer[] currentStage = allStreams[m_Stage];
-		for (int i = 0; i < currentStage.Length; i++) {
-			targetStreams[listedTracks] = currentStage[i];
-			volumeTargets[listedTracks] = i <= m_IntensityLevel ? 0 : -100;
+		TrackList currentStageTrackList = m_TrackLists[m_Stage];
+
+		for(int i=0; i<currentStageTrackList.Tracks.Length; ++i) {
+			targets[listedTracks] = new() {
+				Volume = i <= m_IntensityLevel ? 0 : -100,
+				Track = currentStageTrackList.Tracks[i]
+			};
+
 			listedTracks++;
 		}
 		
 		// compute volume for current state, and then mute all other tracks
-		for (int streamListPosition = 0; streamListPosition < allStreams.Length; streamListPosition++) {   
-			if (streamListPosition == m_Stage) continue;
+		for(int streamListPosition = 0; streamListPosition < m_TrackLists.Length; ++streamListPosition) {   
+			if (streamListPosition == m_Stage) 
+				continue;
 
-			AudioStreamPlayer[] streamList = allStreams[streamListPosition];
-			for (int streamPosition = 0; streamPosition < streamList.Length; streamPosition++) {
-				AudioStreamPlayer stream = streamList[streamPosition];
-
+			TrackList trackList = m_TrackLists[streamListPosition];
+			foreach(AudioStreamPlayer track in trackList.Tracks) {
 				bool changedVolume = false;
-				for (int i = 0; i < targetStreams.Length; i++) {
-					if (targetStreams[i] != stream) continue;
-					changedVolume = true; 
-					break;
+
+				foreach(AudioVolumeTarget target in targets) {
+					if(target.Track == track) {
+						changedVolume = true; 
+						break;
+					}
 				}
 
-				if (changedVolume) continue;
+				if (changedVolume) 
+					continue;
 		
-				targetStreams[listedTracks] = stream;
-				volumeTargets[listedTracks] = -100;
+				targets[listedTracks] = new() {
+					Track = track,
+					Volume = -100,
+				};
+
 				listedTracks++;
 			}            
 		}
 
-		targets.m_tracks = targetStreams;
-		targets.m_volumes = volumeTargets;
-
 		return targets;
 	}
 
-	private static void ApplyVolumeTargets(audioVolumeTargets targets, double alpha) {
-		for (int i = 0; i < targets.m_tracks.Length; i++) {
-			AudioStreamPlayer track = targets.m_tracks[i];
-			if (track == null) continue;
+	private static void ApplyVolumeTargets(AudioVolumeTarget[] targets, float alpha) {
+		foreach(AudioVolumeTarget target in targets) {
+			if(target.Track is null) 
+				continue;
 
-			if (!track.Playing) track.Play();
-			track.VolumeDb = Mathf.Lerp(targets.m_tracks[i].VolumeDb, targets.m_volumes[i], (float)alpha);
+			if(!target.Track.Playing) 
+				target.Track.Play();
+
+			target.Track.VolumeDb = Mathf.Lerp(target.Track.VolumeDb, target.Volume, alpha);
 		}
 	}
 
-	public void UpdateStage(int stage) {
-        m_QueuedStage = stage;
+	private void InitTrackLists() {
+		m_TrackLists = new TrackList[GetChildCount() - 1];
+
+		for(int i=0; i<GetChildCount()-1; ++i) {
+			// Starting from 1, 0 is intro
+			Node child = GetChild(i+1);
+
+			m_TrackLists[i] = new TrackList() {
+				Tracks = new AudioStreamPlayer[child.GetChildCount()]
+			};
+
+			for(int j=0; j<child.GetChildCount(); ++j)
+				m_TrackLists[i].Tracks[j] = (AudioStreamPlayer)child.GetChild(j);
+		}
 	}
 }
