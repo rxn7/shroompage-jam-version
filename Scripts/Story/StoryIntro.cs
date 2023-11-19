@@ -34,6 +34,7 @@ internal partial class StoryIntro : Node {
 		"Press [Space] to jump",
 		"Press [Left Shift] to sprint",
 		"Press [F] to pick up",
+		"Pick up 6 mushrooms"
 	};
 
 	public async Task Start(GameManager game) {
@@ -82,8 +83,8 @@ internal partial class StoryIntro : Node {
 		if (m_FinishedTextIntro) return;
 		if (m_MessageTimer > 0) return;
 
-		m_MessageTimer = 4;
-		m_NotificationDisplay.DisplayNotification(m_Messages[m_CurrentMessage], 5);
+		m_MessageTimer = 3;
+		m_NotificationDisplay.DisplayNotification(m_Messages[m_CurrentMessage], 3);
 		m_CurrentMessage += 1;
 
 		if (m_CurrentMessage >= m_Messages.Length) {

@@ -59,7 +59,6 @@ platform_floor_layers = 1
 script = ExtResource("1_040db")
 HopCooldown = 0.1
 HighLevelIncrease = 0.04
-Health = 20.0
 
 [node name="Grey_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_0205v")

@@ -1,17 +1,14 @@
-[gd_scene load_steps=102 format=3 uid="uid://my476rao8teo"]
+[gd_scene load_steps=100 format=3 uid="uid://7e6cky6o5c42"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_tv4rc"]
 [ext_resource type="PackedScene" uid="uid://dmuqdovhgtka4" path="res://Scenes/Player.tscn" id="2_v3vcd"]
-[ext_resource type="Script" path="res://Scripts/Story/StoryIntro.cs" id="3_b13xm"]
+[ext_resource type="Script" path="res://Scripts/Story/StoryIntro.cs" id="3_gojia"]
 [ext_resource type="AudioStream" uid="uid://bdrhhmika2w7m" path="res://Audio/Ambient/ambience_nature.wav" id="4_22plm"]
-[ext_resource type="Script" path="res://Scripts/Barrier.cs" id="4_eq1nh"]
-[ext_resource type="PackedScene" uid="uid://buaquiug5a8pc" path="res://Models/BarbedWire/wooden_fence.tscn" id="4_qxjip"]
-[ext_resource type="AudioStream" uid="uid://djk7m63nqb5qv" path="res://Audio/stage_intro.wav" id="5_74yy6"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/Stage.cs" id="5_smtrw"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Stage/EnemySpawner.cs" id="6_hyxak"]
+[ext_resource type="Environment" uid="uid://j7yvfc6g18o" path="res://Environments/Day.tres" id="6_nctxi"]
 [ext_resource type="PackedScene" uid="uid://pm01sg7pio1j" path="res://Scenes/Enemies/Basic/GrayEnemy2.tscn" id="7_qqq61"]
 [ext_resource type="PackedScene" uid="uid://2v5t2np043ci" path="res://Scenes/Enemies/Basic/GrayEnemy.tscn" id="8_7gtrn"]
-[ext_resource type="Environment" uid="uid://j7yvfc6g18o" path="res://Environments/Day.tres" id="8_s0442"]
 [ext_resource type="PackedScene" uid="uid://enoi712u155k" path="res://Scenes/Enemies/Basic/PinkEnemy2.tscn" id="9_v1x88"]
 [ext_resource type="PackedScene" uid="uid://dndyo5cgfxuat" path="res://Scenes/Enemies/Basic/PinkEnemy.tscn" id="10_ie442"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="11_32wu8"]
@@ -27,11 +24,11 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="21_81wqx"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="22_gm3eo"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="23_qpdhn"]
+[ext_resource type="PackedScene" uid="uid://cy02inte8t6ip" path="res://Scenes/Enemies/Basic/BlueEnemy.tscn" id="24_ish8v"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="24_t0btv"]
+[ext_resource type="PackedScene" uid="uid://dycdrsnekfaqv" path="res://Scenes/Enemies/Basic/OrangeEnemy.tscn" id="25_4qyx0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="25_sbaqs"]
-[ext_resource type="PackedScene" uid="uid://cy02inte8t6ip" path="res://Scenes/Enemies/Basic/BlueEnemy.tscn" id="25_tdxhy"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/offset_scale.gd" id="26_8dedt"]
-[ext_resource type="PackedScene" uid="uid://dycdrsnekfaqv" path="res://Scenes/Enemies/Basic/OrangeEnemy.tscn" id="26_nx458"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/remove_outside_shapes.gd" id="27_664wt"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="28_ctx8a"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="29_05nua"]
@@ -44,7 +41,8 @@
 [ext_resource type="Script" path="res://Scripts/MasterAudioBusManager.cs" id="36_pq6c5"]
 [ext_resource type="Script" path="res://Scripts/ItemSystem/ItemSpawner.cs" id="37_3jbm5"]
 [ext_resource type="Resource" uid="uid://dy5xfht1a4og1" path="res://Items/MagicMushroom.tres" id="38_onrbv"]
-[ext_resource type="PackedScene" uid="uid://5e418t50qk7y" path="res://Models/ForestObjets/glb/campfire.glb" id="41_7ydfa"]
+[ext_resource type="PackedScene" uid="uid://buaquiug5a8pc" path="res://Models/BarbedWire/wooden_fence.tscn" id="39_q8npv"]
+[ext_resource type="PackedScene" uid="uid://5e418t50qk7y" path="res://Models/ForestObjets/glb/campfire.glb" id="40_ececi"]
 
 [sub_resource type="Resource" id="Resource_g6c6h"]
 script = ExtResource("13_c1wf7")
@@ -66,7 +64,7 @@ size = Vector3(19.2096, 14.9473, 45.957)
 [sub_resource type="BoxShape3D" id="BoxShape3D_33hba"]
 size = Vector3(7.62936, 8.17387, 83.2573)
 
-[sub_resource type="Resource" id="Resource_3yc2d"]
+[sub_resource type="Resource" id="Resource_ajtsw"]
 script = ExtResource("22_gm3eo")
 amount = 8000
 enabled = true
@@ -75,7 +73,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_newld"]
+[sub_resource type="Resource" id="Resource_nhy3b"]
 script = ExtResource("23_qpdhn")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(0, 360, 0)
@@ -86,7 +84,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_lck61"]
+[sub_resource type="Resource" id="Resource_spdhb"]
 script = ExtResource("24_t0btv")
 iterations = 3
 offset_step = 0.2
@@ -98,7 +96,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_xcj8y"]
+[sub_resource type="Resource" id="Resource_7gra0"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 50.0
@@ -114,7 +112,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_0rcce"]
+[sub_resource type="Resource" id="Resource_5utmx"]
 script = ExtResource("26_8dedt")
 operation = 1
 scale = Vector3(0.75, 0.75, 0.75)
@@ -124,7 +122,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_yd1fx"]
+[sub_resource type="Resource" id="Resource_w4idv"]
 script = ExtResource("27_664wt")
 negative_shapes_only = false
 enabled = true
@@ -133,9 +131,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jhorb"]
+[sub_resource type="Resource" id="Resource_tracb"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_3yc2d"), SubResource("Resource_newld"), SubResource("Resource_lck61"), SubResource("Resource_xcj8y"), SubResource("Resource_0rcce"), SubResource("Resource_yd1fx")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ajtsw"), SubResource("Resource_nhy3b"), SubResource("Resource_spdhb"), SubResource("Resource_7gra0"), SubResource("Resource_5utmx"), SubResource("Resource_w4idv")])
 
 [sub_resource type="Resource" id="Resource_v4q3w"]
 script = ExtResource("30_owj5m")
@@ -285,7 +283,7 @@ radius = 5.9429
 script = ExtResource("31_vkyl7")
 radius = 7.52226
 
-[sub_resource type="Resource" id="Resource_a12lu"]
+[sub_resource type="Resource" id="Resource_bcd5g"]
 script = ExtResource("32_sh0fd")
 item_length = 3.7
 ignore_slopes = false
@@ -295,7 +293,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qwjfk"]
+[sub_resource type="Resource" id="Resource_oul6d"]
 script = ExtResource("25_sbaqs")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 1000.0
@@ -311,7 +309,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3ob8v"]
+[sub_resource type="Resource" id="Resource_wdb6b"]
 script = ExtResource("33_58lio")
 operation = 0
 rotation = Vector3(0, 90, 0)
@@ -321,7 +319,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_xlg8l"]
+[sub_resource type="Resource" id="Resource_8luv6"]
 script = ExtResource("34_y3g7e")
 operation = 0
 position = Vector3(0, 0.75, 0)
@@ -331,15 +329,15 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_pkxop"]
+[sub_resource type="Resource" id="Resource_s6jbg"]
 script = ExtResource("21_81wqx")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_a12lu"), SubResource("Resource_qwjfk"), SubResource("Resource_3ob8v"), SubResource("Resource_xlg8l")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_bcd5g"), SubResource("Resource_oul6d"), SubResource("Resource_wdb6b"), SubResource("Resource_8luv6")])
 
 [sub_resource type="Resource" id="Resource_xfv10"]
 script = ExtResource("30_owj5m")
 size = Vector3(209.848, 102.553, 168.607)
 
-[node name="Game" type="Node"]
+[node name="Game2" type="Node"]
 script = ExtResource("1_tv4rc")
 
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
@@ -347,32 +345,26 @@ stream = ExtResource("4_22plm")
 volume_db = -8.432
 autoplay = true
 
-[node name="Intro" type="Node" parent="." node_paths=PackedStringArray("m_DayLight", "m_NightLight")]
-script = ExtResource("3_b13xm")
-m_DayLight = NodePath("../WorldEnvironment/DayLight")
-m_NightLight = NodePath("../WorldEnvironment/NightLight")
+[node name="Intro" type="Node" parent="."]
+script = ExtResource("3_gojia")
 
 [node name="IntroGate" type="Node3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49516, -2.69267, 11.6187)
-script = ExtResource("4_eq1nh")
 
-[node name="Fence" parent="Intro/IntroGate" instance=ExtResource("4_qxjip")]
+[node name="Fence" parent="Intro/IntroGate" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
 
-[node name="Fence2" parent="Intro/IntroGate" instance=ExtResource("4_qxjip")]
+[node name="Fence2" parent="Intro/IntroGate" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64306, -1.17539, 0.685591)
 
-[node name="Fence3" parent="Intro/IntroGate" instance=ExtResource("4_qxjip")]
+[node name="Fence3" parent="Intro/IntroGate" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111898, -1.17539, 0.685591)
 
-[node name="Fence4" parent="Intro/IntroGate" instance=ExtResource("4_qxjip")]
+[node name="Fence4" parent="Intro/IntroGate" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86774, -1.17539, 0.685591)
 
-[node name="Fence5" parent="Intro/IntroGate" instance=ExtResource("4_qxjip")]
+[node name="Fence5" parent="Intro/IntroGate" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59837, -1.17539, 0.685591)
-
-[node name="EndSequenceSoundPlayer" type="AudioStreamPlayer" parent="Intro"]
-stream = ExtResource("5_74yy6")
 
 [node name="Soundtrack" parent="." instance=ExtResource("35_8syie")]
 
@@ -384,7 +376,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20087, -4.59501, 102.792)
 collision_mask = 9
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("8_s0442")
+environment = ExtResource("6_nctxi")
 
 [node name="DayLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.102879, 0.890774, 0.442649, -0.82237, -0.174175, 0.541637, 0.559575, -0.419744, 0.714626, 0, 0, 0)
@@ -478,19 +470,19 @@ shape = SubResource("BoxShape3D_c4ihb")
 [node name="Gate2" type="Node3D" parent="Stage1"]
 transform = Transform3D(-0.054288, 0, -0.998526, 0, 1, 0, 0.998526, 0, -0.054288, 10.1763, -0.0507243, -6.54312)
 
-[node name="Fence" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
+[node name="Fence" parent="Stage1/Gate2" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
 
-[node name="Fence2" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
+[node name="Fence2" parent="Stage1/Gate2" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64306, -1.17539, 0.685591)
 
-[node name="Fence3" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
+[node name="Fence3" parent="Stage1/Gate2" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111898, -1.17539, 0.685591)
 
-[node name="Fence4" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
+[node name="Fence4" parent="Stage1/Gate2" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86774, -1.17539, 0.685591)
 
-[node name="Fence5" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
+[node name="Fence5" parent="Stage1/Gate2" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59837, -1.17539, 0.685591)
 
 [node name="Spawner" type="Node3D" parent="Stage1"]
@@ -530,19 +522,19 @@ shape = SubResource("BoxShape3D_rwul8")
 [node name="Gate3" type="Node3D" parent="Stage2"]
 transform = Transform3D(0.342283, 0, -0.939597, 0, 1, 0, 0.939597, 0, 0.342283, 20.2508, -0.0491254, 1.34242)
 
-[node name="Fence" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence" parent="Stage2/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
 
-[node name="Fence2" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence2" parent="Stage2/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64306, -1.17539, 0.685591)
 
-[node name="Fence3" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence3" parent="Stage2/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111898, -1.17539, 0.685591)
 
-[node name="Fence4" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence4" parent="Stage2/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86774, -1.17539, 0.685591)
 
-[node name="Fence5" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence5" parent="Stage2/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59837, -1.17539, 0.685591)
 
 [node name="Spawner" type="Node3D" parent="Stage2"]
@@ -554,7 +546,7 @@ m_EnemyScene = ExtResource("7_qqq61")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31012, 1.43765, -3.34636)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 1000
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner3" type="Node3D" parent="Stage2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13835, 2.23849, 3.96862)
@@ -594,43 +586,43 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Gate3" type="Node3D" parent="Stage3"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
 
-[node name="Fence" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence" parent="Stage3/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
 
-[node name="Fence2" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence2" parent="Stage3/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64306, -1.17539, 0.685591)
 
-[node name="Fence3" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence3" parent="Stage3/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111898, -1.17539, 0.685591)
 
-[node name="Fence4" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence4" parent="Stage3/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86774, -1.17539, 0.685591)
 
-[node name="Fence5" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence5" parent="Stage3/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59837, -1.17539, 0.685591)
 
 [node name="Spawner" type="Node3D" parent="Stage3"]
 transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 14.7472, 1.05268, -3.70697)
 script = ExtResource("6_hyxak")
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner2" type="Node3D" parent="Stage3"]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.13988, 1.43765, -6.27964)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 1500
-m_EnemyScene = ExtResource("26_nx458")
+m_EnemyScene = ExtResource("25_4qyx0")
 
 [node name="Spawner3" type="Node3D" parent="Stage3"]
 transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -1.27055, 2.23849, -5.54224)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 1000
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner4" type="Node3D" parent="Stage3"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -5.80994, 1.50386, -6.28213)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 2000
-m_EnemyScene = ExtResource("26_nx458")
+m_EnemyScene = ExtResource("25_4qyx0")
 
 [node name="Spawner5" type="Node3D" parent="Stage3"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -12.8655, 2.21084, 0.909355)
@@ -688,43 +680,43 @@ shape = SubResource("BoxShape3D_33hba")
 [node name="Gate3" type="Node3D" parent="Stage4"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
 
-[node name="Fence" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence" parent="Stage4/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
 
-[node name="Fence2" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence2" parent="Stage4/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64306, -1.17539, 0.685591)
 
-[node name="Fence3" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence3" parent="Stage4/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111898, -1.17539, 0.685591)
 
-[node name="Fence4" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence4" parent="Stage4/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86774, -1.17539, 0.685591)
 
-[node name="Fence5" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
+[node name="Fence5" parent="Stage4/Gate3" instance=ExtResource("39_q8npv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59837, -1.17539, 0.685591)
 
 [node name="Spawner" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 5.99786, 0.785321, 5.35805)
 script = ExtResource("6_hyxak")
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner2" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, 2.23517e-08, 0, 1, 0, -2.23517e-08, 0, 1, 13.6505, 1.43765, -0.188126)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 1500
-m_EnemyScene = ExtResource("26_nx458")
+m_EnemyScene = ExtResource("25_4qyx0")
 
 [node name="Spawner3" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -3.72529e-08, 0, 1, 0, 3.72529e-08, 0, 1, 11.8314, 2.23849, -6.5582)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 1000
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner4" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -12.3981, 2.42994, -11.3144)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 2000
-m_EnemyScene = ExtResource("26_nx458")
+m_EnemyScene = ExtResource("25_4qyx0")
 
 [node name="Spawner5" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -5.21541e-08, 0, 1, 0, 5.21541e-08, 0, 1, -16.2193, 2.47871, -6.50532)
@@ -754,13 +746,13 @@ m_EnemyScene = ExtResource("9_v1x88")
 transform = Transform3D(1, 0, -2.23517e-07, 0, 1, 0, 2.23517e-07, 0, 1, -11.5058, 3.21084, -8.55254)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 5000
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner10" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -3.35276e-07, 0, 1, 0, 3.35276e-07, 0, 1, 13.9743, 3.21084, -4.56856)
 script = ExtResource("6_hyxak")
 m_SpawnDelayMs = 7000
-m_EnemyScene = ExtResource("25_tdxhy")
+m_EnemyScene = ExtResource("24_ish8v")
 
 [node name="Spawner11" type="Node3D" parent="Stage4"]
 transform = Transform3D(1, 0, -3.94881e-07, 0, 1, 0, 3.94881e-07, 0, 1, -1.8559, 3.21084, 8.32743)
@@ -770,7 +762,7 @@ m_EnemyScene = ExtResource("8_7gtrn")
 
 [node name="TreeScatter" type="Node3D" parent="."]
 script = ExtResource("20_nb60j")
-modifier_stack = SubResource("Resource_jhorb")
+modifier_stack = SubResource("Resource_tracb")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -1024,7 +1016,7 @@ shape = SubResource("Resource_ispk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5948, 24.6184, 0)
 script = ExtResource("20_nb60j")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_pkxop")
+modifier_stack = SubResource("Resource_s6jbg")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -1070,8 +1062,8 @@ transform = Transform3D(0.987892, 0, -0.155141, 0, 1, 0, 0.155141, 0, 0.987892, 
 script = ExtResource("37_3jbm5")
 m_ItemData = ExtResource("38_onrbv")
 
-[node name="campfire" parent="." instance=ExtResource("41_7ydfa")]
+[node name="campfire" parent="." instance=ExtResource("40_ececi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4184, -4.1, -1.46239)
 
-[node name="campfire2" parent="." instance=ExtResource("41_7ydfa")]
+[node name="campfire2" parent="." instance=ExtResource("40_ececi")]
 transform = Transform3D(1, 0, 0, 0, 2.88286, 0, 0, 0, 1, 59.0909, -4.1, 30.1618)
