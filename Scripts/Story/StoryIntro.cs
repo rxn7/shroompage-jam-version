@@ -146,6 +146,8 @@ internal partial class StoryIntro : Node {
 
 		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick", 3);
 		SpawnMachete();
+
+		QueueFree();
 	}
 
 	private void SpawnMachete() {

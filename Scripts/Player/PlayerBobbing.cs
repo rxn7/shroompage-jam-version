@@ -22,6 +22,9 @@ internal class PlayerBobbing {
 	}
 
 	public void Update(float dt) {
+        if(m_Player.Controller.Locked) 
+            return;
+
 		if (m_Player.Controller.MovementState == EMovementState.InAir || m_Player.Controller.Inputs.Move.LengthSquared() == 0.0f || m_Player.Controller.Velocity .LengthSquared() < BobVelocityThreshold * BobVelocityThreshold) {
 			Bob = Bob.SafeLerp(Vector2.Zero, BobResetLerpSpeed * dt);
 			m_BobWaveX.Reset();
