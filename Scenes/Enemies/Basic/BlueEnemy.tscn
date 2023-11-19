@@ -24,6 +24,7 @@ HopForce = 5.0
 HopHeight = 15.0
 Damage = 40.0
 HighLevelIncrease = 0.02
+Health = 40.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_yx378")

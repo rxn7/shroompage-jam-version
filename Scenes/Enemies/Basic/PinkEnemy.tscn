@@ -61,6 +61,7 @@ HopCooldown = 1.5
 HopHeight = 5.0
 Damage = 15.0
 HighLevelIncrease = 0.15
+Health = 25.0
 
 [node name="Pink_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_j1ujl")
