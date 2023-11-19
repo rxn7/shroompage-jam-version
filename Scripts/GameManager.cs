@@ -1,6 +1,7 @@
 using System;
 using Game.Enemy.Stage;
 using Game.Player;
+using Game.Surface;
 using Godot;
 
 namespace Game;
@@ -8,7 +9,8 @@ namespace Game;
 internal partial class GameManager : Node {
 	public static GameManager Singleton { get; private set; }
 
-	[Export] public PlayerManager Player { get; private set; }
+	public PlayerManager Player { get; private set; }
+	public GameSoundtrack Soundtrack { get; private set; }
 	public Stage CurrentStage { get; set; }
 
 	public Action<Stage> StageStarted;
@@ -18,6 +20,11 @@ internal partial class GameManager : Node {
 		Singleton = this;
 		StageStarted += (Stage stage) => CurrentStage = stage;
 		StageCleared += (Stage stage) => CurrentStage = null;
+	}
+
+	public override void _Ready() {
+		Soundtrack = GetNode<GameSoundtrack>("Soundtrack");
+		Player = GetNode<PlayerManager>("Player");
 	}
 
 	public int GetEnemyCount() {
