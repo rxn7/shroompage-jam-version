@@ -30,6 +30,7 @@ public partial class Headlight : SpotLight3D {
 	}
 
 	public override void _Process(double delta) {
-		BatteryTimer -= (float)delta;
+        if(Visible)
+            BatteryTimer -= (float)delta;
 	}
 }
