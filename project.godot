@@ -33,7 +33,7 @@ project/assembly_name="pjp-2023-2"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/surface/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 
