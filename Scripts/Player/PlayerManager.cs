@@ -7,6 +7,7 @@ using Game.Story;
 namespace Game.Player;
 
 internal partial class PlayerManager : CharacterBody3D, IHealth {
+	public const float MaxHealth = 100;
 	private const float KickCooldown = 0.5f;
 	private const float KickRange = 3.0f;
 	private const float KickDamage = 5.0f;
@@ -27,8 +28,8 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public PlayerItemRaycast ItemRaycast { get; private set; }
 	public Headlight Headlight { get; private set; }
 	public ScreenEffect ScreenEffect { get; private set; }
+	public Control HUD { get; private set; }
 	public PlayerNotificationDisplay NotificationDisplay { get; private set; }
-	public Node HUD;
 	public Action<float> OnHealthChanged { get; set; }
 
 	[Export] private AudioStream[] m_KickSounds = new AudioStream[0];
@@ -38,11 +39,11 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public float Health {
 		get => m_Health;
 		set { 
-			m_Health = Mathf.Clamp(value, 0.0f, 100.0f); 
+			m_Health = Mathf.Clamp(value, 0.0f, MaxHealth); 
 			OnHealthChanged?.Invoke(m_Health); 
 		}
 	}
-	private float m_Health = 40.0f;
+	private float m_Health = MaxHealth;
 
 	public float HighLevel { 
 		get => m_HighLevel;
@@ -60,15 +61,15 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 	public override void _Ready() {
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 
-		HUD =  GetNode("HUD");
 		Head = GetNode<PlayerHead>("Head");
 		Viewmodel = Head.Camera.GetNode<PlayerViewmodel>("Viewmodel");
 		Viewmodel.Player = this; 
 		ItemRaycast = GetNode<PlayerItemRaycast>("ItemRaycast");
 		Headlight = Head.Camera.GetNode<Headlight>("Headlight");
+		HUD = GetNode<Control>("HUD");
 		NotificationDisplay = HUD.GetNode<PlayerNotificationDisplay>("Notification");
 
-		ScreenEffect = HUD.GetNode<ScreenEffect>("Screen");
+		ScreenEffect = GetNode("HUD").GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
 
 		Controller = new PlayerController(this);
@@ -94,8 +95,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
-		
-		ItemManager.Update();
 
 		if (ViewmodelDisabled) {
 			Viewmodel.Hide();
@@ -103,6 +102,8 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		} else {
 			Viewmodel.Show();
 		}
+		
+		ItemManager.Update();
 		
 		if(Input.IsActionPressed(AttackInputAction))
 			Attack();
