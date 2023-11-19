@@ -57,6 +57,9 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_t5was")
+HopCooldown = 0.4
+HopForce = 12.0
+HighLevelIncrease = 0.07
 
 [node name="Grey" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_acpf2")

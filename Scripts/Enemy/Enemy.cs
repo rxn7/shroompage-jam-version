@@ -11,12 +11,12 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	private static readonly ItemData[] m_DeathDropItems = new ItemData[] {ItemSpawner.BatteryMushroomData, ItemSpawner.MagicMushroomData};  
 
 	private const float DamageEffectDuration = 0.1f;
-	[Export] private float HopCooldown = 1.0f;
-	private const float HopForce = 10.0f;
-	private const float HopHeight = 4.0f;
 	private const float DamageCooldown = 1.0f;
 
 	[ExportSubgroup("Stats")]
+	[Export] private float HopCooldown = 1.0f;
+	[Export] private float HopForce = 10.0f;
+	[Export] private float HopHeight = 4.0f;
 	[Export] public float Damage { get; private set; } = 5.0f;
 	[Export] public float HighLevelIncrease { get; private set; } = 0.075f;
 	[Export] public float DamagePlayerMaxDistanceSquared { get; private set; } = 1.2f; // Distance at which the player gets hurt
