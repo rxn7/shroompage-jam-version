@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/0-snares.ogg-16f27c3842385f25340b7d7e31e23f13
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

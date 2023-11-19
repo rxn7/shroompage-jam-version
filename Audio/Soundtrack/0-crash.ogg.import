@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/0-crash.ogg-6eb199952083ac46422ac171be729e02.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
