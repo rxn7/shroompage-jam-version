@@ -28,15 +28,6 @@ internal partial class StoryIntro : Node {
         "Press [Left Shift] to sprint",
         "Harvest 6 mushrooms",
     };
-	private int m_CurrentMessage = 0;
-	private double m_MessageTimer = 3;
-	private bool m_FinishedTextIntro = false;
-	private readonly String[] m_Messages = {
-		"Press [WASD] to move",
-		"Press [Space] to jump",
-		"Press [Left Shift] to sprint",
-		"Harvest 6 mushrooms",
-	};
 
 	private int collectedShrooms = 0;
 
@@ -68,8 +59,6 @@ internal partial class StoryIntro : Node {
         if (m_playedLastShroomNotification) return;
         if (m_FinishedTextIntro) return;
         if (m_MessageTimer > 0) return;
-		if (m_FinishedTextIntro) return;
-		if (m_MessageTimer > 0) return;
 
 		m_MessageTimer = 4;
 		m_NotificationDisplay.DisplayNotification(m_Messages[m_CurrentMessage], 5);
