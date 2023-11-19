@@ -78,6 +78,8 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		NotificationDisplay = HUD.GetNode<PlayerNotificationDisplay>("Notification");
 
 		BlackoutFrame = HUD.GetNode<Control>("Blackout");
+		BlackoutFrame.Visible = false;
+
 		ScreenEffect = HUD.GetNode<ScreenEffect>("Screen");
 		ScreenEffect.Player = this;
 

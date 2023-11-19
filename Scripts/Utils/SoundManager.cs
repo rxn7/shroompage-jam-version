@@ -15,6 +15,24 @@ internal static class SoundManager {
 		GD.Print("SoundManager initialized");
 	}
 
+	public static void Play(Vector3 position, AudioStream stream, float pitch = 1.0f, float volume = 0.0f, Node3D parent = null) {
+		AudioStreamPlayer3D streamPlayer = s_Pool.Get();
+
+		if(parent != null) {
+			streamPlayer.GetParent()?.RemoveChild(streamPlayer);
+			parent.AddChild(streamPlayer);
+		} else if(streamPlayer.GetParent() is null)
+			s_Tree.Root.AddChild(streamPlayer);
+
+		streamPlayer.GlobalPosition = position;
+		streamPlayer.Stream = stream;
+		streamPlayer.PitchScale = pitch;
+		streamPlayer.VolumeDb = volume;
+		streamPlayer.Play();
+
+		++PlayingSfx;
+	}
+
 	public static void Play3D(Vector3 position, AudioStream stream, float pitch = 1.0f, float volume = 0.0f, Node3D parent = null) {
 		AudioStreamPlayer3D streamPlayer = s_Pool.Get();
 
