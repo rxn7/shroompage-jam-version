@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqghedx0pa5c8"]
+[gd_scene load_steps=12 format=3 uid="uid://cqghedx0pa5c8"]
 
 [ext_resource type="Texture2D" uid="uid://bcpm1boumx14q" path="res://Textures/UI/crosshair001.png" id="1_ul7ro"]
 [ext_resource type="Script" path="res://Scripts/ScreenEffect.cs" id="2_luj3c"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="2_shb8l"]
 [ext_resource type="PackedScene" uid="uid://bai11qwjiwqpd" path="res://Scenes/UI/DebugUI.tscn" id="3_fy7ad"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerNotificationDisplay.cs" id="5_by3ky"]
-[ext_resource type="Script" path="res://Scenes/UI/PlayerStatsUI.cs" id="6_jekal"]
 [ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="7_o8np1"]
+[ext_resource type="PackedScene" uid="uid://d05i2isb4mnxw" path="res://Scenes/UI/BarUI.tscn" id="7_uplor"]
+[ext_resource type="Script" path="res://Scripts/UI/Bars/HealthBarUI.cs" id="8_jnvpc"]
+[ext_resource type="Script" path="res://Scripts/UI/Bars/BatteryBarUI.cs" id="9_7bkam"]
+[ext_resource type="Script" path="res://Scripts/UI/Bars/HighBarUI.cs" id="10_htvny"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3ark"]
 shader = ExtResource("2_shb8l")
@@ -105,17 +108,31 @@ script = ExtResource("5_by3ky")
 [node name="DebugManager" parent="." instance=ExtResource("3_fy7ad")]
 layout_mode = 1
 
-[node name="PlayerStats" type="Label" parent="."]
+[node name="Bars" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="HealthBar" parent="Bars" instance=ExtResource("7_uplor")]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 334.0
-offset_bottom = 246.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_o8np1")
-theme_override_font_sizes/font_size = 30
-text = "Health: 100
-High: 100%
-Battery: 100%"
-script = ExtResource("6_jekal")
+offset_top = -112.0
+offset_bottom = -80.0
+script = ExtResource("8_jnvpc")
+
+[node name="BatteryBar" parent="Bars" instance=ExtResource("7_uplor")]
+layout_mode = 0
+offset_top = -72.0
+offset_bottom = -40.0
+script = ExtResource("9_7bkam")
+
+[node name="HighBar" parent="Bars" instance=ExtResource("7_uplor")]
+layout_mode = 0
+offset_top = -32.0
+offset_bottom = 0.0
+script = ExtResource("10_htvny")
