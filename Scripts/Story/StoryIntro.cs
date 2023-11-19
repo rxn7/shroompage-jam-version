@@ -144,7 +144,7 @@ internal partial class StoryIntro : Node {
 		GameManager.Singleton.Player.ViewmodelDisabled = false;
 		m_IntroBarrier.Destruct();
 
-		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick", 3);
+		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick\nThe mushrooms are coming for you", 4);
 		SpawnMachete();
 
 		QueueFree();
