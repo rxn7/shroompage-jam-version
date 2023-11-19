@@ -87,10 +87,6 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Bobbing = new PlayerBobbing(this);
 		ItemManager = new PlayerItemManager(this);
 
-		ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
-		AddChild(ItemManager.HeldItem);
-		ItemManager.HeldItem.Equip(this);
-
 		OnDied += () => {
 			GetTree().ChangeSceneToFile("res://Scenes/UI/SplashScreen.tscn");
 		};
@@ -107,10 +103,10 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		Controller.Update((float)dt);
 		Bobbing.Update((float)dt);
 
+		ItemManager.Update();
+
 		if(ViewmodelDisabled)
 			return;
-		
-		ItemManager.Update();
 		
 		if(Input.IsActionPressed(AttackInputAction))
 			Attack();

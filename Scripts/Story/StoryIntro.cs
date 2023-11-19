@@ -2,6 +2,7 @@
 
 using System;
 using System.Threading.Tasks;
+using Game.ItemSystem;
 using Game.Player;
 using Game.Utils;
 using Godot;
@@ -11,6 +12,7 @@ namespace Game.Story;
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
 	[Export] private bool m_DebugDisableIntro = false;
+	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
 	public bool DisableShroomEffects = true;
 
 	private Barrier m_IntroBarrier;
@@ -113,10 +115,15 @@ internal partial class StoryIntro : Node {
 		m_EndSequenceSoundPlayer.Play();
 
 		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
-
+		GameManager.Singleton.Player.Controller.Locked = true;
 		GameManager.Singleton.Soundtrack.SetMuted(true);
 
 		await Task.Delay(5000);
+
+		GameManager.Singleton.Player.Controller.Locked = false;
+
+		m_DayLight.Visible = false;
+		m_NightLight.Visible = false;
 
 		GameManager.Singleton.Player.BlackoutFrame.Visible = false;
 
@@ -127,5 +134,9 @@ internal partial class StoryIntro : Node {
 		m_IntroBarrier.Destruct();
 
 		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick", 3);
+
+		GameManager.Singleton.Player.ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
+		AddChild(GameManager.Singleton.Player.ItemManager.HeldItem);
+		GameManager.Singleton.Player.ItemManager.HeldItem.Equip(GameManager.Singleton.Player);
 	}
 }
