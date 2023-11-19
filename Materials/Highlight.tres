@@ -5,5 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_0mgck")
-shader_parameter/outline_width = 5.0
-shader_parameter/base_color = Color(0.819608, 1.91765, 1.11765, 1)
+shader_parameter/shine_color = Color(0.756863, 0.905882, 0.247059, 1)
+shader_parameter/cycle_interval = 3.5
+shader_parameter/shine_speed = 1.838
+shader_parameter/shine_width = 30.923

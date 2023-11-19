@@ -10,21 +10,25 @@ internal abstract partial class Item : RigidBody3D {
 	
 	public ItemData Data { get; set; }
 	
-	private MeshInstance3D m_Mesh;
-	private static readonly Material HighlightShaderMaterial = GD.Load<Material>("res://Materials/Highlight.tres");
+	public MeshInstance3D MeshInstance { get; set; }
 
 	public override void _Ready() {
-		m_Mesh = GetChild<MeshInstance3D>(0);
+		MeshInstance = GetChild<MeshInstance3D>(0);
 		DisableMode = DisableModeEnum.Remove;
+		ApplyHighlightShader();
 	}
 
 	public virtual void Highlight() {
-		m_Mesh.MaterialOverlay = HighlightShaderMaterial;
 	}
 
 	public virtual void Unhighlight() {
-		m_Mesh.MaterialOverlay = null;
 	}
 	
-	public virtual void Equip(PlayerManager player) { }
+	public virtual void Equip(PlayerManager player) { 
+		MeshInstance.MaterialOverlay = null;
+	}
+
+	public void ApplyHighlightShader() {
+		MeshInstance.MaterialOverlay = ItemData.s_HighlightOverlay;
+	}
 }
