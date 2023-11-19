@@ -3,7 +3,7 @@ using Godot;
 namespace Game;
 
 public partial class Headlight : SpotLight3D {
-	private const float MaxBatteryTime = 60.0f;
+	private const float MaxBatteryTime = 300.0f;
 	private const float MaxLightEnergy = 1.5f;
 	private const float MinLightEnergy = 0.2f;
 	private const float MaxLightRange = 30.0f;
