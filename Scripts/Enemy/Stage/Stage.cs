@@ -5,6 +5,7 @@ using Godot;
 namespace Game.Enemy.Stage;
 
 internal partial class Stage : Area3D {
+	private bool m_Started = false;
 	private List<EnemySpawner> m_Spawners = new();
 
 	public int EnemyCount => m_Spawners.Count;
@@ -27,17 +28,19 @@ internal partial class Stage : Area3D {
 	}
 
 	private void OnBodyEntered(Node body) {
-		if(body is PlayerManager player) {
+		if(m_Started)
+			return;
+
+		if(body is PlayerManager) {
 			Start();
 		}
 	}
 
 	public void OnEnemyDied(EnemySpawner spawner) {
 		m_Spawners.Remove(spawner);
-
 		GD.Print($"Enemy has been killed, {m_Spawners.Count} left");
 
-		if(m_Spawners.Count == 0)
+		if(EnemyCount == 0)
 			StageCleared();
 	}
 
@@ -46,6 +49,8 @@ internal partial class Stage : Area3D {
 		GD.Print($"Starting stage {this} with {m_Spawners.Count} spawners.");
 		foreach(EnemySpawner spawner in m_Spawners)
 			spawner.Start();
+
+		m_Started = true;
 	}
 
 	private void StageCleared() {
