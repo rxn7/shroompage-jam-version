@@ -1,6 +1,24 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://c2j5tihu84ike"]
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://2etu4i14h72r"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_d16yo"]
+resource_name = "Reverb"
+wet = 0.0
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_3tx1s"]
+resource_name = "Chorus"
+wet = 0.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_b1xwr"]
+resource_name = "Limiter"
+ceiling_db = -6.0
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_d16yo")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectChorus_3tx1s")
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectLimiter_b1xwr")
+bus/0/effect/2/enabled = true
 bus/1/name = &"Soundtrack"
 bus/1/solo = false
 bus/1/mute = false

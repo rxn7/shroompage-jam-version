@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bfkhwp63qtovn"
-path="res://.godot/imported/BatteryMushroom.blend-3ab3c64c7b171048da6710bd30d66161.scn"
+uid="uid://cg5m3ce37nyml"
+path="res://.godot/imported/Enemies.blend-39fe0a823d6046dcce307f43c98ede3d.scn"
 
 [deps]
 
-source_file="res://Models/Mushrooms/BatteryMushroom.blend"
-dest_files=["res://.godot/imported/BatteryMushroom.blend-3ab3c64c7b171048da6710bd30d66161.scn"]
+source_file="res://Models/Enemies.blend"
+dest_files=["res://.godot/imported/Enemies.blend-39fe0a823d6046dcce307f43c98ede3d.scn"]
 
 [params]
 
@@ -29,16 +29,22 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
-"meshes": {
-"BatteryMushroom-3ab3c64c7b171048da6710bd30d66161_BatteryMushroom": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
-"save_to_file/make_streamable": "",
-"save_to_file/path": "res://Models/Mushrooms/BatteryMushroom.res"
+"nodes": {
+"PATH:Grey": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Grey_001": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Pink": {
+"generate/physics": true,
+"physics/body_type": 1
+},
+"PATH:Pink_001": {
+"generate/physics": true,
+"physics/body_type": 1
 }
 }
 }

@@ -41,12 +41,11 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		get => m_HighLevel;
 		set { m_HighLevel = Mathf.Clamp(value, 0.0f, 1.0f); }
 	}
+	private float m_HighLevel = 0.0f;
 
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; } = false;
 
-	private float m_HighLevel = 0.0f;
-	
 	private float m_KickCooldownTimer = 0.0f;
 
 	public override void _Ready() {

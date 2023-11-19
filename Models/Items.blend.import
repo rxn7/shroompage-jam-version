@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cg5m3ce37nyml"
-path="res://.godot/imported/Mushrooms.blend-b725e6471be56ec80fe1d3d7cbc35b52.scn"
+uid="uid://bfkhwp63qtovn"
+path="res://.godot/imported/Items.blend-93211f1bb53f4f7b4692f9d6224c9d32.scn"
 
 [deps]
 
-source_file="res://Models/Mushrooms/Mushrooms.blend"
-dest_files=["res://.godot/imported/Mushrooms.blend-b725e6471be56ec80fe1d3d7cbc35b52.scn"]
+source_file="res://Models/Items.blend"
+dest_files=["res://.godot/imported/Items.blend-93211f1bb53f4f7b4692f9d6224c9d32.scn"]
 
 [params]
 
@@ -29,22 +29,26 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
-"nodes": {
-"PATH:Grey": {
-"generate/physics": true,
-"physics/body_type": 1
+"meshes": {
+"Items-93211f1bb53f4f7b4692f9d6224c9d32_BatteryMushroom": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Models/Mushrooms/BatteryMushroom.res"
 },
-"PATH:Grey_001": {
-"generate/physics": true,
-"physics/body_type": 1
-},
-"PATH:Pink": {
-"generate/physics": true,
-"physics/body_type": 1
-},
-"PATH:Pink_001": {
-"generate/physics": true,
-"physics/body_type": 1
+"Items-93211f1bb53f4f7b4692f9d6224c9d32_MagicMushroom": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Models/Mushrooms/MagicMushroom.res"
 }
 }
 }

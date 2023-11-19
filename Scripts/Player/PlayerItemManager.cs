@@ -27,12 +27,16 @@ internal class PlayerItemManager {
 			highligtedItem.Equip(m_Player);
 			m_Player.ItemRaycast.ResetHighlightedItem();
 		} else if (HeldItem is not null && Input.IsActionJustPressed(DropInputPickup)) {
-			DropHeldItem();
+			// DropHeldItem(true);
+			// NOTE!: Turn off, because we dont have more weapons anyway
 		}
 	}
 
-	public void DropHeldItem() {
+	public void DropHeldItem(bool playEquipAnim = false) {
 		HeldItem?.Drop(m_Player.Controller.Velocity, -m_Player.Head.Camera.GlobalTransform.Basis.Z);
 		HeldItem = null;
+
+		if(playEquipAnim)
+			m_Player.Viewmodel.PlayEquipAnimation();
 	}
 }

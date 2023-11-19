@@ -25,5 +25,5 @@ EquipAnimationName = &"MacheteEquip"
 IdleAnimationName = &"MacheteIdle"
 AttackAnimationNames = [&"MacheteAttack", &"MacheteAttack2"]
 Name = &"Machete"
-Mass = 1.0
+Mass = 2.0
 Mesh = ExtResource("5_p2qpw")
