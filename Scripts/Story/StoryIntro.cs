@@ -10,7 +10,7 @@ namespace Game.Story;
 
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
-	[Export] private bool m_DebugDisableIntro = true;
+	[Export] private bool m_DebugDisableIntro = false;
 	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
 	[Export] private Godot.Environment m_DayEnv, m_NightEnv;
 	[Export] private WorldEnvironment m_WorldEnv;
@@ -113,6 +113,7 @@ internal partial class StoryIntro : Node {
 		if (m_collectedShrooms != 5) 
 			return;
 
+		m_NotificationDisplay.DisplayNotification("i should eat one", 4);
 		m_playedLastShroomNotification = true;
 	}
 
