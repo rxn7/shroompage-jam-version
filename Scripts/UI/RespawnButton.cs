@@ -1,4 +1,5 @@
 using Godot;
+using Game.Story;
 
 namespace Game.UI;
 
@@ -10,5 +11,6 @@ internal partial class RespawnButton : Button {
 
 	private void Respawn() {
 		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
+		Game.Story.StoryIntroDebug.DisableIntro = true;
 	}
 }

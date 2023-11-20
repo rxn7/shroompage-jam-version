@@ -8,9 +8,12 @@ using Godot;
 
 namespace Game.Story;
 
+static class StoryIntroDebug {
+	static public bool DisableIntro = false;
+}
+
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
-	[Export] private bool m_DebugDisableIntro = false;
 	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
 	[Export] private Godot.Environment m_DayEnv, m_NightEnv;
 	[Export] private WorldEnvironment m_WorldEnv;
@@ -56,7 +59,7 @@ internal partial class StoryIntro : Node {
 
 		GameManager.Singleton.Player.Headlight.Visible = false;
 
-		if (m_DebugDisableIntro) {
+		if (StoryIntroDebug.DisableIntro) {
 			m_NotificationDisplay.DisplayNotification("INTRO DISABLED", 3);
 			m_Soundtrack.SetIntroMusic(false);
 			m_Player.GlobalPosition = m_IntroBarrier.GlobalPosition;
