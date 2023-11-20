@@ -22,7 +22,7 @@ script = ExtResource("1_tfbw8")
 HopHeight = 3.0
 Damage = 40.0
 HighLevelIncrease = 0.2
-Health = 80.0
+Health = 60.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_yx378")
