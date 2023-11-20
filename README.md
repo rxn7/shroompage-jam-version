@@ -1,45 +1,36 @@
-# Only for M Terrain Plugin release
-The main repo is Here https://github.com/mohsenph69/Godot-MTerrain-plugin
+# Shroompage
 
-![Screenshot_20230707_104154](https://github.com/mohsenph69/Godot-MTerrain-plugin/assets/52196206/7e3eb7da-af57-4ae5-8f55-f9fc1c8b26f8)
+Our entry for the PJP 2023-2 Game Jam.
 
+## Description
 
-## Please read before using this plugin
-Using this plugin require to learn some concept about terrain, This terrain plugin will not work out of the box, so I really suggest to read the [wiki](https://github.com/mohsenph69/Godot-MTerrain-plugin/wiki/) which I add recently added, I will add more stuff to wiki but for now I wrote the main concept that you need to know.
+You are a polish mushroom harvester on your normal work hike when you suddenly get the urge to eat suspicious looking shrooms you were told to harvest.
 
-Also watching this video will be helpful:
-https://www.youtube.com/watch?v=PcAkWClET4U
+### BAD IDEA!
 
-And then this video shows how to use use height brushes to modifying the terrain:
-https://www.youtube.com/watch?v=e7nplXnemGo
+As if tripping balls on shroomjuice wasn't bad enough, you see several agarics blooming larger and larger on the corner of your vision every second. You arm yourself with the only tool your boss provided, ready to fight any opposition ready to stop you.
 
-Video about Texture painting:
-https://www.youtube.com/watch?v=0zEYzKEMWR8
+### A MACHETE!
 
-## patreon
+A maniac with a machete on a
 
-You can support me with patreon [Click here](https://patreon.com/mohsenzare?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)
+### SHROOMPAGE!
 
-## Features
+Equipped with your god's given foot and worktool in hand, you must fend off dangerous and varying types of fungi ready to stop your ultimate objective:<br/>
+**To destroy the Toad King located on the top of this mountain before it blooms and takes over the world.**
 
-* Tested with terrrain up to size 16km X 16 km
-* Supporting grass system Even with collission for things like trees (Grass is paintable)
-* Suppoting baking navigation system from terrain (navigation mesh is paintable)
-* Terrain sculptur
-* Color brush which support different algorithm (splatmapping, bitwise, index mapping ...)
-  
-![Screenshot_20230719_144752](https://github.com/mohsenph69/Godot-MTerrain-plugin/assets/52196206/704c51a8-7554-4345-907b-efc635a67dd0)
+## Controls
 
+-   WASD to move
+-   F to interact with stuff
+-   LMB to attack
+-   E to kick
 
-## download
-To downalod the latest release use this link:
-https://github.com/mohsenph69/Godot-MTerrain-plugin/releases
+## Credits
 
-![Screenshot_20230719_144757](https://github.com/mohsenph69/Godot-MTerrain-plugin/assets/52196206/ef78652f-c4cc-4226-948e-9f4e44bb1af8)
-
-## build by yourself
-First clone this repo on your local machine, so you need godot-cpp to exist in GDExtension folder so you can build that, godot-cpp is added as a submodule in this project so to put that inside GDExtension folder only thing you need to do after cloning this repo is runing this code
-```
-git submodule update --init --recursive
-```
-This will automaticly pull godot-cpp into GDextension folder, After that go inside GDExtension folder and use scons to build this project
+-   rxn7 - code / ui + causing merge conflicts and force pushing commits
+-   blackshibe - art / music / level design + getting mad about the bloom shader after turning it off
+-   moss - sfx / ideas + writing the sickest description in history
+-   orchids - mushroom models + being cool
+-   drerizo - inspiration + mental support (we really needed it)
+-   science6uru - particles + trying to develop on a 2013 macbook
