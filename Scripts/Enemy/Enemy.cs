@@ -24,6 +24,7 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 	[Export] public float Health { get; set; } = 30.0f;
 	public Action OnDied { get; set; }
 	public bool IsDead { get; set; }
+    public float DistanceToPlayer { get; set; } = 10.0f;
 	public Action<float> OnDamage { get; set; }
 
 	private MeshInstance3D m_MeshInstance;
@@ -82,9 +83,15 @@ internal partial class Enemy : CharacterBody3D, IHealth {
 		Velocity = m_Velocity;
 		MoveAndSlide();
 
+        DistanceToPlayer = GlobalPosition.DistanceTo(GameManager.Singleton.Player.GlobalPosition);
+        if(DistanceToPlayer > 30 && GameManager.Singleton.GetEnemyCount() < 3) {
+            (this as IHealth).Damage(10000000000); // yes.
+            return;
+        }
+        
 		if(m_DamageCooldownTimer < DamageCooldown) {
 			m_DamageCooldownTimer += (float)delta;
-		} else if(GlobalPosition.DistanceSquaredTo(GameManager.Singleton.Player.GlobalPosition) <= DamagePlayerMaxDistanceSquared) {
+		} else if(DistanceToPlayer * DistanceToPlayer <= DamagePlayerMaxDistanceSquared) {
 			(GameManager.Singleton.Player as IHealth).Damage(Damage);
 			GameManager.Singleton.Player.HighLevel += HighLevelIncrease;
 			m_DamageCooldownTimer = 0.0f;
