@@ -1,3 +1,5 @@
+[Game Logo](Textures/jam.png)
+
 # Shroompage
 
 Our entry for the PJP 2023-2 Game Jam.
