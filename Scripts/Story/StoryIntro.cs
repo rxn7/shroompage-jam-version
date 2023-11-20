@@ -31,8 +31,8 @@ internal partial class StoryIntro : Node {
 
 	private int m_CurrentMessage = 0;
 	private double m_MessageTimer = 3;
-	private int m_collectedShrooms = 0;
-	private bool m_playedLastShroomNotification = false;
+	public int CollectedShrooms { get; set; } = 0;
+	public bool m_LastShroom { get; set; } = false;
 	private readonly String[] m_Messages = {
 		"Press [WASD] to move",
 		"Press [Space] to jump",
@@ -64,11 +64,11 @@ internal partial class StoryIntro : Node {
 			m_Soundtrack.SetIntroMusic(false);
 			m_Player.GlobalPosition = m_IntroBarrier.GlobalPosition;
 			m_IntroBarrier.QueueFree();
-			m_playedLastShroomNotification = true;
+			m_LastShroom = true;
 			m_FinishedIntro = true;
 			m_Player.ViewmodelDisabled = false;
 			DisableShroomEffects = false;
-			m_collectedShrooms = 100;
+			CollectedShrooms = 100;
 			FinishEndSequence();
 			return;
 		}
@@ -79,14 +79,14 @@ internal partial class StoryIntro : Node {
 			return;
 		} 
 
-		m_ShroomCollectProgress.Text = $"Mushrooms: {m_collectedShrooms}/6";
+		m_ShroomCollectProgress.Text = $"Mushrooms: {CollectedShrooms}/6";
 		TextIntroUpdate(delta_time);
 	}
 
 	private void TextIntroUpdate(double delta_time) {
 		m_MessageTimer -= delta_time;
 
-		if (m_playedLastShroomNotification) return;
+		if (m_LastShroom) return;
 		if (m_FinishedTextIntro) return;
 		if (m_MessageTimer > 0) return;
 
@@ -106,18 +106,18 @@ internal partial class StoryIntro : Node {
 	}
 
 	public async void CollectShroom() {
-		m_collectedShrooms++;
+		CollectedShrooms++;
 		
-		if (m_collectedShrooms == 6) {
+		if (CollectedShrooms == 6) {
 			await BeginEndSequence();
 			return;
 		}
 
-		if (m_collectedShrooms != 5) 
+		if (CollectedShrooms != 5) 
 			return;
 
 		m_NotificationDisplay.DisplayNotification("i should eat one", 4);
-		m_playedLastShroomNotification = true;
+		m_LastShroom = true;
 	}
 
 	private async Task BeginEndSequence() {
