@@ -23,9 +23,9 @@ HopCooldown = 0.1
 HopForce = 7.0
 HopHeight = 3.0
 Damage = 2.0
-HighLevelIncrease = 0.4
+HighLevelIncrease = 0.3
 DamagePlayerMaxDistanceSquared = 1.4
-Health = 25.0
+Health = 20.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_4su5r")
