@@ -53,6 +53,22 @@ internal partial class GameManager : Node {
 
 		if(stage.Name == "Stage1") {
 			GameManager.Singleton.Player.NotificationDisplay.DisplayNotification("Stop the big shroom from blooming!", 5.0f);
+		} else if(stage.Name == "Stage5") {
+			GameManager.Singleton.Player.NotificationDisplay.DisplayNotification("Burn down the shroom", 5.0f);
+		} else if(stage.Name == "Stage6") {
+			GameEnd();
 		}
+	}
+
+	private void GameEnd() {
+		GameManager.Singleton.Player.HighLevel = 0.0f;
+		GameManager.Singleton.Player.Controller.Locked = true;
+		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
+		Soundtrack.SetMuted(true);
+		AudioStreamPlayer endingSoundPlayer = GetNode<AudioStreamPlayer>("EndGameSoundPlayer");
+		endingSoundPlayer.Play();
+		endingSoundPlayer.Finished += () => {
+			GetTree().ChangeSceneToFile("res://Scenes/UI/Ending.tscn");
+		};
 	}
 }
