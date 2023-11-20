@@ -73,7 +73,6 @@ internal partial class StoryIntro : Node {
 
 	public override void _Process(double delta_time) {
 		if (m_FinishedIntro) {
-			m_ShroomCollectProgress.Text = "";
 			return;
 		} 
 
@@ -146,6 +145,9 @@ internal partial class StoryIntro : Node {
 
 		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick\nThe mushrooms are coming for you", 4);
 		SpawnMachete();
+
+        m_ShroomCollectProgress.Text = "";
+		m_FinishedIntro = true;
 
 		QueueFree();
 	}
