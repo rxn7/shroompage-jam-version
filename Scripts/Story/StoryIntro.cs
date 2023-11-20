@@ -151,6 +151,8 @@ internal partial class StoryIntro : Node {
 		m_FinishedIntro = true;
 		DisableShroomEffects = false;
 
+		GD.Print($"Stage {this} has been cleared.");
+
 		QueueFree();
 	}
 
