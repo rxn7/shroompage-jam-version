@@ -149,6 +149,7 @@ internal partial class StoryIntro : Node {
 
         m_ShroomCollectProgress.Text = "";
 		m_FinishedIntro = true;
+		DisableShroomEffects = false;
 
 		QueueFree();
 	}
