@@ -13,10 +13,11 @@ sky_material = SubResource("ProceduralSkyMaterial_a8j5c")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_jay6v")
 sky_rotation = Vector3(0, -2.07694, 0)
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.01
+ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
 ssao_sharpness = 1.0
 ssil_radius = 3.67
