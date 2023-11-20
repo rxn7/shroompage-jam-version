@@ -492,6 +492,7 @@ shape = SubResource("BoxShape3D_c4ihb")
 
 [node name="Gate2" type="Node3D" parent="Stage1"]
 transform = Transform3D(-0.054288, 0, -0.998526, 0, 1, 0, 0.998526, 0, -0.054288, 9.53928, 0.612591, -5.87625)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage1/Gate2" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
@@ -544,6 +545,7 @@ shape = SubResource("BoxShape3D_rwul8")
 
 [node name="Gate3" type="Node3D" parent="Stage2"]
 transform = Transform3D(0.342283, 0, -0.939597, 0, 1, 0, 0.939597, 0, 0.342283, 20.2508, -0.0491254, 1.34242)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage2/Gate3" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
@@ -609,6 +611,7 @@ shape = SubResource("BoxShape3D_33hba")
 
 [node name="Gate3" type="Node3D" parent="Stage3"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage3/Gate3" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
@@ -703,6 +706,7 @@ shape = SubResource("BoxShape3D_33hba")
 
 [node name="Gate3" type="Node3D" parent="Stage4"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage4/Gate3" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
@@ -798,6 +802,7 @@ shape = SubResource("BoxShape3D_33hba")
 
 [node name="Gate3" type="Node3D" parent="Stage5"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage5/Gate3" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)
@@ -948,6 +953,7 @@ shape = SubResource("SphereShape3D_b0nig")
 
 [node name="Gate3" type="Node3D" parent="Stage6"]
 transform = Transform3D(-0.204923, 0, -0.978778, 0, 1, 0, 0.978778, 0, -0.204923, 21.7659, 1.19639, -2.69298)
+script = ExtResource("4_eq1nh")
 
 [node name="Fence" parent="Stage6/Gate3" instance=ExtResource("4_qxjip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39991, -1.17539, 0.685591)

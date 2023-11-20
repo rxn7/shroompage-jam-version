@@ -13,6 +13,7 @@ internal partial class Stage : Area3D {
 
 	public int EnemyCount => m_Spawners.Count;
 	[Export] private bool m_IncreaseOstStageAfterClear = false;
+	private Barrier m_Barrier;
 	
 
 	public Stage() {
@@ -20,6 +21,7 @@ internal partial class Stage : Area3D {
 	}
 
 	public override void _Ready() {
+		m_Barrier = GetChild<Barrier>(1);
 		foreach(Node child in GetChildren()) {
 			if(child is EnemySpawner spawner) {
 				spawner.Stage = this;
@@ -65,6 +67,8 @@ internal partial class Stage : Area3D {
 		GD.Print($"Stage {this} has been cleared.");
 
 		if (m_IncreaseOstStageAfterClear) GameManager.Singleton.Soundtrack.IncreaseStage();
+
+		m_Barrier.Destruct();
 
 		QueueFree();
 	}
