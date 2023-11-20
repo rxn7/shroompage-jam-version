@@ -1,5 +1,6 @@
 using Game.Player;
 using Game.Utils;
+using Game.Story;
 using Godot;
 
 namespace Game.ItemSystem;
@@ -8,9 +9,13 @@ internal abstract partial class ConsumableItem : Item {
 	public ConsumableItemData ConsumableData => Data as ConsumableItemData;
 
 	public override void Equip(PlayerManager player) {
-		SoundManager.Play3D(player.GlobalPosition, ConsumableData.ConsumeSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
+		StoryIntro intro = GameManager.Singleton.StoryIntro;
+
 		Consume(player);
 		QueueFree();
+
+     	if (intro != null && intro.DisableShroomEffects) return;
+		SoundManager.Play3D(player.GlobalPosition, ConsumableData.ConsumeSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
 	}
 
 	public abstract void Consume(PlayerManager player);

@@ -88,7 +88,7 @@ internal partial class PlayerManager : CharacterBody3D, IHealth {
 		ItemManager = new PlayerItemManager(this);
 
 		OnDied += () => {
-			GetTree().ChangeSceneToFile("res://Scenes/UI/SplashScreen.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/UI/Death.tscn");
 		};
 
 		OnDamage += (float dmg) => {

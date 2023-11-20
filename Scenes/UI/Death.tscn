@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5gtplow2012a"]
+
+[ext_resource type="Script" path="res://Scripts/UI/RespawnButton.cs" id="2_1flpq"]
+[ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="4_loofv"]
+
+[sub_resource type="Gradient" id="Gradient_bmoe5"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4juy7"]
+gradient = SubResource("Gradient_bmoe5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1q5a"]
+texture = SubResource("GradientTexture1D_4juy7")
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blackout" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 8848.0
+offset_bottom = 9352.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v1q5a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.586
+offset_left = 505.0
+offset_right = -500.0
+offset_bottom = 0.271973
+grow_horizontal = 2
+grow_vertical = 2
+text = "Respawn"
+script = ExtResource("2_1flpq")
+
+[node name="PickupLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.401
+anchor_right = 1.0
+anchor_bottom = 0.474
+offset_top = 0.152008
+offset_bottom = -0.152008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_loofv")
+theme_override_font_sizes/font_size = 30
+text = "You got shroomed!"
+horizontal_alignment = 1
