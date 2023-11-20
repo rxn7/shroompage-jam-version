@@ -60,7 +60,7 @@ plane = Plane(1, 0, 0, 0)
 plane = Plane(0, 0, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ihb"]
-size = Vector3(18.6048, 12.2878, 27.5203)
+size = Vector3(18.6048, 12.2878, 26.1206)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwul8"]
 size = Vector3(19.2096, 14.9473, 45.957)
