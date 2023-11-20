@@ -10,7 +10,7 @@ internal partial class RespawnButton : Button {
 	}
 
 	private void Respawn() {
-		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
 		Game.Story.StoryIntroDebug.DisableIntro = true;
+		GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
 	}
 }
