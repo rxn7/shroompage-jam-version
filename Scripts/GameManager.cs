@@ -21,7 +21,7 @@ internal partial class GameManager : Node {
 	public GameManager() {
 		Singleton = this;
 		StageStarted += (Stage stage) => CurrentStage = stage;
-		StageCleared += (Stage stage) => CurrentStage = null;
+		StageCleared += OnStageCleared;
 	}
 
 	public override void _EnterTree() {
@@ -46,5 +46,13 @@ internal partial class GameManager : Node {
 		}
 
 		return CurrentStage.EnemyCount;
+	}
+
+	private void OnStageCleared(Stage stage) {
+		CurrentStage = null;
+
+		if(stage.Name == "Stage1") {
+			GameManager.Singleton.Player.NotificationDisplay.DisplayNotification("Stop the big shroom from blooming!", 5.0f);
+		}
 	}
 }
