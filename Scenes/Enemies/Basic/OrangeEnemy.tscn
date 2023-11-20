@@ -20,6 +20,7 @@ axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_wev2t")
 HopCooldown = 0.1
+HopForce = 7.0
 HopHeight = 3.0
 Damage = 2.0
 HighLevelIncrease = 0.4

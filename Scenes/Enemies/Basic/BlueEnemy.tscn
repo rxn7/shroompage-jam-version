@@ -19,10 +19,9 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_tfbw8")
-HopForce = 15.0
 HopHeight = 3.0
 Damage = 40.0
-HighLevelIncrease = 0.02
+HighLevelIncrease = 0.2
 Health = 80.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

@@ -58,6 +58,7 @@ axis_lock_angular_z = true
 platform_floor_layers = 1
 script = ExtResource("1_040db")
 HopCooldown = 0.1
+HopForce = 8.0
 HighLevelIncrease = 0.04
 Health = 20.0
 

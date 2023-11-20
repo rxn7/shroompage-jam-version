@@ -10,7 +10,7 @@ namespace Game.Story;
 
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
-	[Export] private bool m_DebugDisableIntro = false;
+	[Export] private bool m_DebugDisableIntro = true;
 	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
 	[Export] private Godot.Environment m_DayEnv, m_NightEnv;
 	[Export] private WorldEnvironment m_WorldEnv;
@@ -144,7 +144,7 @@ internal partial class StoryIntro : Node {
 		GameManager.Singleton.Player.ViewmodelDisabled = false;
 		m_IntroBarrier.Destruct();
 
-		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick\nThe mushrooms are coming for you", 4);
+		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick\nThe mushrooms are coming for you\nStop the big shroom from growing", 6);
 		SpawnMachete();
 
 		QueueFree();
