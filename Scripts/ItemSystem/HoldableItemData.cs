@@ -7,8 +7,8 @@ internal partial class HoldableItemData : ItemData {
 	[Export] public float Damage = 10.0f;
 
 	[ExportSubgroup("Audio")]
-	[Export] public AudioStream[] PickupSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Item/Pickup").ToArray();
-	[Export] public AudioStream[] DropSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Item/Drop").ToArray();
+	[Export] public AudioStream[] PickupSounds;
+	[Export] public AudioStream[] DropSounds;
 	[Export] public AudioStream[] AttackSounds = new AudioStream[0];
 	[Export] public AudioStream[] AttackHitSounds = new AudioStream[0];
 

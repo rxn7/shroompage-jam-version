@@ -8,7 +8,7 @@ namespace Game.Enemy.Stage;
 internal partial class EnemySpawner : Node3D {
 	public Stage Stage { get; set; }
 
-	private static readonly List<AudioStream> s_SpawnSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/EnemySpawn");
+	private static readonly List<AudioStream> s_SpawnSounds = ResourceUtils.LoadAll<AudioStream>("res://Audio/EnemySpawn/mushroom_spawn1.wav", "res://Audio/EnemySpawn/mushroom_spawn2.wav", "res://Audio/EnemySpawn/mushroom_spawn3.wav");
 	[Export] private int m_SpawnDelayMs;
 	[Export] private PackedScene m_EnemyScene;
 

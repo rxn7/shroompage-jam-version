@@ -31,9 +31,9 @@ internal static class FootstepManager {
 	private static SoundData s_Lands;
 
 	public static void Init() {
-		s_Footsteps = new(ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/FootStep"));
-		s_Jumps = new(ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Jump"));
-		s_Lands = new(ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Land"));
+		s_Footsteps = new(ResourceUtils.LoadAll<AudioStream>("res://Audio/FootStep/player_fstep1.wav", "res://Audio/FootStep/player_fstep2.wav", "res://Audio/FootStep/player_fstep3.wav", "res://Audio/FootStep/player_fstep4.wav", "res://Audio/FootStep/player_fstep5.wav", "res://Audio/FootStep/player_fstep6.wav", "res://Audio/FootStep/player_fstep7.wav", "res://Audio/FootStep/player_fstep8.wav"));
+		s_Jumps = new(ResourceUtils.LoadAll<AudioStream>("res://Audio/Jump/player_fstep_jump1.wav", "res://Audio/Jump/player_fstep_jump2.wav", "res://Audio/Jump/player_fstep_jump3.wav", "res://Audio/Jump/player_fstep_jump4.wav"));
+		s_Lands = new(ResourceUtils.LoadAll<AudioStream>("res://Audio/Land/player_fstep_land1.wav", "res://Audio/Land/player_fstep_land2.wav", "res://Audio/Land/player_fstep_land3.wav", "res://Audio/Land/player_fstep_land4.wav"));
 		GD.Print("FootstepManager initialized");
 	}
 	

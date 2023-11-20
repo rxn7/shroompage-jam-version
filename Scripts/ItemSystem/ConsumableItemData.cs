@@ -8,7 +8,7 @@ internal partial class ConsumableItemData : ItemData {
 	[Export] public Script Script { get; private set; } = GD.Load<Script>("res://Scripts/ItemSystem/Item.cs");
 
 	[ExportSubgroup("Audio")]
-	[Export] public AudioStream[] ConsumeSounds = ResourceUtils.LoadAllAudioStreamsFromDirectory("res://Audio/Consume").ToArray();
+	[Export] public AudioStream[] ConsumeSounds = new AudioStream[0];
 
 	public override ConsumableItem Spawn() {
 		RigidBody3D itemBody = new();

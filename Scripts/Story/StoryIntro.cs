@@ -147,7 +147,7 @@ internal partial class StoryIntro : Node {
 		m_NotificationDisplay.DisplayNotification("Press [LMB] to melee attack\nPress [E] to kick\nThe mushrooms are coming for you\nStop the big shroom from growing", 6);
 		SpawnMachete();
 
-        m_ShroomCollectProgress.Text = "";
+		m_ShroomCollectProgress.Text = "";
 		m_FinishedIntro = true;
 		DisableShroomEffects = false;
 
