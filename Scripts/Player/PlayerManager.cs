@@ -1,13 +1,11 @@
 using Godot;
 using Game.Utils;
-using Game.ItemSystem;
 using System;
-using Game.Story;
 
 namespace Game.Player;
 
 internal partial class PlayerManager : CharacterBody3D, IHealth {
-	public const float MaxHealth = 10000;
+	public const float MaxHealth = 100;
 	private const float KickCooldown = 0.5f;
 	private const float KickRange = 3.0f;
 	private const float KickDamage = 50000.0f;
