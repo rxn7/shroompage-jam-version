@@ -1,4 +1,4 @@
-[Game Logo](Textures/jam.png)
+![Game Logo](Textures/jam.png)
 
 # Shroompage
 
