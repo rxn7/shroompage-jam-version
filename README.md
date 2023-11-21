@@ -2,7 +2,7 @@
 
 # Shroompage
 
-Our entry for the PJP 2023-2 Game Jam.
+Our entry for the PJP 2023-2 Game Jam made in just 3 days.
 
 ## Description
 
