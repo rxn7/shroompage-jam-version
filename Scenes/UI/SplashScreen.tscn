@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreen.cs" id="1_gihig"]
 [ext_resource type="Script" path="res://Scripts/SplashScreen/SplashScreenStage.cs" id="2_6jnpk"]
 [ext_resource type="Texture2D" uid="uid://dx3384dxgau65" path="res://Textures/godot-splashscreen.svg" id="3_juew4"]
-[ext_resource type="Texture2D" uid="uid://bq8ppu4f1gvfo" path="res://Textures/pjp-logo-halloween.png" id="4_6hwww"]
+[ext_resource type="Texture2D" uid="uid://b21sjm1km6y3w" path="res://Textures/jam.png" id="4_fsbn1"]
 [ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="5_iiamc"]
 [ext_resource type="FontFile" uid="uid://ca7acto1aa1wt" path="res://Fonts/HelpMe.ttf" id="6_7ssro"]
 
@@ -61,7 +61,6 @@ rotation = 0.00425429
 texture = ExtResource("3_juew4")
 
 [node name="PjpStage" type="Control" parent="Stages"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,23 +72,21 @@ grow_vertical = 2
 script = ExtResource("2_6jnpk")
 DisplayTime = 0.5
 
-[node name="PjpLogo" type="TextureRect" parent="Stages/PjpStage"]
-texture_filter = 1
-texture_repeat = 1
+[node name="TextureRect" type="TextureRect" parent="Stages/PjpStage"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 768.0
-offset_bottom = 768.0
+offset_left = -500.0
+offset_top = -100.0
+offset_right = 500.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6hwww")
+texture = ExtResource("4_fsbn1")
+expand_mode = 2
 
 [node name="AuthorsStage" type="Control" parent="Stages"]
 layout_mode = 1
