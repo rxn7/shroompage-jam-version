@@ -8,16 +8,19 @@ using Godot;
 
 namespace Game.Story;
 
-static class StoryIntroDebug {
-	static public bool DisableIntro = false;
+internal static class StoryIntroPersistentData {
+	public static bool DisableIntro = false;
 }
 
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
 internal partial class StoryIntro : Node {
+	public const int MushroomAmountToCollect = 6;
+
 	[Export] private DirectionalLight3D m_DayLight, m_NightLight;
 	[Export] private Godot.Environment m_DayEnv, m_NightEnv;
 	[Export] private WorldEnvironment m_WorldEnv;
-	public bool DisableShroomEffects = true;
+
+	public int CollectedShroomCount { get; set; } = 0;
 
 	private Barrier m_IntroBarrier;
 	private PlayerNotificationDisplay m_NotificationDisplay;
@@ -30,8 +33,7 @@ internal partial class StoryIntro : Node {
 	private bool m_FinishedIntro = false;
 
 	private int m_CurrentMessage = 0;
-	private double m_MessageTimer = 3;
-	public int CollectedShrooms { get; set; } = 0;
+	private float m_MessageTimer = 3.0f;
 	public bool m_LastShroom { get; set; } = false;
 	private readonly String[] m_Messages = {
 		"Press [WASD] to move",
@@ -41,7 +43,7 @@ internal partial class StoryIntro : Node {
 		"Pick up 6 mushrooms"
 	};
 
-	public async Task Start(GameManager game) {
+	public void Start(GameManager game) {
 		m_Player = game.Player;
 		m_NotificationDisplay = game.Player.NotificationDisplay;
 		m_Soundtrack = game.Soundtrack;
@@ -51,27 +53,23 @@ internal partial class StoryIntro : Node {
 
 		m_Player.ViewmodelDisabled = true;
 		m_Soundtrack.SetIntroMusic(true);
-
-		// it makes a loud sound :(
-		await Task.Delay(600).ContinueWith(t => {
-			m_Soundtrack.SetMuted(false);
-		});
+		m_Soundtrack.SetMuted(false);
 
 		GameManager.Singleton.Player.Headlight.Visible = false;
 
-		if (StoryIntroDebug.DisableIntro) {
-			m_NotificationDisplay.DisplayNotification("INTRO DISABLED", 3);
-			m_Soundtrack.SetIntroMusic(false);
+		MagicMushroom.DisableEffects = true;
+
+		if (StoryIntroPersistentData.DisableIntro) {
 			m_Player.GlobalPosition = m_IntroBarrier.GlobalPosition;
-			m_IntroBarrier.QueueFree();
-			m_LastShroom = true;
-			m_FinishedIntro = true;
-			m_Player.ViewmodelDisabled = false;
-			DisableShroomEffects = false;
-			CollectedShrooms = 100;
 			FinishEndSequence();
 			return;
 		}
+
+		MagicMushroom.Consumed += OnMagicMushroomConsumed;
+	}
+
+	public override void _ExitTree() {
+		MagicMushroom.Consumed -= OnMagicMushroomConsumed;
 	}
 
 	public override void _Process(double delta_time) {
@@ -79,12 +77,26 @@ internal partial class StoryIntro : Node {
 			return;
 		} 
 
-		m_ShroomCollectProgress.Text = $"Mushrooms: {CollectedShrooms}/6";
+		m_ShroomCollectProgress.Text = $"Mushrooms: {CollectedShroomCount}/6";
 		TextIntroUpdate(delta_time);
 	}
 
-	private void TextIntroUpdate(double delta_time) {
-		m_MessageTimer -= delta_time;
+	private async void OnMagicMushroomConsumed(MagicMushroom shroom) {
+		CollectedShroomCount++;
+		
+		if (CollectedShroomCount == MushroomAmountToCollect) {
+			await BeginEndSequence();
+			return;
+		}
+
+		if (CollectedShroomCount == MushroomAmountToCollect - 1)  {
+			m_NotificationDisplay.DisplayNotification("I should eat one", 4);
+			m_LastShroom = true;
+		}
+	}
+
+	private void TextIntroUpdate(double timeDelta) {
+		m_MessageTimer -= (float)timeDelta;
 
 		if (m_LastShroom) return;
 		if (m_FinishedTextIntro) return;
@@ -103,21 +115,6 @@ internal partial class StoryIntro : Node {
 	private void FinishedIntroText() {
 		m_FinishedTextIntro = true;
 		m_ShroomCollectProgress.Show();
-	}
-
-	public async void CollectShroom() {
-		CollectedShrooms++;
-		
-		if (CollectedShrooms == 6) {
-			await BeginEndSequence();
-			return;
-		}
-
-		if (CollectedShrooms != 5) 
-			return;
-
-		m_NotificationDisplay.DisplayNotification("i should eat one", 4);
-		m_LastShroom = true;
 	}
 
 	private async Task BeginEndSequence() {
@@ -152,9 +149,9 @@ internal partial class StoryIntro : Node {
 
 		m_ShroomCollectProgress.Text = "";
 		m_FinishedIntro = true;
-		DisableShroomEffects = false;
+		MagicMushroom.DisableEffects = false;
 
-		GD.Print($"Stage {this} has been cleared.");
+		GameManager.Singleton.Player.Headlight.Visible = true;
 
 		QueueFree();
 	}
@@ -163,7 +160,5 @@ internal partial class StoryIntro : Node {
 		GameManager.Singleton.Player.ItemManager.HeldItem = PlayerItemManager.MacheteItemData.Spawn() as HoldableItem;
 		AddChild(GameManager.Singleton.Player.ItemManager.HeldItem);
 		GameManager.Singleton.Player.ItemManager.HeldItem.Equip(GameManager.Singleton.Player);
-
-		GameManager.Singleton.Player.Headlight.Visible = true;
 	}
 }

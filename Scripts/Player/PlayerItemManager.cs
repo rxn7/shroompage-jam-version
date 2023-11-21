@@ -2,8 +2,6 @@ using Godot;
 using Game.ItemSystem;
 using System;
 using Game.Utils;
-using System.Collections.Generic;
-
 namespace Game.Player; 
 
 internal class PlayerItemManager {
@@ -31,7 +29,7 @@ internal class PlayerItemManager {
 			m_Player.ItemRaycast.ResetHighlightedItem();
 		} else if (HeldItem is not null && Input.IsActionJustPressed(DropInputPickup)) {
 			// DropHeldItem(true);
-			// NOTE!: Turn off, because we dont have more weapons anyway
+			// NOTE!: Turned off, because we dont have more weapons anyway
 		}
 	}
 

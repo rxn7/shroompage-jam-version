@@ -14,7 +14,7 @@ internal abstract partial class ConsumableItem : Item {
 		Consume(player);
 		QueueFree();
 
-     	if (intro != null && intro.CollectedShrooms < 6) {
+     	if (intro != null && intro.CollectedShroomCount < 6) {
             SoundManager.Play3D(player.GlobalPosition, ItemSpawner.BatteryMushroomData.ConsumeSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
         } else {
             SoundManager.Play3D(player.GlobalPosition, ConsumableData.ConsumeSounds.GetRandomItem(), (float)GD.RandRange(0.9f, 1.1f));
