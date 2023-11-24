@@ -30,14 +30,15 @@ internal partial class GameManager : Node {
 	}
 
 	public override void _Ready() {
-		// not all scenes will have an intro
-		// this can be generalized to run a single scene specific script but idc since this is a jam
 		StoryIntro intro = GetNodeOrNull<StoryIntro>("Intro");
-		
 		if (intro != null) {
 			StoryIntro = intro;
 			intro.Start(this);
 		}
+
+		intro.OnFinish += () => {
+			SpeedrunData.SpeedrunStartMsec = Time.GetTicksMsec();
+		};
 	}
 
 	public int GetEnemyCount() {
@@ -52,19 +53,22 @@ internal partial class GameManager : Node {
 		CurrentStage = null;
 
 		if(stage.Name == "Stage1") {
-			GameManager.Singleton.Player.NotificationDisplay.DisplayNotification("Stop the big shroom from blooming!", 5.0f);
+			Player.NotificationDisplay.DisplayNotification("Stop the big shroom from blooming!", 5.0f);
 		} else if(stage.Name == "Stage5") {
-			GameManager.Singleton.Player.NotificationDisplay.DisplayNotification("Burn down the shroom", 5.0f);
+			Player.NotificationDisplay.DisplayNotification("Burn down the shroom", 5.0f);
 		} else if(stage.Name == "Stage6") {
 			GameEnd();
 		}
 	}
 
 	private void GameEnd() {
-		GameManager.Singleton.Player.HighLevel = 0.0f;
-		GameManager.Singleton.Player.Controller.Locked = true;
-		GameManager.Singleton.Player.BlackoutFrame.Visible = true;
+		Player.HighLevel = 0.0f;
+		Player.Controller.Locked = true;
+		Player.BlackoutFrame.Visible = true;
 		Soundtrack.SetMuted(true);
+
+		SpeedrunData.SpeedrunEndMsec = Time.GetTicksMsec();
+
 		AudioStreamPlayer endingSoundPlayer = GetNode<AudioStreamPlayer>("EndGameSoundPlayer");
 		endingSoundPlayer.Play();
 		endingSoundPlayer.Finished += () => {

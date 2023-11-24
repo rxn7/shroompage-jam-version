@@ -1,6 +1,7 @@
 
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Game.ItemSystem;
 using Game.Player;
@@ -13,6 +14,7 @@ internal static class StoryIntroPersistentData {
 }
 
 // TODO this should really inherit from a base StoryElement class since it's referenced a lot
+// TODO: THIS REALLY FUCKING NEEDS TO INHERIT A STORY BASE CLASS!!!!!!!!!!!!!!!!!!!! ^^^^
 internal partial class StoryIntro : Node {
 	public const int MushroomAmountToCollect = 6;
 
@@ -21,6 +23,7 @@ internal partial class StoryIntro : Node {
 	[Export] private WorldEnvironment m_WorldEnv;
 
 	public int CollectedShroomCount { get; set; } = 0;
+	public event Action OnFinish;
 
 	private Barrier m_IntroBarrier;
 	private PlayerNotificationDisplay m_NotificationDisplay;
@@ -153,6 +156,7 @@ internal partial class StoryIntro : Node {
 
 		GameManager.Singleton.Player.Headlight.Visible = true;
 
+		OnFinish?.Invoke();
 		QueueFree();
 	}
 

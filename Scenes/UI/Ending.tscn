@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5l7bhgc0rxal"]
+[gd_scene load_steps=8 format=3 uid="uid://odqliufbte8v"]
 
+[ext_resource type="Script" path="res://Scripts/UI/EndingUI.cs" id="1_3txoj"]
 [ext_resource type="Script" path="res://Scripts/UI/RespawnButton.cs" id="1_ngd2k"]
 [ext_resource type="FontFile" uid="uid://7lj6y82x66jd" path="res://Fonts/unixel-Regular.ttf" id="2_ci8xy"]
 [ext_resource type="AudioStream" uid="uid://c6oofqavjcot6" path="res://Audio/Soundtrack/ending.ogg" id="3_mmru8"]
@@ -13,13 +14,14 @@ gradient = SubResource("Gradient_bmoe5")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1q5a"]
 texture = SubResource("GradientTexture1D_4juy7")
 
-[node name="HUD" type="Control"]
+[node name="EndingUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3txoj")
 
 [node name="Blackout" type="Panel" parent="."]
 layout_mode = 1
@@ -32,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_v1q5a")
 
-[node name="Button" type="Button" parent="."]
+[node name="RespawnButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -47,7 +49,7 @@ grow_vertical = 2
 text = "Replay"
 script = ExtResource("1_ngd2k")
 
-[node name="PickupLabel" type="Label" parent="."]
+[node name="EndingLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.401
