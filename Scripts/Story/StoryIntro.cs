@@ -38,7 +38,7 @@ internal partial class StoryIntro : Node {
 	private int m_CurrentMessage = 0;
 	private float m_MessageTimer = 3.0f;
 	public bool m_LastShroom { get; set; } = false;
-	private readonly String[] m_Messages = {
+	private readonly string[] m_Messages = {
 		"Press [WASD] to move",
 		"Press [Space] to jump",
 		"Press [Left Shift] to sprint",
