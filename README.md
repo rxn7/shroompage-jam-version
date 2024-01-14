@@ -2,6 +2,7 @@
 
 # Shroompage
 
+Note: this the open source, jam version.
 Our entry for the PJP 2023-2 Game Jam made in just 3 days.
 
 ## Description
